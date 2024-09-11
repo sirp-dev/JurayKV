@@ -1,0 +1,65 @@
+﻿@page
+@model JurayKV.UI.Areas.KvMain.Pages.IPermissions.IndexModel
+@{
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+
+                <h3 class="card-title">
+                    Role Permissions
+
+                    <a asp-page="CreateRole" class="btn btn-light waves-effect pull-right">
+                        <i class="bx bx-hourglass bx-spin font-size-16 align-middle mr-2"></i>
+                        Create New
+                    </a>
+                </h3>
+            </div>
+            <div class="card-body">
+
+
+                <div id="datatable_wrapper" class="dataTables_wrapper table-responsive dt-bootstrap4 no-footer">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table id="datatable7" class="table table-bordered dt-responsive nowrap dataTable no-footer dtr-inline" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid" aria-describedby="datatable_info">
+                                <thead>
+                                    <tr role="row">
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Roles[0].RoleName)
+                                        </th>
+
+
+                                        <th></th>
+                                    </tr>
+                                </thead>
+
+
+                                <tbody>
+
+                                    @foreach (var item in Model.Roles)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.RoleName)
+                                            </td>
+
+
+                                            <td>
+
+                                                <a asp-page="./EditRole" asp-route-id="@item.Id">Edit</a>  
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div>

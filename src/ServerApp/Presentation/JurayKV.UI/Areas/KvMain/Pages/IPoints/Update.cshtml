@@ -1,0 +1,53 @@
+﻿@page
+@model JurayKV.UI.Areas.KvMain.Pages.IPoints.UpdateModel
+@{
+}
+
+<div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title">UPDATE BUCKET</h3>
+
+    </div>
+    <!-- /.card-header -->
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="UpdateKvPoint.Id" />
+                    <input type="hidden" asp-for="UpdateKvPoint.UserId" />
+                    <input type="hidden" asp-for="UpdateKvPoint.IdentityKvAdId" />
+                    <input type="hidden" asp-for="UpdateKvPoint.PointHash" />
+                    <div class="form-group">
+                        <label asp-for="UpdateKvPoint.Point" class="control-label"></label>
+                        <input asp-for="UpdateKvPoint.Point" class="form-control" />
+                        <span asp-validation-for="UpdateKvPoint.Point" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="UpdateKvPoint.Point" class="control-label"></label>
+                        @Html.DropDownListFor(model => model.UpdateKvPoint.Status, new SelectList(Enum.GetValues(typeof(JurayKV.Domain.Primitives.Enum.EntityStatus))), new { @class = "form-control" })
+                        <span asp-validation-for="UpdateKvPoint.Point" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Submit" class="btn btn-primary" />
+                        <a asp-page="./Index" class="btn bg-gradient-warning btn-sm" style="float:right;">Back</a>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <!-- /.row -->
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

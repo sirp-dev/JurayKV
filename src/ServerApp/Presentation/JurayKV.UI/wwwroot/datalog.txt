@@ -1,0 +1,40 @@
+09/01/2024 09:25:14 - log mail sent to apirosky001@gmail.com
+09/01/2024 13:17:26 - log mail sent to apirosky001@gmail.com
+09/01/2024 13:45:14 - log mail sent to apirosky001@gmail.com
+09/01/2024 13:45:24 - log mail sent to apirosky001@gmail.com
+09/01/2024 13:46:04 - log mail sent to apirosky001@gmail.com
+09/01/2024 18:29:18 - log mail sent to apirosky001@gmail.com
+09/01/2024 18:34:29 - log mail sent to apirosky001@gmail.com
+11/01/2024 02:55:03 - log outlook mail sent to sdjhhjg@ui.yuu
+11/01/2024 02:55:05 - log outlook mail sent to officalmail@juray.ngd
+11/01/2024 03:19:03 - log outlook mail sent to Onwukaemeka41@gmail.com
+11/01/2024 03:20:48 - log outlook mail sent to Onwukaemeka41@gmail.com
+11/01/2024 03:21:19 - log outlook mail sent to Onwukaemeka41@gmail.com
+11/01/2024 03:24:33 - log outlook mail sent to sdjhhjg@ui.yuu
+11/01/2024 16:11:37 - log outlook mail sent to chimdi@koboview.com
+12/01/2024 12:08:01 - log outlook mail sent to Onwukaemeka41@gmail.com
+14/01/2024 06:36:42 - log outlook mail sent to Onwukaemeka41@gmail.com
+14/01/2024 07:38:26 - log outlook mail sent to Onwukaemeka41@gmail.com
+14/01/2024 07:38:32 - log outlook mail sent to Onwukaemeka41@gmail.com
+15/01/2024 15:09:21 - log outlook failed mail to onwukaemeka41@gmail.coms System.Net.Mail.SmtpException: Mailbox unavailable. The server response was: 5.4.6 Unusual sending activity detected. <a href=https://www.zoho.com/mail/help/usage-policy.html target=_blank>Learn more.</a> To unblock <a href=https://mail.zoho.com/UnblockMe target=_blank>Click here.</a>
+   at System.Net.Mail.DataStopCommand.CheckResponse(SmtpStatusCode statusCode, String serverResponse)
+   at System.Net.Mail.DataStopCommand.Send(SmtpConnection conn)
+   at System.Net.Mail.MailWriter.Close()
+   at System.Net.Mail.SmtpClient.Complete(Exception exception, Object result)
+--- End of stack trace from previous location ---
+   at JurayKV.Infrastructure.Services.EmailSender.SendAsync(String smsMessage, String id, String subject) in C:\Users\JURAY\source\repos\JurayKV\src\ServerApp\Infrastructure\JurayKV.Infrastructure.Services\EmailSender.cs:line 164
+16/01/2024 17:01:04 - log log whatspp code subscribe, KvAdminToken0123, 1158201444
+17/01/2024 13:34:33 - log whatsapp sent text to Onwukaemeka41@gmail.com
+17/01/2024 13:36:03 - log whatsapp sent text to Onwukaemeka41@gmail.com
+17/01/2024 13:36:19 - log whatsapp sent text to Onwukaemeka41@gmail.com
+17/01/2024 15:18:21 - log whatsapp sent text to Onwukaemeka41@gmail.com
+17/01/2024 17:23:20 - log whatsapp sent text to Onwukaemeka41@gmail.com
+17/01/2024 19:17:22 - log whatsapp sent text to hjhjd@hj.kjjh
+18/01/2024 01:03:51 - log whatsapp sent text to iuiui@uiiu.hjhj
+30/01/2024 13:49:37 - log  mail sent to help@koboview.com
+03/02/2024 11:17:25 - log whatsapp sent text to hjhj@hjhj.jjuy
+03/02/2024 11:17:53 - log whatsapp sent text to hjhj@hjhj.jjuy
+03/02/2024 11:18:52 - log whatsapp sent text to hjhj@hjhj.jjuy
+03/02/2024 11:19:39 - log whatsapp sent text to hjhj@hjhj.jjuy
+03/02/2024 12:01:33 - log whatsapp sent text to hjhj@hjhj.jjuy
+19/03/2024 16:34:47 - log whatsapp sent text to iskoolsportal@gmail.com

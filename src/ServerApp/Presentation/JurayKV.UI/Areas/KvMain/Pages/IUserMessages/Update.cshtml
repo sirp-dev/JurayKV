@@ -1,0 +1,86 @@
+﻿@page
+@model JurayKV.UI.Areas.KvMain.Pages.IUserMessages.UpdateModel
+@{
+}
+
+<div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title">UPDATE MESSAGE</h3>
+
+    </div>
+    <div class="card-header">
+        <h6>Name: @Model.UserMessage.User.SurName @Model.UserMessage.User.FirstName @Model.UserMessage.User.LastName</h6>
+        <h6>Phone: @Model.UserMessage.User.PhoneNumber</h6>
+        <h6>ID Number: @Model.UserMessage.User.IdNumber</h6>
+    </div>
+    <!-- /.card-header -->
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="UserMessage.UserId" />
+                    <input type="hidden" asp-for="UserMessage.Id" />
+
+
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="UserMessage.Disable" /> @Html.DisplayNameFor(model => model.UserMessage.Disable)
+                        </label>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="UserMessage.Read" /> @Html.DisplayNameFor(model => model.UserMessage.Read)
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="UserMessage.DateRead" class="control-label"></label>
+                        <input asp-for="UserMessage.DateRead" class="form-control" />
+                        <span asp-validation-for="UserMessage.DateRead" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="UserMessage.Title" class="control-label"></label>
+                        <textarea asp-for="UserMessage.Title" class="form-control"></textarea>
+                        <span asp-validation-for="UserMessage.Title" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="UserMessage.Message" class="control-label"></label>
+                        <textarea asp-for="UserMessage.Message" class="form-control"></textarea>
+                        <span asp-validation-for="UserMessage.Message" class="text-danger"></span>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="UserMessage.All" /> @Html.DisplayNameFor(model => model.UserMessage.All)
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">
+                            File                       @if (Model.UserMessage.FileUrl != null)
+                            {<a href="@Model.UserMessage.FileUrl" target="_blank" class="btn btn-danger">View Previous File</a>}
+                        </label><br />
+                        <input type="file" class="control-label" asp-for="datafile" />
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Submit" class="btn btn-primary" />
+                        <a asp-page="./Index" class="btn bg-gradient-warning btn-sm" style="float:right;">Back</a>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <!-- /.row -->
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

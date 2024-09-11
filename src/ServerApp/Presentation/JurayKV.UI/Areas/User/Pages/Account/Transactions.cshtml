@@ -1,0 +1,77 @@
+﻿@page
+@model JurayKV.UI.Areas.User.Pages.Account.TransactionsModel
+@{
+}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">KV Transactions</h3>
+
+
+        <a asp-page="./Add" class="btn bg-gradient-warning btn-sm" style="float:right;">Add New</a>
+
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>
+                            Date
+                        </th>
+
+                        <th>Amount </th>
+
+                        <th>Note </th>
+                        <th>Type </th>
+                        <th>Status </th>
+                        <th>Action</th>
+
+                    </tr>
+                </thead>
+                @{
+                    int sn = 0;
+                }
+                <tbody>
+                    @foreach (var item in Model.TransactionListDto)
+                    {
+                        <tr>
+                            <td>
+                                @{
+                                    sn++;
+                                }
+                                @sn
+                            </td>
+
+                            <td>
+                                <a asp-page="./TransactionDetails" asp-route-id="@item.Id">
+                                    @item.CreatedAtUtc.ToString("dd/MM/yyyy")
+                                </a>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Amount)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UniqueReference)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TransactionType)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>
+                            <td>
+                               <a class="btn btn-primary" asp-page="./TransactionInfo" asp-route-id="@item.Id">
+                                   More
+                               </a>
+                            </td>
+
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

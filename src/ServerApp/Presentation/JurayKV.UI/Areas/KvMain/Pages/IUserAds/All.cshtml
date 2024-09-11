@@ -1,0 +1,125 @@
+﻿@page
+@model JurayKV.UI.Areas.KvMain.Pages.IUserAds.AllModel
+@{
+}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">USER POSTED ADVERT (@Model.UserKvAds.Count())</h3>
+
+
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>
+                            Date
+                        </th>
+                        <th>
+                            User
+                        </th>
+                        <th>Bucket</th>
+                        <th>Company</th>
+                        <th>Advert</th>
+                        <th>Video Proof</th>
+                        <th>Status </th>
+
+                        <th> </th>
+
+                    </tr>
+                </thead>
+                @{
+                    int sn = 0;
+                }
+                <tbody>
+                    @foreach (var item in Model.UserKvAds)
+                    {
+                        <tr>
+                            <td>
+                                @{
+                                    sn++;
+                                }
+                                @sn
+                            </td>
+                            <td>
+                                @item.CreatedAtUtc.ToString("dd/MM/yyyy hh:mm tt")
+
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Fullname)
+
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.KvAdName)
+
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Company)
+
+                            </td>
+
+                            <td>
+                                <a href="@item.ImageUrl" target="_blank">
+                                    <img src="@item.ImageUrl" class="img-fluid" style="height:50px" />
+                                </a>
+                            </td>
+                            <td>
+                                @if (!String.IsNullOrEmpty(item.VideoUrl))
+                                {
+                                    <a asp-page="./Info" asp-route-id="@item.Id" class="btn btn-success btn-xs">
+                                        View <i class="fa fa-check"></i>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a class="btn btn-danger btn-xs">
+                                        Nill <i class="fa fa-times"></i>
+                                    </a>
+                                }
+
+                            </td>
+                            <td>
+                                @if (item.AdsStatus == JurayKV.Domain.Primitives.Enum.AdsStatus.Credited)
+                                {
+                                    <span class="btn btn-success btn-xs">
+                                        @Html.DisplayFor(modelItem => item.AdsStatus) (@item.Points)
+                                    </span>
+                                    
+                                }
+                                else
+                                {
+                                    <span class="btn btn-danger btn-xs">
+                                        @Html.DisplayFor(modelItem => item.AdsStatus)
+                                    </span>
+                                }
+
+
+                            </td>
+
+                            <td>
+                                <div class="btn-group">
+
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-success btn-xs dropdown-toggle dropdown-icon" data-toggle="dropdown" aria-expanded="false">
+                                            Action
+                                        </button>
+                                        <div class="dropdown-menu" style="">
+
+                                            <a class="dropdown-item" asp-page="./Info" asp-route-id="@item.Id">Details</a>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,86 @@
+﻿@page
+@model JurayKV.UI.Areas.KvMain.Pages.IAdvertRequests.IndexModel
+@{
+}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">KV AdvertRequestS</h3>
+
+
+        <a asp-page="./Add" class="btn bg-gradient-warning btn-sm" style="float:right;">Add New</a>
+
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>
+                            Date
+                        </th>
+                        <th>
+                            Company
+                        </th>
+                        <th>Amount </th>  
+                        <th>Status </th>
+
+                        <th> </th>
+
+                    </tr>
+                </thead>
+                @{
+                    int sn = 0;
+                }
+                <tbody>
+                    @foreach (var item in Model.AdvertRequests)
+                    {
+                        <tr>
+                            <td>
+                                @{
+                                    sn++;
+                                }
+                                @sn
+                            </td>
+                            <td>
+                                @item.CreatedAtUtc.ToString("dd/MM/yyyy")
+                            </td>
+                            <td>
+                                <a asp-page="./Details" asp-route-id="@item.Id">
+                                    @Html.DisplayFor(modelItem => item.Company.Name)
+                                </a>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Amount)
+                            </td>
+  
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>
+
+                            <td>
+                                <div class="btn-group">
+
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-success btn-xs dropdown-toggle dropdown-icon" data-toggle="dropdown" aria-expanded="false">
+                                            Action
+                                        </button>
+                                        <div class="dropdown-menu" style="">
+
+                                            <a class="dropdown-item" asp-page="./Info" asp-route-id="@item.Id">Details</a>
+                                            <a class="dropdown-item" asp-page="./Update" asp-route-id="@item.Id">Update</a>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+﻿@page
+@model JurayKV.UI.Areas.Client.Pages.Account.PaymentInfoModel
+@{
+}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">ADVERT PAYMENT INFORMATION</h3>
+
+
+    </div>
+    <div class="card-body ">
+        <div class="boxed-div">
+
+            <div class="card-header">
+                <h4 class="">Bank Name: @Model.SettingDetails.BankName</h4>
+                <h4 class="">Account Name: @Model.SettingDetails.BankAccount</h4>
+                <h4 class="">Account Number: @Model.SettingDetails.BankAccountNumber</h4>
+
+
+                <h6>Kindly Whatsapp your proof of payment through the link below.</h6>
+                <a href="https://wa.me/message/6SQ57ENNZMRPB1" target="_blank">https://wa.me/message/6SQ57ENNZMRPB1</a>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,129 @@
+﻿@page
+@model JurayKV.UI.Areas.KvMain.Pages.ISlider.InfoModel
+@{
+}
+
+<div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title">SLIDER DETAILS</h3>
+
+    </div>
+    <!-- /.card-header -->
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+
+                <dl class="row">
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Slider.Url)
+                    </dt>
+                    <dd class="col-sm-10">
+                        <img src="@Model.Slider.Url" class="img-fluid" style="max-height:150px;" />
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Slider.Key)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Slider.Key)
+                    </dd>
+
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Slider.SecondUrl)
+                    </dt>
+                    <dd class="col-sm-10">
+                        <img src="@Model.Slider.SecondUrl" class="img-fluid" style="max-height:150px;" />
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Slider.SecondKey)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Slider.SecondKey)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Slider.IsVideo)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Slider.IsVideo)
+                    </dd>
+
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Slider.YoutubeVideo)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Slider.YoutubeVideo)
+                    </dd>
+
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Slider.SortOrder)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Slider.SortOrder)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Slider.Show)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Slider.Show)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Slider.Title)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Slider.Title)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Slider.Text)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Slider.Text)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Slider.ButtonText)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Slider.ButtonText)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Slider.ButtonLink)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Slider.ButtonLink)
+                    </dd>
+
+
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Slider.VideoLink)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Slider.VideoLink)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Slider.DisableVideoButton)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Slider.DisableVideoButton)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Slider.VideoButtonText)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Slider.VideoButtonText)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+
+
+        <!-- /.row -->
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+        <a class="btn btn-warning" asp-page="./Update" asp-route-id="@Model.Slider.Id">Update</a>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

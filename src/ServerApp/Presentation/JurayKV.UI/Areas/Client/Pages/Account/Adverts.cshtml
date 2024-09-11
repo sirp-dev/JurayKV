@@ -1,0 +1,171 @@
+﻿@page
+@model JurayKV.UI.Areas.Client.Pages.Account.AdvertsModel
+@{
+}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">KV ADVERT</h3>
+       
+
+    </div>
+    <div class="card-body ">
+        <div class="boxed-div">
+
+            <div class="card-header">
+                <h4 class="">ACTIVE AND UPCOMING ADs</h4>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>S/N</th>
+
+                                <th>
+                                    Company
+                                </th>
+                                <th>Date</th>
+                                <th>Image</th>
+                                <th>Status </th>
+                                
+
+                            </tr>
+                        </thead>
+                        @{
+                            int sn = 0;
+                        }
+                        <tbody>
+                            @foreach (var item in Model.KvAds)
+                            {
+                                <tr>
+                                    <td>
+                                        @{
+                                            sn++;
+                                        }
+                                        @sn
+                                    </td>
+
+                                    <td>
+                                        <a asp-page="./Details" asp-route-id="@item.Id">
+                                            @Html.DisplayFor(modelItem => item.CompanyName)
+                                        </a>
+                                    </td>
+                                    <td>
+                                        @item.CreatedAtUtc.ToString("ddd dd/MMM/yyyy")
+                                    </td>
+
+                                    <td>
+                                        <a href="@item.ImageUrl" target="_blank">
+                                             
+
+                                               @if (item.ImageKey.EndsWith(".jpg") || item.ImageKey.EndsWith(".jpeg") || item.ImageKey.EndsWith(".png") || item.ImageKey.EndsWith(".gif") || item.ImageKey.EndsWith(".bmp"))
+                                                {
+                                                    <img src="@item.ImageUrl" class="img-fluid" style="max-height: 50px;" />
+                                                }
+                                                else if (item.ImageKey.EndsWith(".mp4") || item.ImageKey.EndsWith(".avi") || item.ImageKey.EndsWith(".mov") || item.ImageKey.EndsWith(".wmv") || item.ImageKey.EndsWith(".flv"))
+                                                {
+                                                    <video controls style="height:120px;width:250px;">
+                                                        <source src="@item.ImageUrl" type="video/mp4">
+                                                        Your browser does not support the video tag.
+                                                    </video>
+                                                }
+                                             
+                                        </a>
+                                    </td>
+                                    <td>
+                                        @{
+                                            
+                                            DateTime sixAMDateTime = new DateTime(item.CreatedAtUtc.Year, item.CreatedAtUtc.Month, item.CreatedAtUtc.Day, 6, 0, 0);
+                                            DateTime sixAMDateTimec = new DateTime(item.CreatedAtUtc.Year, item.CreatedAtUtc.Month, item.CreatedAtUtc.Day, 6, 0, 0).AddDays(1);
+                                        }
+
+                                        @if (sixAMDateTime <= DateTime.UtcNow.AddHours(1) && DateTime.UtcNow.AddHours(1) <= sixAMDateTimec)
+                                        {
+
+
+                                            <span class="btn btn-success">ACTIVE</span>
+                                        }
+                                        else if (item.CreatedAtUtc.Date < Model.CurrentDate.Date)
+                                        {
+                                            <span class="btn btn-warning">COMPLETED</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="btn btn-warning">UPCOMING</span>
+
+                                        }
+                                    </td>
+                                   
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*<div class="card-body ">
+        <div class="boxed-div">
+
+            <div class="card-header">
+                <h4 class="">COMPLETED ADs</h4>
+            </div>
+             <div class="card-body">
+                <div class="table-responsive">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>S/N</th>
+
+                                <th>
+                                    Company
+                                </th>
+                                <th>Date</th>
+                                <th>Image</th>
+
+
+                            </tr>
+                        </thead>
+                        @{
+                            int ssn = 0;
+                        }
+                        <tbody>
+                            @foreach (var item in Model.KvAdsFinished)
+                            {
+                                <tr>
+                                    <td>
+                                        @{
+                                            ssn++;
+                                        }
+                                        @ssn
+                                    </td>
+
+                                    <td>
+                                        <a asp-page="./Details" asp-route-id="@item.Id">
+                                            @Html.DisplayFor(modelItem => item.CompanyName)
+                                        </a>
+                                    </td>
+                                    <td>
+                                        @item.CreatedAtUtc.ToString("ddd dd/MMM/yyyy")
+                                    </td>
+
+                                    <td>
+                                        <a href="@item.ImageUrl" target="_blank">
+                                            <img src="@item.ImageUrl" class="img-fluid" style="height:50px" />
+                                        </a>
+                                    </td>
+
+
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+</div>

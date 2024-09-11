@@ -1,0 +1,200 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>aspnet-JurayKV.UI-24d274c0-9cea-4ab1-b224-d37dba010672</UserSecretsId>
+	  <AspNetCoreHostingModel>OutOfProcess</AspNetCoreHostingModel>
+	  <AspNetCoreModuleName>AspNetCoreModule</AspNetCoreModuleName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\ui\js\ckeditor\skins\bootstrapck\.temp\css\dialog.css" />
+    <Content Include="wwwroot\ui\js\ckeditor\skins\bootstrapck\.temp\css\dialog_ie.css" />
+    <Content Include="wwwroot\ui\js\ckeditor\skins\bootstrapck\.temp\css\dialog_ie7.css" />
+    <Content Include="wwwroot\ui\js\ckeditor\skins\bootstrapck\.temp\css\dialog_ie8.css" />
+    <Content Include="wwwroot\ui\js\ckeditor\skins\bootstrapck\.temp\css\dialog_iequirks.css" />
+    <Content Include="wwwroot\ui\js\ckeditor\skins\bootstrapck\.temp\css\dialog_opera.css" />
+    <Content Include="wwwroot\ui\js\ckeditor\skins\bootstrapck\.temp\css\editor.css" />
+    <Content Include="wwwroot\ui\js\ckeditor\skins\bootstrapck\.temp\css\editor_gecko.css" />
+    <Content Include="wwwroot\ui\js\ckeditor\skins\bootstrapck\.temp\css\editor_ie.css" />
+    <Content Include="wwwroot\ui\js\ckeditor\skins\bootstrapck\.temp\css\editor_ie7.css" />
+    <Content Include="wwwroot\ui\js\ckeditor\skins\bootstrapck\.temp\css\editor_ie8.css" />
+    <Content Include="wwwroot\ui\js\ckeditor\skins\bootstrapck\.temp\css\editor_iequirks.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Areas\KvMain\Pages\IWallet\Index.cshtml" />
+    <None Include="Areas\KvMain\Pages\IWallet\Info.cshtml" />
+    <None Include="wwwroot\js\site.js" />
+    <None Include="wwwroot\mxm\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\mxm\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\mxm\fonts\glyphicons-halflings-regular.svg" />
+    <None Include="wwwroot\mxm\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="wwwroot\mxm\fonts\icomoon.svg" />
+    <None Include="wwwroot\mxm\icomoon\demo-files\demo.js" />
+    <None Include="wwwroot\mxm\icomoon\fonts\icomoon.svg" />
+    <None Include="wwwroot\mxm\js\bootstrap.min.js" />
+    <None Include="wwwroot\mxm\js\Chart.bundle.js" />
+    <None Include="wwwroot\mxm\js\easy-pie-chart.min.js" />
+    <None Include="wwwroot\mxm\js\isotope.pkgd.min.js" />
+    <None Include="wwwroot\mxm\js\jquery.counterup.min.js" />
+    <None Include="wwwroot\mxm\js\jquery.mb.YTPlayer.min.js" />
+    <None Include="wwwroot\mxm\js\jquery.min.js" />
+    <None Include="wwwroot\mxm\js\main.js" />
+    <None Include="wwwroot\mxm\js\map.js" />
+    <None Include="wwwroot\mxm\js\modernizr.js" />
+    <None Include="wwwroot\mxm\js\moment-timezone-with-data.js" />
+    <None Include="wwwroot\mxm\js\moment.js" />
+    <None Include="wwwroot\mxm\js\navigation.fixed.js" />
+    <None Include="wwwroot\mxm\js\navigation.js" />
+    <None Include="wwwroot\mxm\js\owl.carousel.js" />
+    <None Include="wwwroot\mxm\js\popper.min.js" />
+    <None Include="wwwroot\mxm\js\revolution\jquery.themepunch.revolution.min.js" />
+    <None Include="wwwroot\mxm\js\revolution\jquery.themepunch.tools.min.js" />
+    <None Include="wwwroot\mxm\js\revolution\revolution.addon.slicey.min.js" />
+    <None Include="wwwroot\mxm\js\revolution\revolution.extension.actions.min.js" />
+    <None Include="wwwroot\mxm\js\revolution\revolution.extension.carousel.min.js" />
+    <None Include="wwwroot\mxm\js\revolution\revolution.extension.kenburn.min.js" />
+    <None Include="wwwroot\mxm\js\revolution\revolution.extension.layeranimation.min.js" />
+    <None Include="wwwroot\mxm\js\revolution\revolution.extension.migration-2.min.js" />
+    <None Include="wwwroot\mxm\js\revolution\revolution.extension.migration.min.js" />
+    <None Include="wwwroot\mxm\js\revolution\revolution.extension.navigation.min.js" />
+    <None Include="wwwroot\mxm\js\revolution\revolution.extension.parallax.min.js" />
+    <None Include="wwwroot\mxm\js\revolution\revolution.extension.slideanims.min.js" />
+    <None Include="wwwroot\mxm\js\revolution\revolution.extension.video.min.js" />
+    <None Include="wwwroot\mxm\js\slick-plugin.js" />
+    <None Include="wwwroot\mxm\js\slick.js" />
+    <None Include="wwwroot\mxm\js\swiper.min.js" />
+    <None Include="wwwroot\mxm\js\switcher.js" />
+    <None Include="wwwroot\mxm\js\tabs.min.js" />
+    <None Include="wwwroot\mxm\js\timber.js" />
+    <None Include="wwwroot\mxm\js\timer.js" />
+    <None Include="wwwroot\mxm\js\utils.js" />
+    <None Include="wwwroot\mxm\js\waypoints.min.js" />
+    <None Include="wwwroot\mxm\js\wow.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="7.0.11" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.11" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.12">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.11" />
+    <PackageReference Include="Serilog" Version="3.1.1" />
+    <PackageReference Include="Serilog.AspNetCore" Version="7.0.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="5.0.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+    <PackageReference Include="WhatsAppAPI" Version="15.4.29" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\PostmarkEmailService\PostmarkEmailService.csproj" />
+    <ProjectReference Include="..\..\Core\JurayKV.Application\JurayKV.Application.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\JurayKV.Infrastructure.Opay\JurayKV.Infrastructure.Opay.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\JurayKV.Infrastructure.Services\JurayKV.Infrastructure.Services.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\JurayKV.Persistence.Cache\JurayKV.Persistence.Cache.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\JurayKV.Persistence.RelationalDB\JurayKV.Persistence.RelationalDB.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\JurayKvV.Infrastructure.Interswitch\JurayKvV.Infrastructure.Interswitch.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Areas\KvMain\Pages\IAds\Add.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\KvMain\Pages\IAds\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\KvMain\Pages\IAds\Info.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\KvMain\Pages\IAds\Remove.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\KvMain\Pages\IAds\Update.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\KvMain\Pages\ICompanys\Add.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\KvMain\Pages\ICompanys\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\KvMain\Pages\ICompanys\Info.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\KvMain\Pages\ICompanys\Remove.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\KvMain\Pages\ICompanys\Update.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\KvMain\Pages\ISettings\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\KvMain\Pages\ISettings\Info.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\KvMain\Pages\ISettings\Remove.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\KvMain\Pages\ISettings\Update.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\KvMain\Pages\IUsers\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\KvMain\Pages\IUsers\Info.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\KvMain\Pages\IUsers\Remove.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\KvMain\Pages\IUsers\Update.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Pages\Shared\_User.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="logs\" />
+    <Folder Include="wwwroot\logs\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Areas\KvMain\Pages\ISettings\Add.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Areas\KvMain\Pages\ISettings\Add.cshtml" />
+  </ItemGroup>
+
+</Project>

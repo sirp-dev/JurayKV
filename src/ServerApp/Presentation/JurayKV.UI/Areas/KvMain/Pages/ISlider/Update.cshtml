@@ -1,0 +1,132 @@
+﻿@page
+@model JurayKV.UI.Areas.KvMain.Pages.ISlider.UpdateModel
+@{
+}
+
+<div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title">UPDATE SLIDER</h3>
+
+    </div>
+    <!-- /.card-header -->
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Slider.Id" />
+
+
+                    <div class="form-group">
+                        <label asp-for="Slider.SortOrder" class="control-label"></label>
+                        <input asp-for="Slider.SortOrder" class="form-control" />
+                        <span asp-validation-for="Slider.SortOrder" class="text-danger"></span>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="Slider.Show" /> @Html.DisplayNameFor(model => model.Slider.Show)
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Slider.Title" class="control-label">Title (Note Add "&lt;br&gt;" if you want to enter next line)</label>
+                        <input asp-for="Slider.Title" class="form-control" />
+                        <span asp-validation-for="Slider.Title" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Slider.MiniTitle" class="control-label">Mini Title  (Note Add "&lt;br&gt;" if you want to enter next line)</label>
+                        <input asp-for="Slider.MiniTitle" class="form-control" />
+                        <span asp-validation-for="Slider.MiniTitle" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Slider.Text" class="control-label">Text  (Note Add "&lt;br&gt;" if you want to enter next line)</label>
+                        <textarea asp-for="Slider.Text" class="form-control"></textarea>
+                        <span asp-validation-for="Slider.Text" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Slider.YoutubeVideo" class="control-label">Youtube Video</label>
+                        <textarea asp-for="Slider.YoutubeVideo" class="form-control"></textarea>
+                        <span asp-validation-for="Slider.YoutubeVideo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Slider.ButtonText" class="control-label"></label>
+                        <input asp-for="Slider.ButtonText" class="form-control" />
+                        <span asp-validation-for="Slider.ButtonText" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Slider.ButtonLink" class="control-label"></label>
+                        <select asp-for="Slider.ButtonLink" class="form-control" asp-items="ViewBag.WebPageId">
+                            <option value="0">#</option>
+                            <option value="000">Contact Us Page</option>
+
+                        </select>
+                        <span asp-validation-for="Slider.ButtonLink" class="text-danger"></span>
+                    </div>
+
+                    @if (!String.IsNullOrEmpty(Model.Slider.Url))
+                    {
+                        <div class="form-group">
+                            <label class="control-label">Previouse Image</label><br />
+                            <img src="@Model.Slider.Url" class="img-fluid" style="max-height:150px;" />
+                        </div>
+                    }
+
+                    <div class="form-group">
+                        <label class="control-label">Image</label><br />
+                        <input type="file" class="control-label" asp-for="imagefile" accept="image/*" />
+                    </div>
+                    @if (!String.IsNullOrEmpty(Model.Slider.SecondUrl))
+                    {
+                        <div class="form-group">
+                            <label class="control-label">Previouse Second Image</label><br />
+                            <img src="@Model.Slider.SecondUrl" class="img-fluid" style="max-height:150px;" />
+                        </div>
+                    }
+                    <div class="form-group">
+                        <label class="control-label">Second Image</label><br />
+                        <input type="file" class="control-label" asp-for="imagefile2" accept="image/*" />
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="RemoveImage" /> Remove Second Image
+                        </label>
+                    </div>
+                    
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="Slider.DisableVideoButton" /> @Html.DisplayNameFor(model => model.Slider.DisableVideoButton)
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Slider.VideoLink" class="control-label"></label>
+                        <input asp-for="Slider.VideoLink" class="form-control" />
+                        <span asp-validation-for="Slider.VideoLink" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Slider.VideoButtonText" class="control-label"></label>
+                        <input asp-for="Slider.VideoButtonText" class="form-control" />
+                        <span asp-validation-for="Slider.VideoButtonText" class="text-danger"></span>
+                    </div>
+
+
+                    <div class="form-group">
+                        <input type="submit" value="Submit" class="btn btn-primary" />
+                        <a asp-page="./Index" class="btn bg-gradient-warning btn-sm" style="float:right;">Back</a>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <!-- /.row -->
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

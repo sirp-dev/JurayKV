@@ -1,0 +1,88 @@
+﻿@page
+@model JurayKV.UI.Areas.User.Pages.Account.TransactionInfoModel
+@{
+}
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="card card-default">
+            <div class="card-header">
+                <h3 class="card-title">TRANSACTION DETAILS</h3>
+            </div>
+            <!-- /.card-header -->
+
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <dl class="row">
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.TransactionDetailsDto.CreatedAtUtc)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.TransactionDetailsDto.CreatedAtUtc)
+                            </dd>
+                            <dt class="col-sm-2">
+                                Amount
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.TransactionDetailsDto.Amount)
+                            </dd>
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.TransactionDetailsDto.UniqueReference)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.TransactionDetailsDto.UniqueReference)
+                            </dd>
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.TransactionDetailsDto.OptionalNote)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.TransactionDetailsDto.OptionalNote)
+                            </dd>
+
+                            <dt class="col-sm-2">
+                                Transaction Type
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.TransactionDetailsDto.TransactionType)
+                            </dd>
+                            <dt class="col-sm-2">
+                                Status
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.TransactionDetailsDto.Status)
+                            </dd>
+
+                            <dt class="col-sm-2">
+                                Transaction Reference
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.TransactionDetailsDto.TransactionReference)
+                            </dd>
+
+
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.TransactionDetailsDto.Description)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.Raw(Model.TransactionDetailsDto.Description)
+                            </dd>
+
+
+                        </dl>
+                    </div>
+                </div>
+
+
+                <!-- /.row -->
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <a asp-page="./Transactions" class="btn bg-gradient-warning btn-sm" style="float:right;">Back</a>
+            </div>
+        </div>
+
+
+    </div>
+</div>

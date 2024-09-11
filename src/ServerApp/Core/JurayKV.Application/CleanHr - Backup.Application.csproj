@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<EnableNETAnalyzers>true</EnableNETAnalyzers>
+		<AnalysisMode>AllEnabledByDefault</AnalysisMode>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	  <WarningLevel>7</WarningLevel>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+	  <WarningLevel>7</WarningLevel>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="MediatR" Version="12.1.1" />
+		<PackageReference Include="TanvirArjel.ArgumentChecker" Version="1.4.0" />
+		<PackageReference Include="TanvirArjel.EFCore.GenericRepository" Version="6.0.1" />
+		<PackageReference Include="TanvirArjel.Extensions.Microsoft.DependencyInjection" Version="2.2.0" />
+		<PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.507">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\JurayKV.Domain\JurayKV.Domain.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+       <InternalsVisibleTo Include="JurayKV.Application.Tests" />
+    </ItemGroup>
+
+</Project>

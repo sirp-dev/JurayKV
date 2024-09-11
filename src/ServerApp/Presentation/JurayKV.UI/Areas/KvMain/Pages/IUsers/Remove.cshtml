@@ -1,0 +1,86 @@
+﻿@page
+@model JurayKV.UI.Areas.KvMain.Pages.IUsers.RemoveModel
+@{
+}
+
+<div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title">REMOVE USER</h3>
+
+    </div>
+    <!-- /.card-header -->
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                  
+                     <dl class="row">
+                         <dt class="col-sm-2">
+                             @Html.DisplayNameFor(model => model.UpdateUserManager.Fullname)
+                         </dt>
+                         <dd class="col-sm-10">
+                             @Html.DisplayFor(model => model.UpdateUserManager.Fullname)
+                         </dd>
+                         <dt class="col-sm-2">
+                             @Html.DisplayNameFor(model => model.UpdateUserManager.Email)
+                         </dt>
+                         <dd class="col-sm-10">
+                             @Html.DisplayFor(model => model.UpdateUserManager.Email)
+                         </dd>
+                         <dt class="col-sm-2">
+                             @Html.DisplayNameFor(model => model.UpdateUserManager.PhoneNumber)
+                         </dt>
+                         <dd class="col-sm-10">
+                             @Html.DisplayFor(model => model.UpdateUserManager.PhoneNumber)
+                         </dd>
+                         <dt class="col-sm-2">
+                             @Html.DisplayNameFor(model => model.UpdateUserManager.CreationUTC)
+                         </dt>
+                         <dd class="col-sm-10">
+                             @Html.DisplayFor(model => model.UpdateUserManager.CreationUTC)
+                         </dd>
+                         <dt class="col-sm-2">
+                             @Html.DisplayNameFor(model => model.UpdateUserManager.AccountStatus)
+                         </dt>
+                         <dd class="col-sm-10">
+                             @Html.DisplayFor(model => model.UpdateUserManager.AccountStatus)
+                         </dd>
+                         <dt class="col-sm-2">
+                             @Html.DisplayNameFor(model => model.UpdateUserManager.LastLoggedInAtUtc)
+                         </dt>
+                         <dd class="col-sm-10">
+                             @Html.DisplayFor(model => model.UpdateUserManager.LastLoggedInAtUtc)
+                         </dd>
+                         <dt class="col-sm-2">
+                             @Html.DisplayNameFor(model => model.UpdateUserManager.WalletBalance)
+                         </dt>
+                         <dd class="col-sm-10">
+                             @Html.DisplayFor(model => model.UpdateUserManager.WalletBalance)
+                         </dd>
+                     </dl>
+
+                     
+                    <div class="form-group">
+                        <form method="post">
+                            <input type="hidden" asp-for="UpdateUserManager.Id" />
+                            <input type="submit" value="Submit" class="btn btn-primary" />
+                            <a asp-page="./Index" class="btn bg-gradient-warning btn-sm" style="float:right;">Back</a>
+                            </form>
+                    </div>
+                
+            </div>
+        </div>
+
+
+        <!-- /.row -->
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

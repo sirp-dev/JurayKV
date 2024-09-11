@@ -1,0 +1,116 @@
+﻿@page
+@model JurayKV.UI.Areas.KvMain.Pages.IPermissions.UserRolesModel
+@{
+}
+<div class="row">
+    <div class="card-columns mx-auto d-flex justify-content-center col-12">
+
+        <div class="card">
+            <div class="card-header">
+
+                <h3 class="card-title">
+                    User Permissions (@Model.UserPermissionDto.Fullname)
+                </h3>
+
+            </div>
+            <div class="card-body">
+                <h6>Email: @Model.UserPermissionDto.Email</h6>
+                <h6>ID Number: @Model.UserPermissionDto.IdNumber</h6>
+
+            </div>
+           <div class="card-body">
+                <div class="">
+                    @foreach (var i in Model.UserPermissionDto.Roles.Where(x => x.Selected == true))
+                    {
+                        <button class="btn btn-primary btn-xs">
+                            @i.Role
+                        </button>
+                    }
+                </div>
+                <hr />
+                <div class="">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Click to Remove Permision</h6>
+
+                            @if (User.IsInRole(JurayKV.Application.Constants.SuperAdminPolicy))
+                            {
+
+                                @foreach (var i in Model.UserPermissionDto.Roles.Where(x => x.Selected == true))
+                                {
+                                    <form method="post">
+                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                        <input type="hidden" asp-for="RoleId" value="@i.RoleId" />
+                                        <input type="hidden" asp-for="UserId" value="@Model.UserPermissionDto.UserId" />
+
+
+                                        <input type="submit" value="@i.Role" class="btn btn-danger btn-xs" />
+
+                                    </form>
+                                }
+                            }
+                            else
+                            {
+                                @foreach (var i in Model.UserPermissionDto.Roles.Where(x => x.Selected == true && x.Role.Contains("SuperAdmin")))
+                                {
+                                    <form method="post">
+                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                        <input type="hidden" asp-for="RoleId" value="@i.RoleId" />
+                                        <input type="hidden" asp-for="UserId" value="@Model.UserPermissionDto.UserId" />
+
+
+                                        <input type="submit" value="@i.Role" class="btn btn-danger btn-xs" />
+
+                                    </form>
+                                }
+                            }
+
+                        </div>
+                        <div class="col-md-6" style="border-left:1px solid black;">
+                            <h6>Click to Add Permision</h6>
+                            @if (User.IsInRole(JurayKV.Application.Constants.SuperAdminPolicy))
+                            {
+                                @foreach (var i in Model.UserPermissionDto.Roles.Where(x => x.Selected == false))
+                                {
+                                    <form method="post">
+                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                        <input type="hidden" asp-for="RoleId" value="@i.RoleId" />
+                                        <input type="hidden" asp-for="UserId" value="@Model.UserPermissionDto.UserId" />
+
+
+                                        <input type="submit" value="@i.Role" class="btn btn-success btn-xs" />
+
+                                    </form>
+                                }
+                            }
+                            else
+                            {
+                                @foreach (var i in Model.UserPermissionDto.Roles.Where(x => x.Selected == false && x.Role.Contains("SuperAdmin")))
+                                {
+                                    <form method="post">
+                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                        <input type="hidden" asp-for="RoleId" value="@i.RoleId" />
+                                        <input type="hidden" asp-for="UserId" value="@Model.UserPermissionDto.UserId" />
+
+
+                                        <input type="submit" value="@i.Role" class="btn btn-success btn-xs" />
+
+                                    </form>
+                                }
+                            }
+
+                        </div>
+                    </div>
+
+
+                </div>
+                <br />
+                <br />
+                <br />
+                <br />
+                <a class="btn btn-info" asp-page="./Info" asp-route-id="@Model.UserPermissionDto.UserId">Details</a>
+
+            </div>
+        </div>
+    </div>
+</div>

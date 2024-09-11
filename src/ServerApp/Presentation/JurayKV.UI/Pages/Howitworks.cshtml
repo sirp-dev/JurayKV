@@ -1,0 +1,216 @@
+﻿@page
+@model JurayKV.UI.Pages.HowitworksModel
+@{
+}
+ 
+
+
+<div class="page-title-section" style="background-image: url(../img/bgimage.jpg);">
+    <div class="container">
+        <h1>How it Works</h1>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="#">How it Works</a></li>
+        </ul>
+    </div>
+</div>
+<style>
+    /* Style for the modal overlay */
+    .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Style for the modal content */
+    .modal-content {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        text-align: center;
+    }
+    @@media (min-width: 425px) {
+        /* Style to make the video responsive */
+        .modal-content video {
+            width: 100%;
+            max-width: 900px;
+        }
+    }
+</style>
+<div class="section-block howitworks">
+    <div class="container">
+        <div class="">
+            <div class="section-heading center-holder">
+                <h3>Revolutionizing Social Media Advertising!</h3>
+            </div>
+            <div>
+                <p>Are you ready to be a part of the future of social media advertising? KoboView introduces a dynamic ecosystem where Social Media Assistants (SMAs), Client Assistants (CAs), and Clients come together for a seamless and rewarding advertising experience.</p>
+            </div>
+            <div class="row mt-50">
+
+                <div class="col-md-4 col-sm-4 col-12">
+                    <div class="feature-box-long">
+
+                        <h3>Social Media Assistants (SMAs)</h3>
+                        <h6>Earn as You Share!</h6>
+                        <p>
+
+                            Become a KoboView SMA and turn your WhatsApp status into a revenue-generating platform. Here's how it works
+                        </p>
+                        <ul>
+                            <li>
+                                <strong>Post and Earn: </strong>
+
+                                Share captivating ads on your WhatsApp status and earn points for every view. Capture the attention of your audience and watch your points grow.
+                            </li>
+                            <li>
+                                <strong>Upload Video Evidence:</strong>
+
+                                Showcase your success by uploading video evidence of the views you've garnered. It's easy, transparent, and ensures you get credited for your efforts.
+                            </li>
+                            <li>
+                                <strong>Points to Rewards:</strong>
+
+                                Accumulate points on your dashboard and convert them into exciting rewards. The more views you get, the more you earn. It's a win-win!
+                            </li>
+
+                        </ul>
+
+                        <a href="~/howtopost.mp4" target="_blank" class="btn btn-primary" style="margin-top:5px;">Video on How to Pick Koboview Advert</a>
+                       
+                        <a href="~/uploadproof.mp4" target="_blank" class="btn btn-primary" style="margin-top:5px;">Video on How to Upload Video Proof</a>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-12">
+                    <div class="feature-box-long">
+
+                        <h3>Client Support Assistants (CSAs)</h3>
+                        <h6>Bring Clients, Reap Rewards!</h6>
+                        <p>
+
+                            Are you well-connected and love connecting people? Become a KoboView CA and enjoy lucrative benefits:
+                        </p>
+                        <ul>
+                            <li>
+                                <strong>Bring in Clients: </strong>
+
+                                Introduce businesses and individuals to the power of KoboView advertising. Your network is your asset – use it to your advantage!
+                            </li>
+                            <li>
+                                <strong>Earn 10% Commission:</strong>
+                                For every client you bring in, receive a generous 10% commission on their advertising spend. The more clients you bring, the more you earn. Simple, transparent, and rewarding!
+                            </li>
+
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-4 col-12">
+                    <div class="feature-box-long">
+
+                        <h3>Clients</h3>
+                        <h6>Maximize Your Reach with KoboView!</h6>
+                        <p>Are you looking to boost your brand's visibility on WhatsApp? Partner with KoboView: </p>
+                        <ul>
+                            <li>
+                                <strong>Tailored Advertising Solutions: </strong>
+                                Leverage KoboView's precision targeting to reach your ideal audience. Craft compelling ads and watch as they captivate thousands on WhatsApp.
+                            </li>
+                            <li>
+                                <strong> Transparent Pricing:</strong>
+                                Know exactly where your investment goes. Our affordable pricing ensures you get the best value for your advertising budget.
+                            </li>
+                            <li>
+                                <strong>Real-time Analytics:</strong>
+
+                                Gain valuable insights into your campaign's performance. Track views, engagement, and more to refine your strategy and optimize results.
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section-block-grey pb-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-4 col-12">
+                <img src="~/img/bb.jpg" class="shadow-primary rounded-border" alt="img" />
+            </div>
+            <div class="col-md-7 col-sm-7 col-12 " style="padding-top: 40px;">
+                <div class="pr-30-md">
+                    <div class="section-heading">
+                        <h4>
+                            Join KoboView Today
+                        </h4>
+                        <h5>Where Collaboration Drives Success!</h5>
+                        <p style=" font-size: 19px; color: black;">
+                            Whether you're an SMA, CA, or a Client, KoboView is your gateway to a new era of social media advertising. Connect with us at join@koboview.com and let's embark on a journey of mutual success and unparalleled visibility. KoboView – where every connection counts!
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="videoModal" class="modal-overlay" onclick="closeModal()">
+    <div class="modal-content" onclick="stopPropagation(event)">
+        <h2>Pick Koboview Advert</h2>
+        <video controls>
+            <source src="~/howtopost.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</div>
+
+<div id="videoModal2" class="modal-overlay" onclick="closeModal()">
+    <div class="modal-content" onclick="stopPropagation(event)">
+        <h2>Upload Video Proof</h2>
+        <video controls>
+            <source src="~/uploadevdence.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</div>
+@section Scripts {
+    <script>
+        function openModal() {
+            document.getElementById('videoModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('videoModal').style.display = 'none';
+        }
+
+        function stopPropagation(event) {
+            event.stopPropagation();
+        }
+    </script>
+    <script>
+        function openModal1() {
+            document.getElementById('videoModal2').style.display = 'flex';
+        }
+
+        function closeModal1() {
+            document.getElementById('videoModal2').style.display = 'none';
+        }
+
+        function stopPropagation(event) {
+            event.stopPropagation();
+        }
+    </script>
+
+}

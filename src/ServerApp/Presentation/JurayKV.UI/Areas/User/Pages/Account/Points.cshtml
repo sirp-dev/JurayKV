@@ -1,0 +1,62 @@
+﻿@page
+@model JurayKV.UI.Areas.User.Pages.Account.PointsModel
+@{
+}
+<div class="row">
+
+
+    <div class="col-md-12">
+        <div class="">
+            <div class="card-header border-transparent">
+                <h3 class="card-title">Point History</h3>
+                 
+            </div>
+            <!-- /.card-header -->
+
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table m-0">
+                        <thead>
+                            <tr>
+                                <th>S/N</th>
+                                <th>Date</th>
+                                <th>Point</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        @{ int sn = 0;}
+                        <tbody>
+                            @foreach (var item in Model.Points)
+                            {
+                                <tr>
+                                    @{
+                                        sn++;
+                                    }
+                                    <td>@sn</td>
+                                    <td><a href="">@item.CreatedAtUtc.ToString("dd/MM/yyyy hh:mm tt")</a></td>
+                                    <td>
+                                        @Html.DisplayFor(model => item.Point)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => item.Status)
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-warning" asp-page="./Details" asp-route-id="@item.IdentityKvAdId">
+ Details
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+            </div>
+
+
+        </div>
+    </div>
+
+
+</div>

@@ -1,0 +1,89 @@
+﻿@page
+@model JurayKV.UI.Areas.KvMain.Pages.IBuckets.AllBucketModel
+@{
+}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">ALL KV BUCKETS</h3>
+
+        <a asp-page="./Index" class="btn bg-gradient-warning btn-sm" style="float:right;">Active Bucket</a>
+        <a asp-page="./AllActiveADs" class="btn bg-gradient-warning btn-sm" style="float:right;">All ADs By Date</a>
+
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Disabled
+                        </th>
+                        <th>Admin Active </th>
+                        <th>User Active </th>
+                        <th>Date </th>
+
+                        <th> </th>
+
+                    </tr>
+                </thead>
+                @{
+                    int sn = 0;
+                }
+                <tbody>
+                    @foreach (var item in Model.Buckets)
+                    {
+                        <tr>
+                            <td>
+                                @{
+                                    sn++;
+                                }
+                                @sn
+                            </td>
+                            <td>
+                                <a asp-page="./AdsInBucket" asp-route-id="@item.Id">
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </a>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Disable)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AdminActive)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UserActive)
+                            </td>
+                            <td>
+                                @item.Date.ToString("dd/MM/yyyy")
+                            </td>
+                            <td>
+                                <div class="btn-group">
+
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-success btn-xs dropdown-toggle dropdown-icon" data-toggle="dropdown" aria-expanded="false">
+                                            Action
+                                        </button>
+                                        <div class="dropdown-menu" style="">
+
+                                            <a class="dropdown-item" asp-page="./Info" asp-route-id="@item.Id">Details</a>
+                                            <a class="dropdown-item" asp-page="./Update" asp-route-id="@item.Id">Update</a>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

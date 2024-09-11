@@ -1,0 +1,47 @@
+﻿@model ICollection<JurayKV.Application.Queries.KvAdQueries.KvAdListDto>
+
+
+
+ 
+
+
+<div class="section-block-grey">
+    <div class="container">
+        <div class="section-heading">
+            <h4>OUR ADs</h4>
+            <div class="section-heading-line-left"></div>
+        </div>
+        <div class="row mt-40">
+            <div class="owl-carousel owl-theme" id="blog-grid">
+
+                @foreach (var item in Model)
+                {
+                    <div class="blog-grid-simple">
+                        <div style="margin:0 auto;text-align:center;">
+                            <img src="@item.ImageUrl" class="img-fluid" alt="owl-carousel-video-image" style="margin:0 auto;text-align:center;">
+                        </div>
+                        <div class="blog-grid-simple-content">
+                            <div class="row blog-grid-simple-date">
+                                <div class="col-2 pr-0">
+                                    <i class="fa fa-eye"></i>
+                                </div>
+                                <div class="col-5 pl-0">
+                                    @{
+                                        Random random = new Random();
+                                        int randomNumber = random.Next(23000, 49001); // The upper bound is exclusive, so use 49001 to include 49000
+                                    }
+
+                                    <h5>@randomNumber views</h5>
+                                </div>
+                                <div class="col-5 right-holder">
+                                    <a href="#">@item.CompanyName</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                    
+                </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,686 @@
+﻿@page
+@model JurayKV.UI.Areas.KvMain.Pages.IUsers.InfoModel
+@{
+}
+
+<div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title">USER DETAILS</h3>
+
+    </div>
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-8">
+
+                <dl class="row">
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.UpdateUserManager.UserManagerDetailsDto.Fullname)
+                    </dt>
+                    <dd class="col-sm-6">
+                        @Html.DisplayFor(model => model.UpdateUserManager.UserManagerDetailsDto.Fullname)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.UpdateUserManager.UserManagerDetailsDto.IdNumber)
+                    </dt>
+                    <dd class="col-sm-6">
+                        @Html.DisplayFor(model => model.UpdateUserManager.UserManagerDetailsDto.IdNumber)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.UpdateUserManager.UserManagerDetailsDto.NinNumber)
+                    </dt>
+                    <dd class="col-sm-6">
+                        @Html.DisplayFor(model => model.UpdateUserManager.UserManagerDetailsDto.NinNumber)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.UpdateUserManager.UserManagerDetailsDto.Email)
+                    </dt>
+                    <dd class="col-sm-6">
+                        @Html.DisplayFor(model => model.UpdateUserManager.UserManagerDetailsDto.Email)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.UpdateUserManager.UserManagerDetailsDto.PhoneNumber)
+                    </dt>
+                    <dd class="col-sm-6">
+                        @Html.DisplayFor(model => model.UpdateUserManager.UserManagerDetailsDto.PhoneNumber)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.UpdateUserManager.UserManagerDetailsDto.CreationUTC)
+                    </dt>
+                    <dd class="col-sm-6">
+                        @Html.DisplayFor(model => model.UpdateUserManager.UserManagerDetailsDto.CreationUTC)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.UpdateUserManager.UserManagerDetailsDto.AccountStatus)
+                    </dt>
+                    <dd class="col-sm-6">
+                        @Html.DisplayFor(model => model.UpdateUserManager.UserManagerDetailsDto.AccountStatus)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.UpdateUserManager.UserManagerDetailsDto.LastLoggedInAtUtc)
+                    </dt>
+                    <dd class="col-sm-6">
+                        @Html.DisplayFor(model => model.UpdateUserManager.UserManagerDetailsDto.LastLoggedInAtUtc)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.UpdateUserManager.UserManagerDetailsDto.DisableEmailNotification)
+                    </dt>
+                    <dd class="col-sm-6">
+                        @Html.DisplayFor(model => model.UpdateUserManager.UserManagerDetailsDto.DisableEmailNotification)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.UpdateUserManager.UserManagerDetailsDto.IsCompany)
+                    </dt>
+                    <dd class="col-sm-6">
+                        @Html.DisplayFor(model => model.UpdateUserManager.UserManagerDetailsDto.IsCompany)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.UpdateUserManager.UserManagerDetailsDto.RefferedBy)
+                    </dt>
+                    <dd class="col-sm-6">
+                        @Html.DisplayFor(model => model.UpdateUserManager.UserManagerDetailsDto.RefferedBy)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.UpdateUserManager.UserManagerDetailsDto.IsCSARole)
+                    </dt>
+                    <dd class="col-sm-6">
+                        @Html.DisplayFor(model => model.UpdateUserManager.UserManagerDetailsDto.IsCSARole)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.UpdateUserManager.UserManagerDetailsDto.Tie2Request)
+                    </dt>
+                    <dd class="col-sm-6">
+                        @Html.DisplayFor(model => model.UpdateUserManager.UserManagerDetailsDto.Tie2Request)
+                    </dd>
+
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.UpdateUserManager.UserManagerDetailsDto.Tier)
+                    </dt>
+                    <dd class="col-sm-6">
+                        @Html.DisplayFor(model => model.UpdateUserManager.UserManagerDetailsDto.Tier)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.UpdateUserManager.UserManagerDetailsDto.DateUpgraded)
+                    </dt>
+                    <dd class="col-sm-6">
+                        @Html.DisplayFor(model => model.UpdateUserManager.UserManagerDetailsDto.DateUpgraded)
+                    </dd>
+
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.UpdateUserManager.UserManagerDetailsDto.About)
+                    </dt>
+                    <dd class="col-sm-6">
+                        @Html.DisplayFor(model => model.UpdateUserManager.UserManagerDetailsDto.About)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.UpdateUserManager.UserManagerDetailsDto.AlternativePhone)
+                    </dt>
+                    <dd class="col-sm-6">
+                        @Html.DisplayFor(model => model.UpdateUserManager.UserManagerDetailsDto.AlternativePhone)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.UpdateUserManager.UserManagerDetailsDto.Address)
+                    </dt>
+                    <dd class="col-sm-6">
+                        @Html.DisplayFor(model => model.UpdateUserManager.UserManagerDetailsDto.Address)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.UpdateUserManager.UserManagerDetailsDto.State)
+                    </dt>
+                    <dd class="col-sm-6">
+                        @Html.DisplayFor(model => model.UpdateUserManager.UserManagerDetailsDto.State)
+                    </dd>
+
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.UpdateUserManager.UserManagerDetailsDto.LGA)
+                    </dt>
+                    <dd class="col-sm-6">
+                        @Html.DisplayFor(model => model.UpdateUserManager.UserManagerDetailsDto.LGA)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.UpdateUserManager.UserManagerDetailsDto.Occupation)
+                    </dt>
+                    <dd class="col-sm-6">
+                        @Html.DisplayFor(model => model.UpdateUserManager.UserManagerDetailsDto.Occupation)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.UpdateUserManager.UserManagerDetailsDto.FbHandle)
+                    </dt>
+                    <dd class="col-sm-6">
+                        @Html.DisplayFor(model => model.UpdateUserManager.UserManagerDetailsDto.FbHandle)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.UpdateUserManager.UserManagerDetailsDto.InstagramHandle)
+                    </dt>
+                    <dd class="col-sm-6">
+                        @Html.DisplayFor(model => model.UpdateUserManager.UserManagerDetailsDto.InstagramHandle)
+                    </dd>
+
+
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.UpdateUserManager.UserManagerDetailsDto.TwitterHandle)
+                    </dt>
+                    <dd class="col-sm-6">
+                        @Html.DisplayFor(model => model.UpdateUserManager.UserManagerDetailsDto.TwitterHandle)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.UpdateUserManager.UserManagerDetailsDto.TiktokHandle)
+                    </dt>
+                    <dd class="col-sm-6">
+                        @Html.DisplayFor(model => model.UpdateUserManager.UserManagerDetailsDto.TiktokHandle)
+                    </dd>
+
+
+
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.UpdateUserManager.UserManagerDetailsDto.AccountNumber)
+                    </dt>
+                    <dd class="col-sm-6">
+                        @Html.DisplayFor(model => model.UpdateUserManager.UserManagerDetailsDto.AccountNumber)
+                    </dd>
+
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.UpdateUserManager.UserManagerDetailsDto.AccountName)
+                    </dt>
+                    <dd class="col-sm-6">
+                        @Html.DisplayFor(model => model.UpdateUserManager.UserManagerDetailsDto.AccountName)
+                    </dd>
+
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.UpdateUserManager.UserManagerDetailsDto.BankName)
+                    </dt>
+                    <dd class="col-sm-6">
+                        @Html.DisplayFor(model => model.UpdateUserManager.UserManagerDetailsDto.BankName)
+                    </dd>
+
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.UpdateUserManager.UserManagerDetailsDto.BVN)
+                    </dt>
+                    <dd class="col-sm-6">
+                        @Html.DisplayFor(model => model.UpdateUserManager.UserManagerDetailsDto.BVN)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.UpdateUserManager.UserManagerDetailsDto.RequestDateTie2Upgraded)
+                    </dt>
+                    <dd class="col-sm-6">
+                        @Html.DisplayFor(model => model.UpdateUserManager.UserManagerDetailsDto.RequestDateTie2Upgraded)
+                    </dd>
+
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.UpdateUserManager.UserManagerDetailsDto.ResponseOnCsaRequest)
+                    </dt>
+                    <dd class="col-sm-6">
+                        @Html.DisplayFor(model => model.UpdateUserManager.UserManagerDetailsDto.ResponseOnCsaRequest)
+                    </dd>
+
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.UpdateUserManager.UserManagerDetailsDto.CsaRequest)
+                    </dt>
+                    <dd class="col-sm-6">
+                        @Html.DisplayFor(model => model.UpdateUserManager.UserManagerDetailsDto.CsaRequest)
+                    </dd>
+                    @if (Model.UpdateUserManager.CompanyDetailsDto != null)
+                    {
+                        <hr />
+                        <dt class="col-sm-4">
+                            @Html.DisplayNameFor(model => model.UpdateUserManager.CompanyDetailsDto.Name)
+                        </dt>
+                        <dd class="col-sm-6">
+                            @Html.DisplayFor(model => model.UpdateUserManager.CompanyDetailsDto.Name)
+                        </dd>
+                        <dt class="col-sm-4">
+                            @Html.DisplayNameFor(model => model.UpdateUserManager.CompanyDetailsDto.CreatedAtUtc)
+                        </dt>
+                        <dd class="col-sm-6">
+                            @Html.DisplayFor(model => model.UpdateUserManager.CompanyDetailsDto.CreatedAtUtc)
+                        </dd>
+                        <dt class="col-sm-4">
+                            @Html.DisplayNameFor(model => model.UpdateUserManager.CompanyDetailsDto.Email)
+                        </dt>
+                        <dd class="col-sm-6">
+                            @Html.DisplayFor(model => model.UpdateUserManager.CompanyDetailsDto.Email)
+                        </dd>
+                        <dt class="col-sm-4">
+                            @Html.DisplayNameFor(model => model.UpdateUserManager.CompanyDetailsDto.Phone)
+                        </dt>
+                        <dd class="col-sm-6">
+                            @Html.DisplayFor(model => model.UpdateUserManager.CompanyDetailsDto.Phone)
+                        </dd>
+                        <dt class="col-sm-4">
+                            @Html.DisplayNameFor(model => model.UpdateUserManager.CompanyDetailsDto.AmountPerPoint)
+                        </dt>
+                        <dd class="col-sm-6">
+                            @Html.DisplayFor(model => model.UpdateUserManager.CompanyDetailsDto.AmountPerPoint)
+                        </dd>
+
+                    }
+
+                    @if (Model.UpdateUserManager.WalletDetailsDto != null)
+                    {
+                        <hr />
+                        <dt class="col-sm-4">
+                            Wallet Balance
+                        </dt>
+                        <dd class="col-sm-6">
+                            @Html.DisplayFor(model => model.UpdateUserManager.WalletDetailsDto.Amount)
+                        </dd>
+                        <dt class="col-sm-4">
+                            @Html.DisplayNameFor(model => model.UpdateUserManager.WalletDetailsDto.CreatedAtUtc)
+                        </dt>
+                        <dd class="col-sm-6">
+                            @Html.DisplayFor(model => model.UpdateUserManager.WalletDetailsDto.CreatedAtUtc)
+                        </dd>
+                        <dt class="col-sm-4">
+                            @Html.DisplayNameFor(model => model.UpdateUserManager.WalletDetailsDto.LastUpdateAtUtc)
+                        </dt>
+                        <dd class="col-sm-6">
+                            @Html.DisplayFor(model => model.UpdateUserManager.WalletDetailsDto.LastUpdateAtUtc)
+                        </dd>
+                        <dt class="col-sm-4">
+                            @Html.DisplayNameFor(model => model.UpdateUserManager.WalletDetailsDto.Log)
+                        </dt>
+                        <dd class="col-sm-6">
+                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#projectDescription">View Log</button>
+                        </dd>
+
+                    }
+                </dl>
+            </div>
+            <div class="col-md-4">
+                <dl>
+
+                    <dt class="col-sm-4">
+                        ID Card
+                    </dt>
+                    <dd class="col-sm-6">
+                        @if (Model.UpdateUserManager.UserManagerDetailsDto.IDCardUrl != null)
+                        {
+                            <img src="@Model.UpdateUserManager.UserManagerDetailsDto.IDCardUrl" height="200" />
+                        }
+                    </dd>
+                    <dt class="col-sm-4">
+                        Passport
+                    </dt>
+                    <dd class="col-sm-6">
+                        @if (Model.UpdateUserManager.UserManagerDetailsDto.PassportUrl != null)
+                        {
+                            <img src="@Model.UpdateUserManager.UserManagerDetailsDto.PassportUrl" height="200" />
+                        }
+                    </dd>
+
+                </dl>
+            </div>
+        </div>
+        <div>
+            <div class="card card-success">
+                <div class="card-header">
+                    <h3 class="card-title">REFERRALS </h3>
+
+                </div>
+                <div class="card-body">
+                    <h6>User Referral Count: @Model.UpdateUserManager.TotalReferrals</h6>
+                    <h6>Referred By @Model.UpdateUserManager.UserManagerDetailsDto.RefferedBy</h6>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>S/N</th>
+                                        <th>
+                                            Fullname
+                                        </th>
+                                        <th>Phone Number </th>
+                                        <th>Date </th>
+                                        <th>Last LoggedIn </th>
+                                        <th>Verified </th>
+                                        <th>Posted </th>
+                                        <th>Video Upload </th>
+                                        <th>Success </th>
+                                    </tr>
+                                </thead>
+                                @{
+                                    int sn = 0;
+                                }
+                                <tbody>
+                                    @foreach (var item in Model.UpdateUserManager.LastTenReferrals)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @{
+                                                    sn++;
+                                                }
+                                                @sn
+                                            </td>
+                                            <td>
+                                                <a asp-page="./Info" asp-route-id="@item.Id">
+                                                    @Html.DisplayFor(modelItem => item.Fullname)
+                                                </a>
+                                            </td>
+
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PhoneNumber)
+                                            </td>
+                                            <td>
+                                                @item.CreationUTC.ToString("dd/MM/yyyy")
+                                            </td>
+                                            <td>
+                                                @item.LastLoggedInAtUtc
+                                            </td>
+
+                                            <td>
+                                                @if (item.Verified == true)
+                                                {
+
+
+                                                    <span class="btn btn-success btn-xs"><i class="fa fa-check"></i></span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="btn btn-danger btn-xs"><i class="fa fa-times"></i></span>
+
+                                                }
+                                            </td>
+                                            <td>
+                                                @if (item.Posted == true)
+                                                {
+
+
+                                                    <span class="btn btn-success btn-xs"><i class="fa fa-check"></i></span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="btn btn-danger btn-xs"><i class="fa fa-times"></i></span>
+
+                                                }
+                                            </td>
+                                            <td>
+                                                @if (item.VideoUpload == true)
+                                                {
+
+
+                                                    <span class="btn btn-success btn-xs"><i class="fa fa-check"></i></span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="btn btn-danger btn-xs"><i class="fa fa-times"></i></span>
+
+                                                }
+                                            </td>
+                                            <td>
+                                                @if (item.SuccessPoint == true)
+                                                {
+
+
+                                                    <span class="btn btn-success btn-xs"><i class="fa fa-check"></i></span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="btn btn-danger btn-xs"><i class="fa fa-times"></i></span>
+
+                                                }
+                                            </td>
+
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card card-success">
+                <div class="card-header">
+                    <h3 class="card-title">POINTS</h3>
+
+                </div>
+                <div class="card-body">
+                    <h6>How Many Time Credited Points (@Model.UpdateUserManager.PointCount times)</h6>
+                    <h6>Total Point Summation (@Model.UpdateUserManager.PointSum points)</h6>
+                    <h6>Total Post Made (@Model.UpdateUserManager.PostingCount)</h6>
+                    <h6>Total Completed Advert Post (Video Evidence) (@Model.UpdateUserManager.UploadCount)</h6>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table m-0">
+                                <thead>
+                                    <tr>
+                                        <th>S/N</th>
+                                        <th>Date</th>
+                                        <th>Point</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                @{ int xsn = 0;}
+                                <tbody>
+                                    @if(Model.UpdateUserManager.LastTenPoints != null) { 
+                                    @foreach (var item in Model.UpdateUserManager.LastTenPoints)
+                                    {
+                                        <tr>
+                                            @{
+                                                xsn++;
+                                            }
+                                            <td>@xsn</td>
+                                            <td><a href="">@item.CreatedAtUtc.ToString("dd/MM/yyyy hh:mm tt")</a></td>
+                                            <td>
+                                                @Html.DisplayFor(model => item.Point)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(model => item.Status)
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-warning" asp-page="./Details" asp-route-id="@item.IdentityKvAdId">
+                                                    Details
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                                }
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.table-responsive -->
+                    </div>
+                </div>
+            </div>
+            <div class="card card-success">
+                <div class="card-header">
+                    <h3 class="card-title">TRANSACTIONS (Latest 30)</h3>
+
+                </div>
+                <div class="card-body">
+                    <h6>Total Credit Count @Model.UpdateUserManager.TransactionCreditCount</h6>
+                    <h6>Total Debit Count @Model.UpdateUserManager.TransactionDebitCount</h6>
+                </div>
+                <div class="card-body">
+                    <h5>CREDIT BREAKDOWN</h5>
+                    @if(Model.UpdateUserManager.GroupByDescriptionCredit != null) { 
+                    @foreach (var cdown in Model.UpdateUserManager.GroupByDescriptionCredit)
+                    {
+                        <h4>@cdown.Description</h4>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table id="example1" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>S/N</th>
+                                            <th>
+                                                Date
+                                            </th>
+
+                                            <th>Amount </th>
+
+                                            <th>Note </th>
+                                            <th>Type </th>
+                                            <th>Status </th>
+                                            <th>Action</th>
+
+                                        </tr>
+                                    </thead>
+                                    @{
+                                        int csn = 0;
+                                    }
+                                    <tbody>
+                                        @foreach (var item in cdown.ListTransactions)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @{
+                                                        csn++;
+                                                    }
+                                                    @csn
+                                                </td>
+
+                                                <td>
+                                                    <a asp-page="./TransactionDetails" asp-route-id="@item.Id">
+                                                        @item.CreatedAtUtc.ToString("dd/MM/yyyy")
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Amount)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.UniqueReference)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.TransactionType)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Status)
+                                                </td>
+                                                <td>
+                                                    <a class="btn btn-primary" asp-page="./TransactionInfo" asp-route-id="@item.Id">
+                                                        More
+                                                    </a>
+                                                </td>
+
+
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <hr />
+                    }
+                                                        }  </div>
+
+                <div class="card-body">
+                    <h5>DEBIT BREAKDOWN</h5>
+                    @if(Model.UpdateUserManager.GroupByDescriptionDebit != null) { 
+                    @foreach (var cdown in Model.UpdateUserManager.GroupByDescriptionDebit)
+                    {
+                        <h4>@cdown.Description</h4>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table id="example1" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>S/N</th>
+                                            <th>
+                                                Date
+                                            </th>
+
+                                            <th>Amount </th>
+
+                                            <th>Note </th>
+                                            <th>Type </th>
+                                            <th>Status </th>
+                                            <th>Action</th>
+
+                                        </tr>
+                                    </thead>
+                                    @{
+                                        int csn = 0;
+                                    }
+                                    <tbody>
+                                        @foreach (var item in cdown.ListTransactions)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @{
+                                                        csn++;
+                                                    }
+                                                    @csn
+                                                </td>
+
+                                                <td>
+                                                    <a asp-page="./TransactionDetails" asp-route-id="@item.Id">
+                                                        @item.CreatedAtUtc.ToString("dd/MM/yyyy")
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Amount)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.UniqueReference)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.TransactionType)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Status)
+                                                </td>
+                                                <td>
+                                                    <a class="btn btn-primary" asp-page="./TransactionInfo" asp-route-id="@item.Id">
+                                                        More
+                                                    </a>
+                                                </td>
+
+
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    }
+                                                        }    </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <a class="btn btn-warning" asp-page="./Update" asp-route-id="@Model.UpdateUserManager.UserManagerDetailsDto.Id">Update</a>
+        @if (User.IsInRole(JurayKV.Application.Constants.SuperAdminPolicy) || User.IsInRole(JurayKV.Application.Constants.ValidatorPolicy))
+        {
+
+
+            <a class="btn btn-warning" asp-page="./ValidateTransaction" asp-route-userId="@Model.UpdateUserManager.UserManagerDetailsDto.Id">Validate Transaction</a>
+        }
+        @if (User.IsInRole(JurayKV.Application.Constants.SuperAdminPolicy) || User.IsInRole(JurayKV.Application.Constants.Permission))
+        {
+            <a class="btn btn-warning" asp-page="/IPermissions/UserRoles" asp-route-id="@Model.UpdateUserManager.UserManagerDetailsDto.Id">Manage Roles</a>
+            <a class="btn btn-danger" asp-page="./Remove" asp-route-id="@Model.UpdateUserManager.UserManagerDetailsDto.Id">Remove account</a>
+        }
+    </div>
+</div>
+
+
+<!-- Trigger the modal with a button -->
+<!-- Modal -->
+<div id="projectDescription" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">LOGs</h4>
+            </div>
+            <div class="modal-body" style="font-size:10px;text-align:justify;">
+                <ul>
+                    @if(Model.UpdateUserManager.WalletDetailsDto != null) { 
+                    @Html.Raw(Model.UpdateUserManager.WalletDetailsDto.Log)
+                    }
+                </ul>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,94 @@
+﻿@page
+@model JurayKV.UI.Areas.KvMain.Pages.IUserMessages.InfoModel
+@{
+}
+<div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title">User Message DETAILS</h3>
+
+    </div>
+    <!-- /.card-header -->
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+
+                <dl class="row">
+                     
+                
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.UserMessage.Date)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.UserMessage.Date)
+                    </dd>
+
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.UserMessage.Message)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.UserMessage.Message)
+                    </dd>
+
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.UserMessage.Title)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.UserMessage.Title)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.UserMessage.Read)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.UserMessage.Read)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.UserMessage.DateRead)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.UserMessage.DateRead)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.UserMessage.Disable)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.UserMessage.Disable)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.UserMessage.All)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.UserMessage.All)
+                    </dd>
+                    <dt class="col-sm-2">
+                        File
+                    </dt>
+                    <dd class="col-sm-10">
+                        @if(Model.UserMessage.FileUrl != null) { 
+                       <a href="@Model.UserMessage.FileUrl" target="_blank" class="btn btn-danger">View File</a>
+}
+else
+            {
+                <span>No File</span>
+            }
+                    </dd>
+ 
+                </dl>
+            </div>
+        </div>
+
+
+        <!-- /.row -->
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+        <a class="btn btn-warning" asp-page="./Update" asp-route-id="@Model.UserMessage.Id">Update</a>
+        <a class="btn btn-warning" asp-page="/IUserMessages/Add" asp-route-id="@Model.UserMessage.Id">Send a Message</a>
+
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewData["Title"] | KOBOVIEW | NO 1 ADVERTISING PLATFORM</title>
+    <link rel="shortcut icon" href="~/img/Koboview-Icon.png" type="image/x-icon" />
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/dashboard/plugins/fontawesome-free/css/all.min.css">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="~/dashboard/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- Theme style -->
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="~/dashboard/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+    <!-- Toastr -->
+    <link rel="stylesheet" href="~/dashboard/plugins/toastr/toastr.min.css">
+    <link rel="stylesheet" href="~/dashboard/dist/css/adminlte.min.css">
+    <style>
+        .login-box, .register-box {
+            width: 450px;
+        }
+
+        @@media (max-width: 576px) {
+            .login-box, .register-box {
+                margin-top: .5rem;
+                width: 90% !important;
+            }
+        }
+    </style>
+</head>
+<body class="hold-transition register-page">
+    <div class="register-box">
+        <div class="register-logo">
+            <a asp-page="/Index">
+                <img src="~/img/Koboview-logo-main.png" alt="Koboview Advert" class="" style="height: auto; text-align: center; margin: 0 auto; width: 60%;">
+
+            </a>
+        </div>
+
+        <div class="card">
+            <div class="card-body register-card-body">
+                @RenderBody()
+            </div>
+            <!-- /.form-box -->
+        </div><!-- /.card -->
+    </div>
+    <!-- /.register-box -->
+    <!-- jQuery -->
+    <script src="~/dashboard/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/dashboard/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <!-- SweetAlert2 -->
+    <script src="~/dashboard/plugins/sweetalert2/sweetalert2.min.js"></script>
+    <!-- Toastr -->
+    <script src="~/dashboard/plugins/toastr/toastr.min.js"></script>
+
+    <!-- Select2 -->
+    <script src="~/dashboard/plugins/select2/js/select2.full.min.js"></script>
+    <script src="~/dashboard/dist/js/adminlte.min.js"></script>
+
+
+    @if (TempData["success"] != null)
+    {
+        <script>
+
+            toastr.success('@TempData["success"]')
+        </script>
+    }
+
+    @if (TempData["error"] != null)
+    {
+        <script>
+
+            toastr.error('@TempData["error"]')
+        </script>
+    }
+    @if (TempData["info"] != null)
+    {
+        <script>
+
+            toastr.info('@TempData["info"]')
+        </script>
+    }
+    @if (TempData["warning"] != null)
+    {
+        <script>
+
+            toastr.warning('@TempData["warning"]')
+        </script>
+    }
+
+    <script>
+        function myUppercase() {
+            var x = document.getElementById("upper");
+            x.value = x.value.toUpperCase();
+        }
+    </script>
+
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>

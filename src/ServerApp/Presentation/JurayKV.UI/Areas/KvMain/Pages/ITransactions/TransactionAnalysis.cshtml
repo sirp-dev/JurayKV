@@ -1,0 +1,177 @@
+﻿@page
+@model JurayKV.UI.Areas.KvMain.Pages.ITransactions.TransactionAnalysisModel
+@{
+}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">KV Transactions Analysis</h3>
+
+
+    </div>
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-3">
+                <a asp-page="./Indexd" asp-route-all="" class="btn btn-primary" style="width:100%;margin-bottom:10px;">
+                    Total Points (@Model.Dashboard.TotalPoints)
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a asp-page="./Indexd" asp-route-status="" class="btn btn-primary" style="width: 100%; margin-bottom: 10px;">
+                    Total Referrals (@Model.Dashboard.TotalReferrals)
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a asp-page="./Indexd" asp-route-status="" class="btn btn-danger" style="width: 100%; margin-bottom: 10px;">
+                    Total Debit (@Model.Dashboard.TotalDebit)
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a asp-page="./Indexd" asp-route-status="" class="btn btn-danger" style="width: 100%; margin-bottom: 10px;">
+                    Wallet Balance (@Model.Dashboard.WalletBalance)
+                </a>
+            </div>
+            
+
+        </div>
+
+
+
+    </div>
+
+    <div class="card-header">
+        <form class="" method="get">
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <div class="input-group">
+                        <input type="text" name="searchstring" class="form-control" id="searchBox" value="@Model.Searchstring" placeholder="Enter search term">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+
+                        <th>
+                            Fullname
+                        </th>
+                        <th>Email</th>
+                        <th>Phone </th>
+                        <th>Total Points </th>
+                        <th>Total Referrals </th>
+                        <th>Total Debit </th>
+                        <th>Wallet Balance </th>
+
+
+                    </tr>
+                </thead>
+                @{
+                    //int sn = 0;
+                    int sn = (Model.PageNumber - 1) * Model.PageSize;
+                }
+                <tbody>
+                    @foreach (var item in Model.ListUsers)
+                    {
+                        <tr>
+                            <td>
+                                @{
+                                    sn++;
+                                }
+                                @sn
+                            </td>
+
+                            <td>
+                                <a asp-page="/IUsers/Info" asp-route-id="@item.UserId">
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </a>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Phone)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TotalPoints)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TotalReferrals)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TotalDebit)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.WalletBalance)
+                            </td>
+
+
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li class="page-item @(Model.PageNumber == 1 ? "disabled" : "")">
+                    <a class="page-link" asp-page="./TransactionAnalysis" asp-route-pageNumber="@(Model.PageNumber - 1)" asp-route-searchString="@Model.Searchstring" asp-route-sortOrder="@Model.SortOrder" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+
+                @if (Model.TotalPages <= 10)
+                {
+                    <!-- Display all page numbers if total pages are less than or equal to 10 -->
+                    @for (int i = 1; i <= Model.TotalPages; i++)
+                    {
+                        <li class="page-item @(i == Model.PageNumber ? "active" : "")">
+                            <a class="page-link" asp-page="./TransactionAnalysis" asp-route-pageNumber="@i" asp-route-searchString="@Model.Searchstring" asp-route-sortOrder="@Model.SortOrder">@i</a>
+                        </li>
+                    }
+                }
+                else
+                {
+                    <!-- Display a fixed number of page numbers before the current page -->
+                    @for (int i = Math.Max(1, Model.PageNumber - 5); i < Model.PageNumber; i++)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" asp-page="./TransactionAnalysis" asp-route-pageNumber="@i" asp-route-searchString="@Model.Searchstring" asp-route-sortOrder="@Model.SortOrder">@i</a>
+                        </li>
+                    }
+
+                    <!-- Display the current page -->
+                    <li class="page-item active">
+                        <a class="page-link">@Model.PageNumber</a>
+                    </li>
+
+                    <!-- Display a fixed number of page numbers after the current page -->
+                    @for (int i = Model.PageNumber + 1; i <= Math.Min(Model.PageNumber + 5, Model.TotalPages); i++)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" asp-page="./TransactionAnalysis" asp-route-pageNumber="@i" asp-route-searchString="@Model.Searchstring" asp-route-sortOrder="@Model.SortOrder">@i</a>
+                        </li>
+                    }
+                }
+
+                <li class="page-item @(Model.PageNumber == Model.TotalPages ? "disabled" : "")">
+                    <a class="page-link" asp-page="./TransactionAnalysis" asp-route-pageNumber="@(Model.PageNumber + 1)" asp-route-searchString="@Model.Searchstring" asp-route-sortOrder="@Model.SortOrder" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+    </div>
+</div>

@@ -1,0 +1,104 @@
+﻿@page
+@model JurayKV.UI.Areas.Client.Pages.Account.AdvertRequestModel
+@{
+}
+
+<div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title">ADVERT REQUEST</h3>
+       
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        @if (TempData["error"] != null)
+        {
+            <div class="alert alert-danger">
+                <strong>@TempData["error"]</strong>
+            </div>
+        }
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-12">
+                <div class="info-box bg-gradient-info">
+                    <span class="info-box-icon"><i class="far fa-bookmark"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">Note</span>
+                        <span class="info-box-number">Minimum Budget (@Model.SettingDetails.MinimumAmountBudget)</span>
+
+                        <div cass="progress">
+                            <div class="progress-bar" style="width: 100%"></div>
+                        </div>
+                        <span class="progress-description">
+                            @Model.SettingDetails.DefaultAmountPerView Amount Per View
+                        </span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <label class="control-label"><span id="totalView" class="info-box-number">Total Expected View: 0</span></label>
+
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Command.Amount" class="control-label">Budget/Amount (₦)</label>
+                        <input asp-for="Command.Amount" id="amountInput" class="form-control" />
+                        <span asp-validation-for="Command.Amount" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Command.Note" class="control-label">Additional Information (website address, Whatsapp link, Blog, etc)</label>
+                        <textarea asp-for="Command.Note" class="form-control"></textarea>
+                        <span asp-validation-for="Command.Note" class="text-danger"></span>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label">Upload Advert Image If Any</label><br />
+                        <input type="file" class="control-label" asp-for="imagefile" />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Submit" class="btn btn-primary" />
+                        <a asp-page="./AdvertRequestHistory" class="btn bg-gradient-warning btn-sm" style="float:right;">Back</a>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <!-- /.row -->
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+    document.getElementById('amountInput').addEventListener('input', function () {
+        // Get the entered amount
+        var amount = parseFloat(this.value) || 0;
+
+        // Get the default amount per view
+        var defaultAmountPerView = parseFloat('@Model.SettingDetails.DefaultAmountPerView') || 0;
+
+        // Calculate the total view
+        var totalView = Math.floor(amount / defaultAmountPerView);
+
+        // Update the total view display
+        document.getElementById('totalView').innerText = 'Total View: ' + totalView;
+    });
+    </script>
+
+}

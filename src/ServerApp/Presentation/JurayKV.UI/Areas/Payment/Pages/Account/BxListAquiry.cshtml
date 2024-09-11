@@ -1,0 +1,85 @@
+﻿@page
+@model JurayKV.UI.Areas.Payment.Pages.Account.BxListAquiryModel
+@{
+}
+<style>
+
+    /* Mobile styles */
+    @@media (max-width: 767px) {
+        .col-xs-6 {
+            width: 50% !important;
+        }
+
+        .col-sm-6 {
+            width: 50% !important;
+        }
+        /* Adjust font size for mobile */
+        .info-box-text {
+            font-size: 0.9rem; /* You can adjust the font size accordingly */
+        }
+
+        .info-box .info-box-content {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            -ms-flex-pack: center;
+            justify-content: center;
+            line-height: 1.8;
+            -ms-flex: 1;
+            flex: 1;
+            padding: 0 0px;
+            overflow: hidden;
+            text-align: center;
+        }
+    }
+
+    @@media (max-width: 340px) {
+        .info-box-text {
+            font-size: 0.7rem;
+            font-weight: 800;
+        }
+    }
+
+    .info-box {
+        box-shadow: 0 0 1px rgba(0,0,0,.125), 0 1px 3px rgba(0,0,0,.2);
+        border-radius: .25rem;
+        background-color: #fff;
+        display: -ms-flexbox;
+        display: flex;
+        margin-bottom: 1rem;
+        min-height: 40px;
+        padding: .2rem;
+        position: relative;
+        width: 100%;
+    }
+</style>
+<div class="row">
+    <div class="col-md-12">
+        <h3 style="text-align:center;">PAYMENT SERVICES</h3>
+    </div>
+    @foreach (var valueitem in Model.Billers.BillerList.Category)
+    {
+        @foreach (var item in valueitem.Billers)
+        {
+            <div class="col-sm-6 col-xs-6">
+                <a asp-page="./BxItemListArx" asp-route-id="@item.Id">
+
+
+                    <div class="info-box">
+
+                        <div class="info-box-content">
+                            <span class="info-box-text">@item.Name</span>
+                            <span class="info-box-text">@item.ShortName</span>
+                            <span class="info-box-text">@item.Narration</span>
+                            <span class="info-box-text">@item.Url</span>
+
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                </a>
+                <!-- /.info-box -->
+            </div>
+        }
+    }
+</div>

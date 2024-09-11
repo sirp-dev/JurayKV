@@ -1,0 +1,269 @@
+﻿@page
+@using JurayKV.Application;
+@model JurayKV.UI.Areas.KvMain.Pages.IUserAds.InfoModel
+@{
+}
+<style>
+    .video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio (change as needed) */
+        padding-top: 30px;
+        height: 0;
+        overflow: hidden;
+    }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+</style>
+<div class="card">
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="col-md-6"></div>
+                    <div class="col-md-6 text-center service-simple" style="margin-top:15px;padding:10px;">
+
+                        <h3>ADs from @Model.IdentityKvAdDetailsDto.Fullname</h3>
+                        <p>Kindly upload your whatsapp status proof of views</p>
+                        <hr />
+                        <p>Point for This ADs</p>
+                        <div class="">
+                            @if (User.IsInRole(Constants.AdminOne) || User.IsInRole(Constants.SuperAdminPolicy) || User.IsInRole(Constants.PointPolicy))
+                            {
+                                <a class="btn btn-primary font-bold" style="margin-bottom:4px;">@Model.IdentityKvAdDetailsDto.ResultOne</a>
+
+                                @if (Model.IdentityKvAdDetailsDto.AdsStatus == JurayKV.Domain.Primitives.Enum.AdsStatus.Credited)
+                                {
+                                    <a class="btn btn-success font-bold">Credited</a>
+
+                                }
+                            }
+                        </div>
+                        @{
+                            DateTime sixAMDateTime = new DateTime(Model.IdentityKvAdDetailsDto.CreatedAtUtc.Year, Model.IdentityKvAdDetailsDto.CreatedAtUtc.Month, Model.IdentityKvAdDetailsDto.CreatedAtUtc.Day, 6, 0, 0);
+                            DateTime sixAMDateTimec = new DateTime(Model.IdentityKvAdDetailsDto.CreatedAtUtc.Year, Model.IdentityKvAdDetailsDto.CreatedAtUtc.Month, Model.IdentityKvAdDetailsDto.CreatedAtUtc.Day, 6, 0, 0).AddDays(1);
+                        }
+                        @{
+                            DateTime currentDate = DateTime.UtcNow.AddHours(1);
+                            DateTime nextDay6AM = currentDate.Date.AddDays(1).AddHours(6);
+
+                            bool isLinkEnabled = Model.IdentityKvAdDetailsDto.CreatedAtUtc < nextDay6AM;
+
+
+                        }
+                        @if (sixAMDateTime <= DateTime.UtcNow.AddHours(1) && DateTime.UtcNow.AddHours(1) <= sixAMDateTimec)
+                        {
+                            <h4><span class="countdown btn btn-success" data-target-time="6:00:00"></span></h4>
+                        }
+                        @*@if (isLinkEnabled)
+                            {
+                                @if (Model.IdentityKvAdDetailsDto.AdsStatus != JurayKV.Domain.Primitives.Enum.AdsStatus.Credited)
+                                {
+
+
+                                    <h4><span class="countdown btn btn-success" data-target-time="6:00:00"></span></h4>
+                                }
+                            }
+                            else
+                            {
+                                <h4><span class="countdown btn btn-success">--:--</span></h4>
+
+                            }*@
+                        @if (!String.IsNullOrEmpty(Model.IdentityKvAdDetailsDto.VideoUrl))
+                        {
+                            <video controls style="max-height:400px;">
+                                <source src="@Model.IdentityKvAdDetailsDto.VideoUrl" type="video/mp4">
+                                <!-- Add more source elements for other video formats -->
+                                Your browser does not support the video tag.
+                            </video>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        @if (!String.IsNullOrEmpty(Model.IdentityKvAdDetailsDto.VideoUrl))
+        {
+            <div class="col-md-12">
+
+                <div class="card">
+                    <div class="card-body">
+
+                        <div class="col-md-6"></div>
+                        <div class="col-md-6 service-simple" style="margin-top: 15px; padding: 10px;">
+                            <h4>Kindly Update The Points from the Video</h4>
+
+                            <div class="service-simple">
+                                @if (User.IsInRole(Constants.AdminOne) || User.IsInRole(Constants.SuperAdminPolicy) || User.IsInRole(Constants.PointPolicy))
+                                {
+                                    <a class="btn btn-primary font-bold" style="margin-bottom:4px;">@Model.IdentityKvAdDetailsDto.ResultOne</a>
+
+                                    @if (Model.IdentityKvAdDetailsDto.AdsStatus == JurayKV.Domain.Primitives.Enum.AdsStatus.Credited)
+                                    {
+                                        <a class="btn btn-success font-bold">Credited</a>
+
+                                    }
+                                }
+
+                                @*@if (User.IsInRole(Constants.AdminTwo) || User.IsInRole(Constants.AdminPolicy))
+                                    {
+                                        <a class="btn btn-success font-bold">@Model.IdentityKvAdDetailsDto.ResultTwo</a>
+                                    }
+
+                                    @if (User.IsInRole(Constants.AdminThree) || User.IsInRole(Constants.AdminPolicy))
+                                    {
+                                        <a class="btn btn-success font-bold">@Model.IdentityKvAdDetailsDto.ResultThree</a>
+                                    }*@
+
+                                @if (Model.IdentityKvAdDetailsDto.AdsStatus != JurayKV.Domain.Primitives.Enum.AdsStatus.Credited)
+                                {
+                                    @if (User.IsInRole(Constants.AdminPolicy) || User.IsInRole(Constants.SuperAdminPolicy) || User.IsInRole(Constants.PointPolicy))
+                                    {
+                                        <form method="post" enctype="multipart/form-data" asp-page-handler="UpdatePoint">
+                                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                            <input type="hidden" asp-for="IdentityKvAdDetailsDto.Id" />
+                                            <input type="hidden" asp-for="CompanyUserId" value="@Model.CompanyDetailsDto.UserId" />
+                                            <div class="form-group">
+                                                <label class="control-label">Choose to Validate</label>
+                                                <select asp-for="PointChoose" class="form-control">
+                                                    @*<option value="">Choose</option>*@
+                                                    <option value="First">First Option</option>
+                                                    @*<option value="Second">Second Option</option>
+                <option value="Third">Third Option</option>*@
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="submit" value="If the Point are Verified. Kindly Update the User Point" class="btn btn-primary" />
+                                                <a asp-page="./Index" class="btn bg-gradient-warning btn-sm" style="">Back</a>
+
+                                            </div>
+                                        </form>
+                                    }
+                                }
+                            </div>
+                        </div>
+                        @if (Model.IdentityKvAdDetailsDto.AdsStatus != JurayKV.Domain.Primitives.Enum.AdsStatus.Credited)
+                        {
+
+
+                            <div class="card">
+                                <div class="card-body">
+
+
+                                    <form method="post" enctype="multipart/form-data">
+                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                        <input type="hidden" asp-for="IdentityKvAdDetailsDto.Id" />
+                                        <input type="hidden" asp-for="CompanyUserId" value="@Model.CompanyDetailsDto.UserId" />
+
+                                        @if (User.IsInRole(Constants.AdminOne) || User.IsInRole(Constants.SuperAdminPolicy) || User.IsInRole(Constants.PointPolicy))
+                                        {
+                                            <div class="form-group">
+                                                <h4>@Model.CompanyDetailsDto.Name Financial Information</h4>
+
+                                                <h6>Balance (@Model.WalletDetailsDto.Amount)</h6>
+                                                <h6>Amount Charged Per Point (@Model.CompanyDetailsDto.AmountPerPoint)</h6>
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="PointOne" class="control-label">Add Total Views in These Advert </label>
+                                                <input asp-for="PointOne" class="form-control" />
+                                            </div>
+                                        }
+
+                                        @*@if (User.IsInRole(Constants.AdminTwo) || User.IsInRole(Constants.SuperAdminPolicy))
+                {
+                    <div class="form-group">
+                        <label asp-for="PointTwo" class="control-label">Total Views in These Advert</label>
+                        <input asp-for="PointTwo" class="form-control" />
+                    </div>
+                }
+
+                @if (User.IsInRole(Constants.AdminThree) || User.IsInRole(Constants.SuperAdminPolicy))
+                {
+                    <div class="form-group">
+                        <label asp-for="PointThree" class="control-label">Total Views in These Advert</label>
+                        <input asp-for="PointThree" class="form-control" />
+                    </div>
+                }*@
+
+                                        <div class="form-group">
+                                            <input type="submit" value="Submit" class="btn btn-primary" />
+                                            <a asp-page="./Index" class="btn bg-gradient-warning btn-sm" style="">Back</a>
+
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <div class="col-md-6"></div>
+                        <div class="col-md-6">
+                            <div class="service-simple" style="margin-top: 15px; padding: 10px;">
+                                <a href="@Model.IdentityKvAdDetailsDto.KvAdImage">
+                                    <div class="position-relative">
+                                        <img src="@Model.IdentityKvAdDetailsDto.KvAdImage" alt="" class="img-fluid">
+
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+
+</div>
+
+@section Scripts {
+    <script>
+        // Function to update countdown for all items with the "countdown" class
+        function updateCountdowns() {
+            var now = new Date();
+            var countdownElements = document.getElementsByClassName("countdown");
+
+            for (var i = 0; i < countdownElements.length; i++) {
+                var element = countdownElements[i];
+                var targetTime = new Date(now);
+                var targetTimeString = element.getAttribute("data-target-time").split(":");
+                targetTime.setHours(targetTimeString[0], targetTimeString[1], targetTimeString[2], 0); // Set the target time for the current item
+
+                if (now >= targetTime) {
+                    // If it's already past the target time, set the target time to the next day
+                    targetTime.setDate(targetTime.getDate() + 1);
+                }
+
+                var timeDifference = targetTime - now; // Calculate the time difference in milliseconds
+                var hoursRemaining = Math.floor(timeDifference / 3600000); // Convert to hours
+                var minutesRemaining = Math.floor((timeDifference % 3600000) / 60000); // Convert to minutes
+                var secondsRemaining = Math.floor((timeDifference % 60000) / 1000); // Convert to seconds
+
+                element.textContent = hoursRemaining + "h " + minutesRemaining + "m " + secondsRemaining + "s";
+            }
+        }
+
+        // Update the countdown for all items every second (1,000 milliseconds)
+        setInterval(updateCountdowns, 1000);
+
+        // Initial call to set the initial countdown
+        updateCountdowns();
+    </script>
+
+
+}

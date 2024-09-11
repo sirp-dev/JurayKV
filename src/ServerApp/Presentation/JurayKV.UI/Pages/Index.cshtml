@@ -1,0 +1,206 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+<div class="swiper-main-slider-fade swiper-container">
+    <div class="swiper-wrapper">
+
+        <!-- Slide 1 Start -->
+        @foreach (var item in Model.Slider)
+        {
+            <div class="swiper-slide" style="background-image:url(@item.Url);">
+                <!-- <div class="medium-overlay"></div> -->
+                <div class="container">
+                    <div class="slider-content left-holder">
+                        <h2 class="animated fadeInDown">
+                            @Html.Raw(item.Title)
+                        </h2>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12 col-12">
+                                <p class="animated fadeInDown">
+                                    @Html.Raw(item.Text)
+                                </p>
+                            </div>
+                        </div>
+                        <div class="animated fadeInUp mt-30">
+                            <a asp-page="/Advertise" asp-route-refx="@Model.RefX" class="dark-button button-md"> @Html.Raw(item.ButtonText)</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+    <!-- Add Arrows -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+</div>
+
+
+<div class="section-block-grey">
+    <div class="container">
+        <div class="boxed-div">
+
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-md-6 col-12">
+                        <div class="" style="text-align:center;margin:0 auto;">
+
+                            <img src="~/img/koboview-about.jpg" class="rounded-border shadow-primary" alt="img" style="text-align:center;margin:0 auto;">
+
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <div class="pr-30-md">
+                            <div class="section-heading">
+                                <h4 class="md-top-x">Welcome To Koboview</h4>
+                            </div>
+                            <div class="text-content-big mt-20 text-justify">
+                                <p>
+                                    Koboview is an advertising company that specializes in advertising on WhatsApp status, one of the most popular and engaging social media features. We offer a unique and effective way for businesses to connect with their target audience, tapping into the vast user base of WhatsApp. Our advertising approach is built on the principles of user privacy, relevance, and engagement.
+                                </p>
+                                @*<p>
+                                        At Koboview, we understand the power of storytelling and visual content, and we leverage this to create compelling advertising campaigns that resonate with users. We provide a user-friendly, non-intrusive experience, ensuring that our clients' messages are seen by the right people at the right time.
+                                    </p>*@
+                            </div>
+
+                            <div class="mt-25">
+                                <a asp-page="/Overview" asp-route-refx="@Model.RefX" class="primary-button button-sm mb-15-xs">Know More</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section-block">
+    <div class="container">
+        <div class="boxed-div">
+            <div class="section-heading center-holder">
+                <h2 class="text-center">How It Works</h2>
+                <div class="section-heading-line"></div>
+                <p class="text-center">it's that simple. Share the power of user-centric advertising today.</p>
+            </div>
+            <div class="row mt-50">
+                <div class="col-md-3 col-sm-6 col-12">
+                    <div class="number-box">
+                        <h3>01</h3>
+                        <div class="number-box-line"></div>
+                        <h4>Register</h4>
+                        <p>Join our platform by registering as an advertiser. Provide the necessary information and set up your advertising account.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-12">
+                    <div class="number-box">
+                        <h3>02</h3>
+                        <div class="number-box-line"></div>
+                        <h4>Share on Status</h4>
+                        <p>Your ads will be shared on the WhatsApp statuses of users who choose to participate in our program. Users will post your ads on their status, expanding your reach.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-12">
+                    <div class="number-box">
+                        <h3>03</h3>
+                        <div class="number-box-line"></div>
+                        <h4>Reward with Points Base On Views Earned</h4>
+                        <p>you're rewarded based on the views your ads earn. Join us for effortless, point-based earnings through ethical advertising.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-12">
+                    <div class="number-box">
+                        <h3>04</h3>
+                        <div class="number-box-line"></div>
+                        <h4>Earn Payouts</h4>
+                        <p>As users share your ads on their status, you'll benefit from increased exposure. For each share, you'll earn payouts, making your advertising investment a profitable venture.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section-block-bg section-md" style="background-image: url(../img/bg12.jpg);">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-12">
+                <div class="pr-30-md">
+                    <div class="section-heading white-color mt-30">
+                        <h2><strong>Why Koboview Outshines the Competition</strong></h2>
+                        <div class="section-heading-line-left"></div>
+                    </div>
+                    <div class="text-content white-color mt-25 text-justify">
+                        <p>
+
+                            Koboview's unparalleled success in the advertising industry stems from a steadfast commitment to ethical practices that set us apart from the competition. We prioritize transparency, integrity, and responsible advertising methodologies, ensuring that our clients' brands are showcased with credibility and trustworthiness. Our dedication to ethical advertising not only upholds industry standards but also establishes a foundation of reliability that clients can count on. This commitment resonates with businesses looking for an advertising partner that values integrity as much as delivering results.
+                            <br /><br />
+                            At the core of Koboview's superiority is our unwavering focus on user-centricity. We recognize the evolving needs and preferences of consumers and tailor our advertising strategies accordingly. By understanding the target audience on a profound level, we create engaging and relevant campaigns that resonate with users, fostering a connection between brands and their potential customers. Koboview's emphasis on user experience ensures that our advertising efforts not only capture attention but also lead to meaningful interactions, driving brand loyalty and customer satisfaction to new heights. This user-centric approach positions Koboview as a leader in delivering advertising solutions that genuinely connect with the audience.
+                        </p>
+                    </div>
+
+                    <a asp-page="/Contact" asp-route-refx="@Model.RefX" class="primary-button button-md mt-25">Become a Client</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-12">
+                <div class="row">
+
+                    <div class="col-md-6 col-sm-6 col-12">
+                        <div class="feature-box" style="height:300px;">
+                            <i class="icon-clock2"></i>
+                            <h4>User-Centric Approach</h4>
+                            <p>
+                                Koboview engages users through incentives, paying them for sharing advertisements on their WhatsApp status. This unique system boosts user engagement and amplifies brand reach.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-12">
+                        <div class="feature-box" style="height:300px;">
+                            <i class="icon-wallet2"></i>
+                            <h4>
+                                Ethical Advertising Practices
+                            </h4>
+                            <p>
+                                Koboview stands out by respecting user preferences and privacy, ensuring a non-intrusive and user-friendly ad experience. Unlike some competitors, we prioritize user satisfaction over aggressive ad exposure.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-12">
+                        <div class="feature-box" style="height:300px;">
+                            <i class="icon-wallet2"></i>
+                            <h4>
+                                Precision Targeting and Engagement
+                            </h4>
+                            <p>
+                                Koboview excels in precise targeting, enabling you to reach your ideal audience with tailored campaigns. This contrasts with broader, less accurate approaches offered by other platforms.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-12">
+                        <div class="feature-box" style="height:300px;">
+                            <i class="icon-wallet2"></i>
+                            <h4>
+                                Innovative Solutions and Proven Success
+                            </h4>
+                            <p>
+                                Koboview leads with innovation, offering cutting-edge advertising tools and techniques. With a track record of successful campaigns and satisfied clients, we continue to evolve and set new standards in the dynamic world of digital marketing.
+
+
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@await Component.InvokeAsync("Ads")

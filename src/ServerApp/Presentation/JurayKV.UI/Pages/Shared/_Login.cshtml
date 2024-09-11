@@ -1,0 +1,95 @@
+﻿
+<html lang="zxx">
+<head>
+
+    <title>DASHBOARD | KOBOVIEW | NO 1 ADVERTISING PLATFORM</title>
+    <link rel="shortcut icon" href="~/img/Koboview-Icon.png" type="image/x-icon" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <!-- External CSS libraries -->
+    <link type="text/css" rel="stylesheet" href="~/AgileVendor/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="~/AgileVendor/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="~/AgileVendor/flaticon.css">
+
+    <!-- Favicon icon -->
+    <!-- Google fonts -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800%7CPoppins:400,500,700,800,900%7CRoboto:100,300,400,400i,500,700">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+
+    <!-- Custom Stylesheet -->
+    <link type="text/css" rel="stylesheet" href="~/AgileVendor/style.css">
+    <link rel="stylesheet" type="text/css" id="style_sheet" href="~/AgileVendor/default.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link href="~/agilevendor/main.css" rel="stylesheet" />
+</head>
+<body id="top">
+
+    <div class="login-6">
+        <div class="container-fluid">
+            <div class="row login-box">
+                <div class="col-lg-6 bg-color-15 align-self-center pad-0 none-992 bg-img">
+                    <div class="info clearfix">
+                        <h1>Welcome to <span>KOBOVIEW</span></h1>
+                        <p>
+                           
+                        About Koboview
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-6 align-self-center pad-0 form-section clip-home">
+                    <div class="form-inner">
+                        <a href="/" class="logo">
+                            <img src="~/img/Koboview-logo-main.png" alt="Koboview Advert" class="" style=" height: 30px; text-align: center; margin: 0 auto;">
+                        </a>
+                        <div data-bn-type="text" class="css-leflpn">
+                            <div data-bn-type="text" class="css-ft5043" style="color:#f5f5f5;">Please check that you are visiting the correct URL</div>
+                            <div data-bn-type="text" class="css-gflt22">
+                                <div class="css-1ur07bk">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="css-1mb79dz">
+                                        <path d="M16.27 10.5V8.07C16.27 5.82 14.45 4 12.2 4S8.13 5.82 8.13 8.07v2.43H6v8.94h12.43V10.5h-2.16zm-3.07 6.46h-2v-4h2v4zm1.07-6.46h-4.14V8.07c0-1.14.93-2.07 2.07-2.07 1.14 0 2.07.93 2.07 2.07v2.43z" fill="currentColor"></path>
+                                    </svg>
+                                </div><div dir="ltr" class="css-vurnku">
+                                    <span data-bn-type="text" class="css-e4p3">https://</span>
+                                    <span style="color:#f5f5f5;">koboview.com</span>
+                                </div>
+                            </div>
+
+                            @RenderBody()
+
+                        </div>
+
+                        <div class="clearfix"></div>
+
+
+                        <p>
+                           Koboview is the Best...
+                        </p>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Login 6 start -->
+    <!-- Login 6 end -->
+    <!-- External JS libraries -->
+    <script src="~/AgileVendor/jquery-2.2.0.min.js"></script>
+    <script src="~/AgileVendor/popper.min.js"></script>
+    <script src="~/AgileVendor/bootstrap.min.js"></script>
+    <!-- Custom JS Script -->
+    @RenderSection("Scripts", required: false)
+
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myInput");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
+</body>
+</html>

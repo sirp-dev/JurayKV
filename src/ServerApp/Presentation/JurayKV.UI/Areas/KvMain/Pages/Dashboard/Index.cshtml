@@ -1,0 +1,137 @@
+﻿@page
+@model JurayKV.UI.Areas.KvMain.Pages.Dashboard.IndexModel
+@{
+}
+
+<div class="card">
+    <div class="card-body">
+
+
+
+        <div class="content-header" style="padding:1px 0;">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12" style="padding-left:0;">
+                        <h5 class="m-0" style="font-weight:900;">DASHBOARD ANALYSIS</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+        
+            <div class="col-lg-3 col-6">
+                <a asp-page="" class="small-box-footer">
+                    <div class="small-box bg-warning" style="margin-bottom: 7.5px;margin-top: 7.5px;">
+                        <div class="inner">
+                            <h3 style="white-space: normal;text-align: center;height: 35px;margin:auto;">
+                                @Model.DashboardData.ActiveAds
+                            </h3>
+                            <p style="text-align: center;font-weight: 900;font-size: 2.0em;margin: 0;">@Model.DashboardData.ActiveAdsCount</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-pie-graph"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-6">
+                <a asp-page="" class="small-box-footer">
+                    <div class="small-box bg-primary" style="margin-bottom: 7.5px;margin-top: 7.5px;">
+                        <div class="inner">
+                            <h3 style="white-space: normal;text-align: center;height: 35px;margin:auto;">
+                                @Model.DashboardData.TotalUserPostToday
+                            </h3>
+                            <p style="text-align: center;font-weight: 900;font-size: 2.0em;margin: 0;">@Model.DashboardData.TotalUserPostTodayCount</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-pie-graph"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-6">
+                <a asp-page="" class="small-box-footer">
+                    <div class="small-box bg-danger" style="margin-bottom: 7.5px;margin-top: 7.5px;">
+                        <div class="inner">
+                            <h3 style="white-space: normal;text-align: center;height: 35px;margin:auto;">
+                                @Model.DashboardData.TotalUser
+                            </h3>
+                            <p style="text-align: center;font-weight: 900;font-size: 2.0em;margin: 0;">@Model.DashboardData.TotalUserCount</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-pie-graph"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            @*<div class="col-lg-3 col-6">
+                <a asp-page="" class="small-box-footer">
+                    <div class="small-box bg-warning" style="margin-bottom: 7.5px;margin-top: 7.5px;">
+                        <div class="inner">
+                            <h3 style="white-space: normal;text-align: center;height: 35px;margin:auto;">
+                                @Model.DashboardData.ActiveUser
+                            </h3>
+                            <p style="text-align: center;font-weight: 900;font-size: 2.0em;margin: 0;">@Model.DashboardData.ActiveUserCount</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-pie-graph"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-6">
+                <a asp-page="" class="small-box-footer">
+                    <div class="small-box bg-info" style="margin-bottom: 7.5px;margin-top: 7.5px;">
+                        <div class="inner">
+                            <h3 style="white-space: normal;text-align: center;height: 35px;margin:auto;">
+                                @Model.DashboardData.TotalPointEarnToday
+                            </h3>
+                            <p style="text-align: center;font-weight: 900;font-size: 2.0em;margin: 0;">@Model.DashboardData.TotalPointEarnTodayCount</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-pie-graph"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-6">
+
+                <a asp-page="" class="small-box-footer">
+                    <div class="small-box bg-gradient" style="margin-bottom: 7.5px;margin-top: 7.5px;">
+                        <div class="inner">
+                            <h3 style="white-space: normal;text-align: center;height: 35px;margin:auto;">
+                                @Model.DashboardData.TotalPointEarnTheseWeek
+                            </h3>
+                            <p style="text-align: center;font-weight: 900;font-size: 2.0em;margin: 0;">@Model.DashboardData.TotalPointEarnTheseWeekCount</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-pie-graph"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-6">
+                <a asp-page="" class="small-box-footer">
+                    <div class="small-box bg-warning" style="margin-bottom: 7.5px;margin-top: 7.5px;">
+                        <div class="inner">
+                            <h3 style="white-space: normal;text-align: center;height: 35px;margin:auto;">
+                                @Model.DashboardData.TotalPointEarnTheseMonth
+                            </h3>
+                            <p style="text-align: center;font-weight: 900;font-size: 2.0em;margin: 0;">@Model.DashboardData.TotalPointEarnTheseMonthCount</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-pie-graph"></i>
+                        </div>
+                    </div>
+                </a>
+
+
+
+            </div>*@
+
+        </div>
+
+    </div><!-- /.container-fluid -->
+
+</div>

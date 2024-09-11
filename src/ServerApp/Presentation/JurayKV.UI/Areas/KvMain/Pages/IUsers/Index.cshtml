@@ -1,0 +1,249 @@
+﻿@page
+@model JurayKV.UI.Areas.KvMain.Pages.IUsers.IndexModel
+@{
+}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">USER MANAGERS</h3>
+
+        @*<a asp-page="./UserList" class="btn bg-gradient-warning btn-sm" style="float:right;">Users List JQuery</a>
+        <a asp-page="./UserList" class="btn bg-gradient-danger btn-sm" style="float:right;">List JQuery 2</a>*@
+
+    </div>
+
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-3">
+                <a asp-page="./Index" asp-route-all="true" class="btn btn-primary" style="width:100%;margin-bottom:10px;">
+                    All Users (@Model.All)
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a asp-page="./Index" asp-route-status="@JurayKV.Domain.Primitives.Enum.AccountStatus.Active" class="btn btn-primary" style="width: 100%; margin-bottom: 10px;">
+                    Active Users (@Model.ActiveOnly)
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a asp-page="./Index" asp-route-status="@JurayKV.Domain.Primitives.Enum.AccountStatus.New" class="btn btn-danger" style="width: 100%; margin-bottom: 10px;">
+                    New Users (@Model.New)
+                </a>
+            </div>
+            <div class="col-md-3"><a asp-page="./Index" asp-route-status="@JurayKV.Domain.Primitives.Enum.AccountStatus.Suspended" class="btn btn-danger" style="width: 100%; margin-bottom: 10px;">
+    Suspended Users (@Model.Suspended)
+</a></div>
+            <div class="col-md-3">
+                <a asp-page="./Index" asp-route-status="@JurayKV.Domain.Primitives.Enum.AccountStatus.Disabled" class="btn btn-warning" style="width: 100%; margin-bottom: 10px;">
+                    Disabled Users (@Model.Disabled)
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a asp-page="./Index" asp-route-status="@JurayKV.Domain.Primitives.Enum.AccountStatus.NotActive" class="btn btn-default" style="width: 100%; margin-bottom: 10px;">
+                    Not Active Users (@Model.NotActive)
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a asp-page="./Index" asp-route-status="@JurayKV.Domain.Primitives.Enum.AccountStatus.NotDefind" class="btn btn-info" style="width: 100%; margin-bottom: 10px;">
+                    NotDefind Users (@Model.NotDefind)
+                </a>
+            </div>
+             
+        </div>
+       
+       
+        
+    </div>
+
+    <div class="card-header">
+        <h5>TIER TWO STATUS</h5>
+        <div class="row">
+            <div class="col-md-3">
+                <a class="btn btn-primary" asp-page="./Index" asp-route-tieRequest="@JurayKV.Domain.Primitives.Enum.TieRequestStatus.None" style="width: 100%; margin-bottom: 10px;">
+                    None Upgrade (@Model.NotYetTieTwo)
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a class="btn btn-warning" asp-page="./Index" asp-route-tieRequest="@JurayKV.Domain.Primitives.Enum.TieRequestStatus.Requested" style="width: 100%; margin-bottom: 10px;">
+                    Upgrade Request (@Model.RequestedTieTwo)
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a class="btn btn-success" asp-page="./Index" asp-route-tieRequest="@JurayKV.Domain.Primitives.Enum.TieRequestStatus.Approved" style="width: 100%; margin-bottom: 10px;">
+                    Approved Request (@Model.ApprovedTieTwo)
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a class="btn btn-danger" asp-page="./Index" asp-route-tieRequest="@JurayKV.Domain.Primitives.Enum.TieRequestStatus.Cancelled" style="width: 100%; margin-bottom: 10px;">
+                    Cancelled Request (@Model.Cancelled)
+                </a>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>
+                            ID
+
+                        </th>
+                        <th>
+                            Surname
+                        </th>
+                        <th>
+                            Firstname
+                        </th>
+                        <th>
+                            Email
+
+                        </th>
+                        <th>
+                            Phone
+
+                        </th>
+                        <th>
+                            Date
+
+                        </th>
+                        <th>
+                            LoggedIn
+
+                        </th>
+
+                        <th>
+                            Tie
+                        </th>
+
+
+                        <th>
+                            Role
+
+                        </th>
+                        <th>
+                            Status
+
+                        </th>
+
+                        <th>
+                            Verified
+
+                        </th>
+                        <th>Code</th>
+                        <th> </th>
+
+                    </tr>
+                </thead>
+                @{
+                    int sn = 0;
+
+                }
+                <tbody>
+                    @foreach (var item in Model.UserManagers)
+                    {
+                        <tr>
+                            <td>
+                                @{
+                                    sn++;
+                                }
+                                @sn
+                            </td>
+                            <td>
+                                <a asp-page="./Info" asp-route-id="@item.Id">
+                                    @Html.DisplayFor(modelItem => item.IdNumber)
+                                </a>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Surname)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Firstname)
+                                @Html.DisplayFor(modelItem => item.Lastname)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PhoneNumber)
+                            </td>
+
+                            <td>
+                                @item.CreationUTC
+                            </td>
+                            <td>
+                                @item.LastLoggedInAtUtc
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Tier)
+                                @if (item.Tie2Request == JurayKV.Domain.Primitives.Enum.TieRequestStatus.Approved)
+                                {
+                                    <span class="btn btn-success btn-xs">approved</span>
+                                }
+                                else if (item.Tie2Request == JurayKV.Domain.Primitives.Enum.TieRequestStatus.Requested)
+                                {
+                                    <span class="btn btn-warning btn-xs">requested</span>
+                                }
+                                else if (item.Tie2Request == JurayKV.Domain.Primitives.Enum.TieRequestStatus.Cancelled)
+                                {
+                                    <span class="btn btn-danger btn-xs">cancelled</span>
+                                }
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Role)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AccountStatus)
+                            </td>
+
+                            <td>
+                                @if (item.Verified == true)
+                                {
+
+
+                                    <span class="btn btn-success btn-xs"><i class="fa fa-check"></i></span>
+                                }
+                                else
+                                {
+                                    <span class="btn btn-danger btn-xs"><i class="fa fa-times"></i></span>
+
+                                }
+                            </td>
+                            <td>
+                                <span style="font-size:11px;">
+                                    @if (item.Verified == false)
+                                    {
+                                        @Html.DisplayFor(modelItem => item.VerificationCode)
+                                    }
+                                </span>
+                            </td>
+                            <td>
+                                <div class="btn-group">
+
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-success btn-xs dropdown-toggle dropdown-icon" data-toggle="dropdown" aria-expanded="false">
+                                            Action
+                                        </button>
+                                        <div class="dropdown-menu" style="">
+
+                                            <a class="dropdown-item" asp-page="./Info" asp-route-id="@item.Id">Details</a>
+                                            <a class="dropdown-item" asp-page="./Update" asp-route-id="@item.Id">Update</a>
+                                            <a class="dropdown-item" asp-page="/IUserMessages/Add" asp-route-id="@item.Id">Send a Message</a>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+ 

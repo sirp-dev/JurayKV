@@ -1,0 +1,81 @@
+﻿@page
+@model JurayKV.UI.Areas.User.Pages.Account.UploadModel
+@{
+}
+<!-- Your existing HTML content -->
+<div id="upload-container">
+    <input type="file" id="videoInput" />
+    <div id="loading-icon" class="hidden">
+        <!-- Add your loading icon here (e.g., spinning circle) -->
+        Loading...
+    </div>
+    <div id="upload-status" class="hidden">
+        Upload Status: <span id="status-text"></span>
+    </div>
+    <button id="uploadButton">Upload</button>
+</div>
+
+<style>
+    #loading-icon {
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    .hidden {
+        display: none;
+    }
+</style>
+<script>
+    $(document).ready(function () {
+        var videoInput = document.getElementById('videoInput');
+        var loadingIcon = document.getElementById('loading-icon');
+        var uploadStatus = document.getElementById('upload-status');
+        var statusText = document.getElementById('status-text');
+
+        $('#uploadButton').on('click', function () {
+            var file = videoInput.files[0];
+            if (file) {
+                // Show loading icon and upload status
+                loadingIcon.classList.remove('hidden');
+                uploadStatus.classList.remove('hidden');
+                statusText.innerText = 'In Progress...';
+
+                // Simulate an upload process (replace with your actual upload logic)
+                setTimeout(function () {
+                    // Update status after some time (simulating server response)
+                    statusText.innerText = 'Completed!';
+                    loadingIcon.classList.add('hidden');
+                }, 3000); // Adjust the time based on your needs
+
+                // Simulate AJAX upload (replace with actual AJAX code)
+                $.ajax({
+                    url: '/YourController/YourUploadAction',
+                    type: 'POST',
+                    data: new FormData($('#upload-container')[0]),
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        // Handle success
+                        console.log(data);
+                    },
+                    error: function (error) {
+                        // Handle error
+                        console.error(error);
+                    }
+                });
+            }
+        });
+
+        $('#upload-container').on('mouseover', function () {
+            // Show upload status on hover
+            if (!loadingIcon.classList.contains('hidden')) {
+                uploadStatus.classList.remove('hidden');
+            }
+        });
+
+        $('#upload-container').on('mouseout', function () {
+            // Hide upload status when not hovering
+            uploadStatus.classList.add('hidden');
+        });
+    });
+</script>

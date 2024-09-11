@@ -1,0 +1,77 @@
+﻿@page
+@model JurayKV.UI.Areas.KvMain.Pages.IPoints.InfoModel
+@{
+}
+
+<div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title">KV POINTS DETAILS</h3>
+
+    </div>
+    <!-- /.card-header -->
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+
+                <dl class="row">
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.UpdateKvPoint.Fullname)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.UpdateKvPoint.Fullname)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.UpdateKvPoint.Company)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.UpdateKvPoint.Company)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.UpdateKvPoint.Point)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.UpdateKvPoint.Point)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.UpdateKvPoint.Status)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.UpdateKvPoint.Status)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.UpdateKvPoint.PointHash)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.UpdateKvPoint.PointHash)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.UpdateKvPoint.CreatedAtUtc)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.UpdateKvPoint.CreatedAtUtc)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.UpdateKvPoint.LastModifiedAtUtc)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.UpdateKvPoint.LastModifiedAtUtc)
+                    </dd>
+
+                </dl>
+            </div>
+        </div>
+
+
+        <!-- /.row -->
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+        <a class="btn btn-warning" asp-page="./Update" asp-route-id="@Model.UpdateKvPoint.Id">Update</a>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

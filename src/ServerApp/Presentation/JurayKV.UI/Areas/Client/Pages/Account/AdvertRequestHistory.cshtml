@@ -1,0 +1,79 @@
+﻿@page
+@model JurayKV.UI.Areas.Client.Pages.Account.AdvertRequestHistoryModel
+@{
+}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Advert Request History</h3>
+
+
+        <a asp-page="./AdvertRequest" class="btn bg-gradient-warning btn-sm" style="float:right;">Make an Advert Request</a>
+
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        @if (TempData["error"] != null)
+        {
+            <div class="alert alert-danger">
+                <strong>@TempData["error"]</strong>
+            </div>
+        }
+
+        @if (TempData["success"] != null)
+        {
+            <div class="alert alert-success">
+                <strong>@TempData["success"]</strong>
+            </div>
+        }
+
+        <div class="table-responsive">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>
+                            Date
+                        </th>
+
+                        <th>Amount </th>
+                        <th>Status </th>
+
+
+                    </tr>
+                </thead>
+                @{
+                    int sn = 0;
+                }
+                <tbody>
+                    @foreach (var item in Model.AdvertRequestListDto)
+                    {
+                        <tr>
+                            <td>
+                                @{
+                                    sn++;
+                                }
+                                @sn
+                            </td>
+
+                            <td>
+                                <a asp-page="./AdvertDetails" asp-route-id="@item.Id">
+                                    @item.CreatedAtUtc.ToString("dd/MM/yyyy")
+                                </a>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Amount)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>
+
+
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

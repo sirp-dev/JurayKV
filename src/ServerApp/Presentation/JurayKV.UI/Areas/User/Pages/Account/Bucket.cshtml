@@ -1,0 +1,97 @@
+﻿@page
+@model JurayKV.UI.Areas.User.Pages.Account.BucketModel
+@{
+    //Guid idd = Guid.NewGuid();
+    //ViewData["datavalidate"] = idd.ToString();
+}
+<div class="row">
+    <div class="col-md-12">
+        <h3 style="text-align:center;">ADVERT BUCKET FOR YOUR STATUS</h3>
+        <p style="text-align:center;">Kindly Make Sure You Pick Your Advert From Any of the Bucket Below</p>
+
+        @if (TempData["error"] != null)
+        {
+            <div class="alert alert-danger">
+                <strong>@TempData["error"]</strong>
+            </div>
+        } @if (TempData["success"] != null)
+        {
+            <div class="alert alert-success">
+                <strong>@TempData["success"]</strong>
+            </div>
+        }
+    </div>
+    @foreach (var item in Model.KvAds)
+    {
+
+        <div class="col-sm-4">
+            <div class="service-simple">
+
+
+                <h4 style="text-align:center;">@item.BucketName</h4>
+                <div class="position-relative">
+
+                    @if (item.ImageKey.EndsWith(".jpg") || item.ImageKey.EndsWith(".jpeg") || item.ImageKey.EndsWith(".png") || item.ImageKey.EndsWith(".gif") || item.ImageKey.EndsWith(".bmp"))
+                    {
+                        <input type="image" src="@item.ImageUrl" alt="Submit" class="img-fluid">
+                    }
+                    else if (item.ImageKey.EndsWith(".mp4") || item.ImageKey.EndsWith(".avi") || item.ImageKey.EndsWith(".mov") || item.ImageKey.EndsWith(".wmv") || item.ImageKey.EndsWith(".flv"))
+                    {
+                        <video controls style="height:120px;width:250px;">
+                            <source src="@item.ImageUrl" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    }
+
+
+                </div>
+                <form method="post">
+                    @if (item.MyActiveAdvert == false)
+                    {
+                        <input type="hidden" name="kId" value="@item.Id" />
+                        <input type="hidden" asp-for="Date" value="@item.CreatedAtUtc" />
+
+
+                        <input type="submit" value="Post These Advert" class="btn btn-primary btn-block" style="border-radius:0;" />
+                    }
+                    else
+                    {
+                        <button type="button" class="btn btn-success btn-block" style="border-radius:0;" disabled>Already a Running ADs</button>
+                    }
+                </form>
+
+            </div>
+        </div>
+
+    }
+</div>
+
+
+@section Scripts {
+    <div class="modal fade" id="mainModal" data-backdrop="static">
+        <div class="modal-dialog modal-md" style="width: 70% !important;">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h3>
+                        Disclaimer: Points Terms for Ad Views
+                    </h3>
+                    <div>
+                        <h6>
+                            Please note that we will only compensate for the initial 500 views of your advertisement.
+                            Any views exceeding this limit will not be eligible for points.
+                        </h6>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="closeModal()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(window).on('load', function () {
+            $('#mainModal').modal('show');
+        });
+    </script>
+}

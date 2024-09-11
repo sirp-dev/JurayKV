@@ -1,0 +1,271 @@
+﻿@page
+@model JurayKV.UI.Areas.Payment.Pages.Account.IndexModel
+@{
+}
+<style>
+
+    /* Mobile styles */
+    @@media (max-width: 767px) {
+        .col-xs-6 {
+            width: 50% !important;
+        }
+
+        .col-sm-6 {
+            width: 50% !important;
+        }
+        /* Adjust font size for mobile */
+        .info-box-text {
+            font-size: 0.9rem; /* You can adjust the font size accordingly */
+        }
+
+        .info-box .info-box-content {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            -ms-flex-pack: center;
+            justify-content: center;
+            line-height: 1.8;
+            -ms-flex: 1;
+            flex: 1;
+            padding: 0 0px;
+            overflow: hidden;
+            text-align: center;
+        }
+    }
+
+    @@media (max-width: 340px) {
+        .info-box-text {
+            font-size: 0.7rem;
+            font-weight: 800;
+        }
+    }
+
+    .info-box {
+        box-shadow: 0 0 1px rgba(0,0,0,.125), 0 1px 3px rgba(0,0,0,.2);
+        border-radius: .25rem;
+        background-color: #fff;
+        display: -ms-flexbox;
+        display: flex;
+        margin-bottom: 1rem;
+        min-height: 40px;
+        padding: .2rem;
+        position: relative;
+        width: 100%;
+    }
+</style>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 style="text-align:center;">PAYMENT SERVICES</h3>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+
+        <div class="card">
+
+            <div class="card-body">
+                <div class="row">
+
+                    <div class="col-sm-6 col-xs-6">
+                        <div class="card-header">
+                            <h4>Fund Wallet</h4>
+                        </div>
+                        <a>
+
+                            <div class="info-box">
+
+                                <div class="info-box-content">
+                                    <div class="info-box-text">
+                                       Fund Now (<i>coming soon</i>)
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </a>
+
+                    </div>
+                    <div class="col-sm-6 col-xs-6">
+                        <div class="card-header">
+                            <h4>Send To Account</h4>
+                        </div>
+                        <a>
+
+                            <div class="info-box">
+
+                                <div class="info-box-content">
+                                    <div class="info-box-text">
+                                        Send Now (<i>coming soon</i>)
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @if (Model.SettingDetails.BillGateway == JurayKV.Domain.Primitives.Enum.BillGateway.VTU)
+    {
+        <div class="col-md-12">
+
+            <div class="card">
+                <div class="card-header">
+                    <h4>AIRTIME</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        @foreach (var item in Model.CategoryVariations.Where(x => x.VariationType == JurayKV.Domain.Primitives.Enum.VariationType.AirtimeData))
+                        {
+                            <div class="col-sm-6 col-xs-6">
+                                <a asp-page="./BuyAirtime" asp-route-id="@item.Id">
+
+                                    <div class="info-box">
+
+                                        <div class="info-box-content">
+                                            <div class="info-box-text">
+                                                <img src="@item.Url" height="20" />
+                                                @item.Name
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </a>
+
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+
+            <div class="card">
+                <div class="card-header">
+                    <h4>MOBILE DATA</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        @foreach (var item in Model.CategoryVariations.Where(x => x.VariationType == JurayKV.Domain.Primitives.Enum.VariationType.AirtimeData))
+                        {
+                            <div class="col-sm-6 col-xs-6">
+                                <a asp-page="./BuyData" asp-route-id="@item.Id">
+
+                                    <div class="info-box">
+
+                                        <div class="info-box-content">
+                                            <div class="info-box-text">
+                                                <img src="@item.Url" height="20" />
+                                                @item.Name
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </a>
+
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+
+            <div class="card">
+                <div class="card-header">
+                    <h4>CABLE SUBSCRIPTIONS</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        @foreach (var item in Model.CategoryVariations.Where(x => x.VariationType == JurayKV.Domain.Primitives.Enum.VariationType.TV))
+                        {
+                            <div class="col-sm-6 col-xs-6">
+                                <a asp-page="./SubscribeCable" asp-route-id="@item.Id">
+
+                                    <div class="info-box">
+
+                                        <div class="info-box-content">
+                                            <div class="info-box-text">
+                                                <img src="@item.Url" height="20" />
+                                                @item.Name
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </a>
+
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+
+            <div class="card">
+                <div class="card-header">
+                    <h4>ELECTRICITY BILLS</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        @foreach (var item in Model.CategoryVariations.Where(x => x.VariationType == JurayKV.Domain.Primitives.Enum.VariationType.Electricity))
+                        {
+                            <div class="col-sm-6 col-xs-6">
+                                <a asp-page="./VerifyElectricity" asp-route-id="@item.Id">
+
+                                    <div class="info-box">
+
+                                        <div class="info-box-content">
+                                            <div class="info-box-text">
+                                                <img src="@item.Url" height="20" />
+                                                @item.Name
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </a>
+
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    }
+    else
+    {
+
+        foreach (var item in Model.Billers.BillerCategories)
+        {
+            <div class="col-sm-6 col-xs-6">
+                <a asp-page="./BxListAquiry" asp-route-id="@item.Id">
+
+
+                    <div class="info-box">
+
+                        <div class="info-box-content">
+                            <span class="info-box-text">@item.Name</span>
+
+                        </div>
+
+                    </div>
+                </a>
+
+            </div>
+        }
+    }
+
+</div>

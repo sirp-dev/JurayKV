@@ -1,0 +1,55 @@
+﻿@page
+@model JurayKV.UI.Areas.KvMain.Pages.ImagePage.InfoModel
+@{
+}
+
+<div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title">IMAGES DETAILS</h3>
+
+    </div>
+    <!-- /.card-header -->
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+
+                <dl class="row">
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Image.ImageUrl)
+                    </dt>
+                    <dd class="col-sm-10">
+                        <img src="@Model.Image.ImageUrl" class="img-fluid" style="max-height:150px;" />
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Image.ImageKey)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Image.ImageKey)
+                    </dd>
+
+                   
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Image.ShowInDropdown)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Image.ShowInDropdown)
+                    </dd>
+                    
+                </dl>
+            </div>
+        </div>
+
+
+        <!-- /.row -->
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+        <a class="btn btn-warning" asp-page="./Update" asp-route-id="@Model.Image.Id">Update</a>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

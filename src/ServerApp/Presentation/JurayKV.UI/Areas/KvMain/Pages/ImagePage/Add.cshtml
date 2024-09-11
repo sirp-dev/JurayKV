@@ -1,0 +1,57 @@
+﻿@page
+@model JurayKV.UI.Areas.KvMain.Pages.ImagePage.AddModel
+@{
+}
+
+<div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title">NEW IMAGE</h3>
+
+    </div>
+    <!-- /.card-header -->
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <label asp-for="Image.Name" class="control-label"></label>
+                        <input asp-for="Image.Name" class="form-control" id="upper" onkeyup="myUppercase()" />
+                        <span asp-validation-for="Image.Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="Image.ShowInDropdown" /> @Html.DisplayNameFor(model => model.Image.ShowInDropdown)
+                        </label>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label">Image</label><br />
+                        <input type="file" class="control-label" asp-for="imagefile" />
+                    </div>
+
+
+                    <div class="form-group">
+                        <input type="submit" value="Submit" class="btn btn-primary" />
+                        <a asp-page="./Index" class="btn bg-gradient-warning btn-sm" style="float:right;">Back</a>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <!-- /.row -->
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

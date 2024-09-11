@@ -1,0 +1,109 @@
+﻿@page
+@model JurayKV.UI.Areas.KvMain.Pages.IUsers.UpdateModel
+@{
+}
+
+<div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title">UPDATE USER</h3>
+
+    </div>
+    <!-- /.card-header -->
+    @TempData["error"]
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="UpdateUserManager.Id" />
+                    <input type="hidden" asp-for="UpdateUserManager.Email" />
+                    <div class="form-group">
+                        <label asp-for="UpdateUserManager.Surname" class="control-label"></label>
+                        <input asp-for="UpdateUserManager.Surname" class="form-control" id="upper" onkeyup="myUppercase()" />
+                        <span asp-validation-for="UpdateUserManager.Surname" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="UpdateUserManager.Firstname" class="control-label"></label>
+                        <input asp-for="UpdateUserManager.Firstname" class="form-control" id="upper" onkeyup="myUppercase()" />
+                        <span asp-validation-for="UpdateUserManager.Firstname" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="UpdateUserManager.Lastname" class="control-label"></label>
+                        <input asp-for="UpdateUserManager.Lastname" class="form-control" id="upper" onkeyup="myUppercase()" />
+                        <span asp-validation-for="UpdateUserManager.Lastname" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="UpdateUserManager.PhoneNumber" class="control-label"></label>
+                        <input asp-for="UpdateUserManager.PhoneNumber" class="form-control" id="upper" onkeyup="myUppercase()" />
+                        <span asp-validation-for="UpdateUserManager.PhoneNumber" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="UpdateUserManager.AccountStatus" class="control-label"></label>
+                        <div>
+                            @Html.DropDownListFor(model => model.UpdateUserManager.AccountStatus, new SelectList(Enum.GetValues(typeof(JurayKV.Domain.Primitives.Enum.AccountStatus))), new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="UpdateUserManager.Tie2Request" class="control-label"></label>
+                        <div>
+                            @Html.DropDownListFor(model => model.UpdateUserManager.Tie2Request, new SelectList(Enum.GetValues(typeof(JurayKV.Domain.Primitives.Enum.TieRequestStatus))), new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="">
+                        <h4>ID Card</h4>
+                        @if (Model.UpdateUserManager.IDCardUrl != null)
+                        {
+                            <img src="@Model.UpdateUserManager.IDCardUrl" height="200" />
+                        }
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="UpdateUserManager.NinNumber" class="control-label"></label>
+                        <input asp-for="UpdateUserManager.NinNumber" class="form-control" type="number" />
+                        <span asp-validation-for="UpdateUserManager.NinNumber" class="text-danger"></span>
+                    </div>
+                    <div class="">
+                        <h4>Passport</h4>
+                        @if (Model.UpdateUserManager.PassportUrl != null)
+                        {
+                            <img src="@Model.UpdateUserManager.PassportUrl" height="200" />
+                        }
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="UpdateUserManager.Tier" class="control-label"></label>
+                        <div>
+                            @Html.DropDownListFor(model => model.UpdateUserManager.Tier, new SelectList(Enum.GetValues(typeof(JurayKV.Domain.Primitives.Enum.Tier))), new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="UpdateUserManager.EmailComfirmed" /> @Html.DisplayNameFor(model => model.UpdateUserManager.EmailComfirmed)
+                        </label>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="UpdateUserManager.TwoFactorEnable" /> @Html.DisplayNameFor(model => model.UpdateUserManager.TwoFactorEnable)
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Submit" class="btn btn-primary" />
+                        <a asp-page="./Index" class="btn bg-gradient-warning btn-sm" style="float:right;">Back</a>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <!-- /.row -->
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,219 @@
+﻿@page
+@model JurayKV.UI.Areas.User.Pages.Account.ProfileModel
+@{
+    string myreflink = "";
+    try
+    {
+        string last10DigitsPhoneNumber1 = Model.UserData.PhoneNumber.Substring(Math.Max(0, Model.UserData.PhoneNumber.Length - 10));
+
+        myreflink = Url.Page(
+         "/Account/Register",
+         pageHandler: null,
+         values: new { refx = last10DigitsPhoneNumber1, area = "Auth" },
+         protocol: Request.Scheme);
+    }
+    catch (Exception c) { }
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <!-- Widget: user widget style 1 -->
+        <div class="card card-widget widget-user">
+            <!-- Add the bg color to the header using any of the bg-* classes widget-user-header bg-info-->
+            <div class="widget-user-header bg-primary">
+                <h3 class="widget-user-username text-right">@Model.UserData.Fullname</h3>
+                <h5 class="widget-user-desc text-right">User (@Model.UserData.Tier)
+                @if(Model.UserData.Tier != JurayKV.Domain.Primitives.Enum.Tier.Tier2) { 
+                <a asp-page="./UpgradeTie2" class="btn btn-warning">Upgrade</a>
+                }
+                </h5>
+                <h6>ID (@Model.UserData.IdNumber)</h6>
+            </div>
+            <div class="widget-user-image">
+                @if (User.IsInRole("CSA") || Model.UserData.Tier == JurayKV.Domain.Primitives.Enum.Tier.Tier2)
+                {
+
+
+                    @if (!String.IsNullOrEmpty(Model.UserData.PassportUrl))
+                    {
+                        <img class="img-circle" src="@Model.UserData.PassportUrl" alt="User Avatar">
+
+                    }
+                    else
+                    {
+                        <img class="img-circle" src="~/img/Koboview-Icon.png" alt="User Avatar">
+
+                    }
+
+
+
+                }
+                else
+                {
+                    <img class="img-circle" src="~/img/Koboview-Icon.png" alt="User Avatar">
+                }
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-sm-4 border-right">
+                        <div class="description-block">
+                            <h5 class="description-header">@Model.DashboardData.Points</h5>
+                            <span class="description-text">POINTS</span>
+                        </div>
+                        <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm-4 border-right">
+                        <div class="description-block">
+                            <h5 class="description-header">@Model.DashboardData.AdsCount</h5>
+                            <span class="description-text">ADs</span>
+                        </div>
+                        <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm-4">
+                        <div class="description-block">
+                            <h5 class="description-header">@Model.DashboardData.TransactionsCount</h5>
+                            <span class="description-text">TRANSACTIONS</span>
+                        </div>
+                        <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+        </div>
+        <!-- /.widget-user -->
+        <div class="card">
+            <div class="card-header">
+                <h6 class="">Referral Link (click to copy)</h6>
+
+                <div id="referralLink" style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; cursor: pointer;"
+                     onclick="copyToClipboard()">
+                    @myreflink.ToLower()
+                </div>
+            </div>
+        </div>
+        <div class="card">
+
+            <div class="card-header">
+                <h3 class="card-title">About Me</h3>
+                <a asp-page="./UpdateProfile" class="btn bg-gradient-warning btn-sm" style="float:right;">Update</a>
+
+            </div>
+            @if (!String.IsNullOrEmpty(Model.UserData.About))
+            {
+                <div class="card-header">
+                    <p></p>
+                </div>
+            }
+            <!-- /.card-header -->
+            <div class="card-body">
+                <strong><i class="fas fa-envelope mr-1"></i> Email</strong>
+
+                <p class="text-muted">
+                    @Model.UserData.Email
+                </p>
+
+                <hr>
+                <strong><i class="fas fa-phone mr-1"></i> Phone Number</strong>
+
+                <p class="text-muted">
+                    @Model.UserData.PhoneNumber
+                </p>
+                <hr>
+                <strong><i class="fas fa-user-alt mr-1"></i> Reffered By</strong>
+
+                <p class="text-muted">@Model.UserData.RefferedBy</p>
+                @*@if (User.IsInRole("CSA"))
+                {*@
+
+
+                    <hr>
+                    <strong><i class="fas fa-map-marker-alt mr-1"></i> Address</strong>
+
+                    <p class="text-muted">@Model.UserData.Address</p>
+
+                    <hr>
+                    <strong><i class="fas fa-map-marker-alt mr-1"></i> State/LGA</strong>
+
+                    <p class="text-muted">@Model.UserData.State/@Model.UserData.LGA</p>
+                    <hr>
+                    <strong><i class="fas fa-phone mr-1"></i> Alternative Phone</strong>
+
+                    <p class="text-muted">@Model.UserData.AlternativePhone</p>
+
+                    <hr>
+                    <strong><i class="fas fa-file mr-1"></i> Occupation</strong>
+
+                    <p class="text-muted">@Model.UserData.Occupation</p>
+                    <hr>
+                    <strong><i class="fas fa-map-marker-alt mr-1"></i> Social Media Handles</strong>
+
+                    <p class="text-muted">Facebook: @Model.UserData.FbHandle</p>
+                    <p class="text-muted">Instagram: @Model.UserData.InstagramHandle</p>
+                    <p class="text-muted">Twitter: @Model.UserData.TwitterHandle</p>
+                    <p class="text-muted">Tiktok: @Model.UserData.TiktokHandle</p>
+
+                    <hr>
+                    <strong><i class="fas fa-map-marker-alt mr-1"></i> ID Card</strong>
+                @if (!String.IsNullOrEmpty(Model.UserData.PassportUrl)) { 
+                    <p class="text-muted">
+                        <img class="img-fluid" src="@Model.UserData.PassportUrl" alt="User Avatar">
+                    </p>
+                }
+                    <hr>
+
+                
+
+                @if (Model.UserData.Tier == JurayKV.Domain.Primitives.Enum.Tier.Tier2)
+                {
+                    <strong><i class="fas fa-home mr-1"></i> Bank Name</strong>
+
+                    <p class="text-muted">@Model.UserData.BankName</p>
+
+                    <hr>
+                    <strong><i class="fas fa-map-marker-alt mr-1"></i> Account Name</strong>
+
+                    <p class="text-muted">@Model.UserData.AccountName</p>
+                    <hr>
+                    <strong><i class="fas fa-map-marker-alt mr-1"></i> Account Number</strong>
+
+                    <p class="text-muted">@Model.UserData.AccountNumber</p>
+
+                    <hr>
+                    <strong><i class="fas fa-map-marker-alt mr-1"></i> BVN</strong>
+
+                    <p class="text-muted">@Model.UserData.BVN</p>
+
+                    <hr>
+                }
+            </div>
+            <!-- /.card-body -->
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function copyToClipboard() {
+            /* Get the text content of the div */
+            var copyText = document.getElementById("referralLink");
+
+            /* Create a range to select text */
+            var range = document.createRange();
+            range.selectNode(copyText);
+
+            /* Select the text inside the div */
+            window.getSelection().removeAllRanges(); // Clear any previous selection
+            window.getSelection().addRange(range);
+
+            /* Copy the selected text */
+            document.execCommand("copy");
+
+            /* Alert the copied text */
+            alert("Copied to clipboard: " + copyText.innerText);
+        }
+    </script>
+}

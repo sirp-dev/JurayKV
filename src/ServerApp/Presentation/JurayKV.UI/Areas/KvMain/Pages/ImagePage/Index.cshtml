@@ -1,0 +1,104 @@
+﻿@page
+@model JurayKV.UI.Areas.KvMain.Pages.ImagePage.IndexModel
+@{
+}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">IMAGES</h3>
+
+
+        <a asp-page="./Add" class="btn bg-gradient-warning btn-sm" style="float:right;">Add New</a>
+
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th>
+                            Image
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Image[0].ShowInDropdown)
+                        </th>
+
+                        <th></th>
+                    </tr>
+                </thead>
+
+                @{
+                    int sn = 0;
+                }
+                <tbody>
+                    @foreach (var item in Model.Image)
+                    {
+                        <tr>
+
+                            <td>
+                                @{
+                                    sn++;
+                                }
+                                @sn
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @item.CreatedAtUtc.ToString("dd/MM/yyyy")
+                            </td>
+                            <td>
+
+
+                                <a href="@item.ImageUrl" target="_blank">
+
+                                    @if (item.ImageKey.EndsWith(".jpg") || item.ImageKey.EndsWith(".jpeg") || item.ImageKey.EndsWith(".png") || item.ImageKey.EndsWith(".gif") || item.ImageKey.EndsWith(".bmp"))
+                                    {
+                                        <img src="@item.ImageUrl" class="img-fluid" style="max-height: 50px;" />
+                                    }
+                                    else if (item.ImageKey.EndsWith(".mp4") || item.ImageKey.EndsWith(".avi") || item.ImageKey.EndsWith(".mov") || item.ImageKey.EndsWith(".wmv") || item.ImageKey.EndsWith(".flv"))
+                                    {
+                                        <video controls style="height:120px;width:250px;">
+                                            <source src="@item.ImageUrl" type="video/mp4">
+                                            Your browser does not support the video tag.
+                                        </video>
+                                    }
+
+                                </a>
+
+
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ShowInDropdown)
+                            </td>
+
+
+                            <td>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-success">Action</button>
+
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-success dropdown-toggle dropdown-icon" data-toggle="dropdown" aria-expanded="false">
+                                        </button>
+                                        <div class="dropdown-menu" style="">
+
+                                            <a class="dropdown-item" asp-page="./Update" asp-route-id="@item.Id">Edit</a>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

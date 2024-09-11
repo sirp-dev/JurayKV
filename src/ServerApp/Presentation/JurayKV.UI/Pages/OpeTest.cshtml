@@ -1,0 +1,16 @@
+﻿@page
+@model JurayKV.UI.Pages.OpeTestModel
+@{
+}
+ 
+<h4>Check Mail</h4>
+<div>
+    @if (Model.Result == true)
+    {
+          <span>Sent Mail</span>
+    }
+    else
+    {
+        <span>Failed</span>
+    }
+</div>

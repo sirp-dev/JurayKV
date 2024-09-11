@@ -1,0 +1,23 @@
+﻿<li class="nav-item" style="background-color: #746e6e;">
+
+    @if (ViewBag.CSAuser == true)
+    {
+
+        <a asp-page="/Account/Profile" asp-area="User" class="nav-link">
+            <i class="nav-icon fas fa-th"></i>
+            <p class="uppercase">
+                CSA Dashboard 
+            </p>
+        </a>
+    }
+    else
+    {
+        <a asp-page="/Account/Profile" asp-area="User" class="nav-link">
+            <i class="nav-icon fas fa-th"></i>
+            <p class="uppercase">
+                CSA Dashboard (Upgrade)
+            </p>
+        </a>
+    }
+
+</li>

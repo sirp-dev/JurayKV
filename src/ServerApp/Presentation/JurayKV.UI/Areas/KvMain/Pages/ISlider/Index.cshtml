@@ -1,0 +1,89 @@
+﻿@page
+@model JurayKV.UI.Areas.KvMain.Pages.ISlider.IndexModel
+@{
+}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">SLIDERS</h3>
+
+
+        <a asp-page="./Add" class="btn bg-gradient-warning btn-sm" style="float:right;">Add New</a>
+
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>
+                            Image
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Slider[0].SortOrder)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Slider[0].Show)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Slider[0].Title)
+                        </th>
+                         
+                        <th></th>
+                    </tr>
+                </thead>
+
+                @{
+                    int sn = 0;
+                }
+                <tbody>
+                    @foreach (var item in Model.Slider)
+                    {
+                        <tr>
+
+                            <td>
+                                @{
+                                    sn++;
+                                }
+                                @sn
+                            </td>
+                            <td>
+                                <img src="@item.Url" class="img-fluid" style="max-height:150px;" />
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SortOrder)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Show)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Title)
+                            </td>
+                           
+                            <td>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-success">Action</button>
+
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-success dropdown-toggle dropdown-icon" data-toggle="dropdown" aria-expanded="false">
+                                        </button>
+                                        <div class="dropdown-menu" style="">
+
+                                            <a class="dropdown-item" asp-page="./Update" asp-route-id="@item.Id">Edit</a>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

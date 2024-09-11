@@ -1,0 +1,128 @@
+﻿ 
+.card-title {
+    float: left;
+    font-size: 2rem;
+    font-weight: 900;
+    margin: 0;
+}
+
+.btn-group-sm > .btn, .btn-sm {
+    padding: .25rem .5rem;
+    font-size: 1.275rem;
+    font-weight: bolder;
+    line-height: 1.5;
+    border-radius: .2rem;
+}
+
+.card-title {
+    text-transform: uppercase !important;
+}
+
+a.brand-link {
+    background-color: white;
+}
+
+.top-bar-info li a {
+    font-size: 13px;
+    font-weight: 500;
+    color: #fff;
+    list-style-type: none;
+    display: inline-block;
+    padding: 13.5px 5px 0px 5px;
+    margin-bottom: 0px;
+}
+
+    .top-bar-info li a i {
+        font-size: 13px;
+        color: #d21e2b;
+        margin-right: 8px;
+    }
+
+.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active, .sidebar-light-primary .nav-sidebar > .nav-item > .nav-link.active {
+    background-color: transparent;
+    color: #fff;
+}
+
+.todo-list > li {
+    border-radius: 2px;
+    background-color: #c8caccc2;
+    border-left: 2px solid #e9ecef;
+    color: #495057;
+    margin-bottom: 2px;
+    padding: 10px;
+    border-bottom: black;
+}
+
+.btn {
+    margin-right: 5px !important;
+}
+.nav-sidebar .nav-treeview {
+    list-style: none;
+    border-left: 1px solid #e6e6e666;
+    margin-left: 5px;
+}
+ 
+.hidden-content {
+    display: none;
+}
+
+.hide-show-icon {
+    cursor: pointer;
+}
+
+.project-1 .h6, h6 {
+    font-size: 1rem;
+    font-weight: 900;
+}
+.project-1 hr {
+    margin-top: 0.1rem;
+    margin-bottom: 0.1rem;
+     
+}
+.p-title h4 {
+    font-size: 1.9rem;
+    font-weight: 900;
+}
+.p-minititle h6 {
+    font-size: 1.7rem;
+    font-weight: 900;
+}
+.p-title{
+    padding:10px !important;
+}
+.project-1 .card-title {
+    float: left;
+    font-size: 1.2rem;
+    font-weight: 900;
+    margin: 0;
+}
+
+.div-sec {
+    box-shadow: 1px 1px 1px rgba(0,0,0,.125),1px 1px 3px rgba(0,0,0,.2) !important;
+    border-radius: .25rem !important;
+    padding: 10px !important;
+    margin: 10px 0 !important;
+    border: 1px solid #28282833 !important;
+}
+.avatar-circle {
+    background-color: #3f474e;
+    padding: 6px 13px;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: white;
+}
+
+.nav-header {
+    background-color: #c8cacc;
+    border-radius: 4px;
+    font-weight: bolder;
+    color: black;
+    font-size: 12px;
+    padding: 5px 19px;
+}
+
+.accordion-wrapper{
+    margin-bottom:5px;
+}

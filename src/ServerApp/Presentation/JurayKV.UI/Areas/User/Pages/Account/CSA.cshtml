@@ -1,0 +1,189 @@
+﻿@page
+@model JurayKV.UI.Areas.User.Pages.Account.CSAModel
+@{
+    //Layout= null;
+}
+
+
+@if (User.IsInRole("CSA"))
+{
+
+}
+else
+{
+    if (Model.UserRequest == true)
+    {
+        <div class="card card-default">
+            <div class="card-header">
+                <h3 class="card-title">UPGRADE TO CLIENT SUPPORT ASSISTANT (CSA)</h3>
+               
+                
+            </div>
+           <div class="card-body">
+               <div class="alert alert-info">
+                   <strong>Info!</strong> @Model.UserRequestMessage
+               </div>
+           </div>
+        </div>
+            }
+            else {
+            <div class="card card-default">
+                <div class="card-header">
+                    <h3 class="card-title">UPGRADE TO CLIENT SUPPORT ASSISTANT (CSA)</h3>
+
+                </div>
+
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form method="post" enctype="multipart/form-data">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="form-group">
+                                    <label asp-for="UserUpgradeDto.About" class="control-label">Tell Us About Yourself</label>
+                                    <textarea asp-for="UserUpgradeDto.About" class="form-control"></textarea>
+                                    <span asp-validation-for="UserUpgradeDto.About" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="UserUpgradeDto.AlternativePhone" class="control-label">Alternative Phone</label>
+                                    <input asp-for="UserUpgradeDto.AlternativePhone" class="form-control" />
+                                    <span asp-validation-for="UserUpgradeDto.AlternativePhone" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="UserUpgradeDto.Occupation" class="control-label">Occupation</label>
+                                    <input asp-for="UserUpgradeDto.Occupation" class="form-control" />
+                                    <span asp-validation-for="UserUpgradeDto.Occupation" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="UserUpgradeDto.Address" class="control-label"></label>
+                                    <textarea asp-for="UserUpgradeDto.Address" class="form-control"></textarea>
+                                    <span asp-validation-for="UserUpgradeDto.Address" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Select State</label>
+                                    <select asp-for="UserUpgradeDto.State" class="form-control" id="states" asp-items="Model.ListStates">
+
+                                        <option>Please select a State</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lgas">Select LGA:</label>
+                                    <select id="lgas" asp-for="UserUpgradeDto.LGA" class="form-control">
+                                        @*<option>Please select an LGA</option>*@
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="UserUpgradeDto.FbHandle" class="control-label">Facebook Handle</label>
+                                    <input asp-for="UserUpgradeDto.FbHandle" class="form-control" />
+                                    <span asp-validation-for="UserUpgradeDto.FbHandle" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="UserUpgradeDto.InstagramHandle" class="control-label">Instagram Handle</label>
+                                    <input asp-for="UserUpgradeDto.InstagramHandle" class="form-control" />
+                                    <span asp-validation-for="UserUpgradeDto.InstagramHandle" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="UserUpgradeDto.TwitterHandle" class="control-label">Twitter Handle</label>
+                                    <input asp-for="UserUpgradeDto.TwitterHandle" class="form-control" />
+                                    <span asp-validation-for="UserUpgradeDto.TwitterHandle" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="UserUpgradeDto.TiktokHandle" class="control-label">Tiktok Handle</label>
+                                    <input asp-for="UserUpgradeDto.TiktokHandle" class="form-control" />
+                                    <span asp-validation-for="UserUpgradeDto.TiktokHandle" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label">Passport</label><br />
+                                    <input type="file" class="control-label" asp-for="passportfile" />
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="control-label">Valid ID Card</label><br />
+                                    <input type="file" class="control-label" asp-for="iDcardfile" />
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="submit" value="Submit" class="btn btn-primary" />
+                                    <a asp-page="./Index" class="btn bg-gradient-warning btn-sm" style="float:right;">Back</a>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="card-footer">
+                </div>
+            </div>
+
+            }
+            @section Scripts {
+                @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+                @*<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+                    <script src="path/to/jquery.validate.js"></script>*@
+
+                <script>
+                    $(document).ready(function () {
+                        $("#states").change(function () {
+                            console.log("check in");
+                            var stateId = $(this).val();
+                            console.log("check ID");
+                            console.log(stateId);
+                            //$.ajax({
+                            //    type: "GET",
+                            //    url: "/User/Account/CSA?handler=LGAs",
+                            //    contentType: "application/json; charset=utf-8",
+                            //    dataType: "json",
+                            //    data: { stateId: stateId },
+
+                            //    success: function (data) {
+                            //        $("#lgas").empty();
+                            //        $.each(data, function (index, item) {
+                            //            $("#lgas").append($('<option>').text(item.text).attr('value', item.value));
+                            //        });
+                            //    }
+
+                            //});
+
+                            // Make sure to wrap this code within a function or an event handler
+                            async function loadLGAs(stateId) {
+                                try {
+                                    const response = await fetch(`/User/Account/CSA?handler=LGAs&stateId=${stateId}`, {
+                                        method: 'GET',
+                                        headers: {
+                                            'Content-Type': 'application/json; charset=utf-8'
+                                        },
+                                        // You can include other options here if needed
+                                    });
+
+                                    if (!response.ok) {
+                                        throw new Error(`HTTP error! Status: ${response.status}`);
+                                    }
+
+                                    const data = await response.json();
+                                    console.log(data);
+                                    // Assuming your response is an array of objects with 'text' and 'value' properties
+                                    $("#lgas").empty();
+                                    $.each(data, function (index, item) {
+                                        $("#lgas").append($('<option>').text(item.text).attr('value', item.value));
+                                    });
+                                } catch (error) {
+                                    console.error('Error fetching LGAs:', error);
+                                }
+                            }
+
+                            // Call the function with the desired stateId
+                            loadLGAs(stateId);
+
+
+                            console.log("check out");
+                            console.log(stateId);
+                        });
+                    });
+                </script>
+
+            }
+
+            }

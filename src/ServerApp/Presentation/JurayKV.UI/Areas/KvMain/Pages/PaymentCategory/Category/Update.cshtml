@@ -1,0 +1,84 @@
+﻿@page
+@model JurayKV.UI.Areas.KvMain.Pages.PaymentCategory.Category.UpdateModel
+@{
+}
+
+<div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title">UPDATE CATEGORY VARIATION</h3>
+
+    </div>
+    <!-- /.card-header -->
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" value="@Model.CategoryVariation.Id" />
+
+                    <div class="form-group">
+                        <label asp-for="CategoryVariation.Name" class="control-label"></label>
+                        <input asp-for="CategoryVariation.Name" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CategoryVariation.Code" class="control-label"></label>
+                        <input asp-for="CategoryVariation.Code" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CategoryVariation.VariationType" class="control-label"></label>
+                        @Html.DropDownListFor(model => model.CategoryVariation.VariationType, new SelectList(Enum.GetValues(typeof(JurayKV.Domain.Primitives.Enum.VariationType))), new { @class = "form-control" })
+                        <span asp-validation-for="CategoryVariation.VariationType" class="text-danger"></span>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="CategoryVariation.Active" /> @Html.DisplayNameFor(model => model.CategoryVariation.Active)
+                        </label>
+                    </div>
+                    @if (!String.IsNullOrEmpty(Model.CategoryVariation.Url))
+                    {
+                        <div class="form-group">
+                            <label class="control-label">Previouse Image</label><br />
+                            <img src="@Model.CategoryVariation.Url" class="img-fluid" style="max-height:150px;" />
+                        </div>
+                    }
+
+                    <div class="form-group">
+                        <label class="control-label">Image</label><br />
+                        <input type="file" class="control-label" asp-for="imagefile" accept="image/*" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CategoryVariation.Charge" class="control-label"></label>
+                        <input asp-for="CategoryVariation.Charge" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CategoryVariation.BillGateway" class="control-label"></label>
+                        @Html.DropDownListFor(model => model.CategoryVariation.BillGateway, new SelectList(Enum.GetValues(typeof(JurayKV.Domain.Primitives.Enum.BillGateway))), new { @class = "form-control" })
+                        <span asp-validation-for="CategoryVariation.BillGateway" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CategoryVariation.Tier" class="control-label"></label>
+                        @Html.DropDownListFor(model => model.CategoryVariation.Tier, new SelectList(Enum.GetValues(typeof(JurayKV.Domain.Primitives.Enum.Tier))), new { @class = "form-control" })
+                        <span asp-validation-for="CategoryVariation.Tier" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Submit" class="btn btn-primary" />
+                        <a asp-page="./Index" class="btn bg-gradient-warning btn-sm" style="float:right;">Back</a>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <!-- /.row -->
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

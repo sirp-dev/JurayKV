@@ -1,0 +1,45 @@
+﻿@page
+@model JurayKV.UI.Areas.User.Pages.Account.DetailsModel
+@{
+}
+<div class="row">
+    <div class="col-md-12">
+
+
+        <div class="col-md-4"></div>
+        <div class="col-md-4 text-center service-simple" style="margin-top:15px;padding:10px;">
+            <h3>ADs from @Model.IdentityKvAdDetailsDto.KvAdName Bucket</h3>
+            <p>Kindly upload your whatsapp status proof of views</p>
+            <a class="btn btn-primary font-bold" style="margin-bottom:4px;">@Model.IdentityKvAdDetailsDto.ResultOne</a>
+
+            @if (Model.IdentityKvAdDetailsDto.AdsStatus == JurayKV.Domain.Primitives.Enum.AdsStatus.Credited)
+            {
+                <a class="btn btn-success font-bold">Credited</a>
+
+            }
+            @if (!String.IsNullOrEmpty(Model.IdentityKvAdDetailsDto.VideoUrl))
+            {
+                <a href="@Model.IdentityKvAdDetailsDto.VideoUrl" target="_blank" class="btn btn-success">Watch Video Proof <i class="fa fa-check"></i></a>
+            }
+        </div>
+    </div>
+
+    <div class="col-md-12">
+
+
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="service-simple" style="margin-top: 15px; padding: 10px;">
+                <a href="@Model.IdentityKvAdDetailsDto.KvAdImage">
+                    <div class="position-relative">
+                        <img src="@Model.IdentityKvAdDetailsDto.KvAdImage" alt="" class="img-fluid">
+
+                    </div>
+                </a>
+            </div>
+        </div>
+        <a class="btn bg-gradient-warning btn-sm" style="margin-top:10px;" asp-page="./Points">Back</a>
+
+    </div>
+
+</div>

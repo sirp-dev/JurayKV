@@ -1,0 +1,101 @@
+﻿@page
+@model JurayKV.UI.Areas.Auth.Pages.Account.VerifyPhoneModel
+@{
+    Layout = "~/Pages/Shared/_Register.cshtml";
+    ViewData["Title"] = "Account Verification";
+
+}
+<style>
+
+    .btn-section .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        color: #FFF;
+        font-size: 18px;
+        float: left;
+        width: 100%;
+        margin: 1%;
+        padding: 0px 20px;
+    }
+
+        .btn-section .btn .btn-gradient {
+            position: relative;
+            left: -30px;
+            width: 30%;
+            background: rgba(0, 0, 0, 0.15);
+            box-shadow: 2px 0px 0px 0px rgba(78, 72, 72, 0.4);
+            border-top-right-radius: 60px;
+            padding: 10px;
+        }
+
+            .btn-section .btn .btn-gradient i {
+                font-size: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+        .btn-section .btn.btn-green {
+            background-color: #47a447;
+        }
+
+
+    .btn-section .btn-text {
+        width: 60%;
+    }
+
+    .btn-section.btn-radius .btn,
+    .btn-section.btn-radius .btn-gradient {
+        border-top-left-radius: 30px;
+        border-bottom-left-radius: 30px;
+    }
+
+    .btn-section .btn.btn-github {
+        background-color: #5a5a5a;
+    }
+
+    .btn-section .btn.btn-twitter {
+        background-color: #58cadb;
+    }
+</style>
+<h3 class="login-box-msg">Verify Your Whatsapp Phone Number</h3>
+ 
+<form asp-page-handler="Whatsapp" method="post">
+    <input asp-for="Xtxnt" type="hidden" />
+    <input asp-for="NotificationNumber" type="hidden" value="4" />
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="btn-section">
+                <button class="btn btn-green">
+                    <span class="btn-gradient">
+                        <i class="fa fa-check"></i>
+                    </span>
+                    <span class="btn-text">Click to Send Code <i class="fa fa-envelope" style="margin-left:20px;"></i></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="row">
+
+    <div class="col-md-12" style="text-align:center;">
+        <a asp-page="./Login" asp-route-refx="@Model.RefX" class="text-center" style="text-align:center;">I already have an Account</a>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        function disableSubmit() {
+            // Optionally, you can add additional logic here to conditionally enable or disable the form submission.
+            // For example, you can check if the Voice OTP is available.
+
+            // Returning false prevents the form from submitting.
+            return false;
+        }
+    </script>
+}
+

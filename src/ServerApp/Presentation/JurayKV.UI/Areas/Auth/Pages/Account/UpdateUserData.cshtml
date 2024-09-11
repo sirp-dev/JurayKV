@@ -1,0 +1,313 @@
+﻿@page
+@model JurayKV.UI.Areas.Auth.Pages.Account.UpdateUserDataModel
+@{
+}
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Koboview - Unlock Earnings by Sharing - Koboview Makes It Happen (@ViewData["Title"])</title>
+
+    <link rel="shortcut icon" href="~/img/Koboview-Icon.png" type="image/x-icon" />
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/dashboard/plugins/fontawesome-free/css/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/dashboard/dist/css/adminlte.min.css">
+</head>
+<body class="hold-transition lockscreen">
+    <!-- Automatic element centering -->
+    <div class="lockscreen-wrapper">
+        <div class="lockscreen-logo">
+            <a href="/">
+                <img src="~/img/Koboview-logo-main.png" class="main-logo" alt="logo" id="main_logo" style="max-height:70px;">
+
+            </a>
+        </div>
+        <div class="card card-default">
+            <div class="card-header">
+                <h3 class="card-title">UPDATE USER</h3>
+
+            </div>
+            <!-- /.card-header -->
+
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form method="post" enctype="multipart/form-data">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input type="hidden" asp-for="UpdateUserManager.Id" value="@Model.IDD" />
+                            <div class="form-group">
+                                <label asp-for="UpdateUserManager.Surname" class="control-label"></label>
+                                <input asp-for="UpdateUserManager.Surname" class="form-control" id="upper" onkeyup="myUppercase()" required="required" />
+                                <span asp-validation-for="UpdateUserManager.Surname" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="UpdateUserManager.Firstname" class="control-label"></label>
+                                <input asp-for="UpdateUserManager.Firstname" class="form-control" id="upper" onkeyup="myUppercase()" required="required" />
+                                <span asp-validation-for="UpdateUserManager.Firstname" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="UpdateUserManager.Lastname" class="control-label"></label>
+                                <input asp-for="UpdateUserManager.Lastname" class="form-control" id="upper" onkeyup="myUppercase()" required="required" />
+                                <span asp-validation-for="UpdateUserManager.Lastname" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="UpdateUserManager.Address" class="control-label"></label>
+                                <input asp-for="UpdateUserManager.Address" class="form-control" required="required" />
+                                <span asp-validation-for="UpdateUserManager.Address" class="text-danger"></span>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="">Current State of your address</label>
+                                <select asp-for="UpdateUserManager.State" onchange="toggleLGA(this);" id="state" class="form-control" required="required">
+                                    <option value="" selected="selected">- Select -</option>
+                                    <option value="Abia">Abia</option>
+                                    <option value="Adamawa">Adamawa</option>
+                                    <option value="AkwaIbom">AkwaIbom</option>
+                                    <option value="Anambra">Anambra</option>
+                                    <option value="Bauchi">Bauchi</option>
+                                    <option value="Bayelsa">Bayelsa</option>
+                                    <option value="Benue">Benue</option>
+                                    <option value="Borno">Borno</option>
+                                    <option value="Cross River">Cross River</option>
+                                    <option value="Delta">Delta</option>
+                                    <option value="Ebonyi">Ebonyi</option>
+                                    <option value="Edo">Edo</option>
+                                    <option value="Ekiti">Ekiti</option>
+                                    <option value="Enugu">Enugu</option>
+                                    <option value="FCT">FCT</option>
+                                    <option value="Gombe">Gombe</option>
+                                    <option value="Imo">Imo</option>
+                                    <option value="Jigawa">Jigawa</option>
+                                    <option value="Kaduna">Kaduna</option>
+                                    <option value="Kano">Kano</option>
+                                    <option value="Katsina">Katsina</option>
+                                    <option value="Kebbi">Kebbi</option>
+                                    <option value="Kogi">Kogi</option>
+                                    <option value="Kwara">Kwara</option>
+                                    <option value="Lagos">Lagos</option>
+                                    <option value="Nasarawa">Nasarawa</option>
+                                    <option value="Niger">Niger</option>
+                                    <option value="Ogun">Ogun</option>
+                                    <option value="Ondo">Ondo</option>
+                                    <option value="Osun">Osun</option>
+                                    <option value="Oyo">Oyo</option>
+                                    <option value="Plateau">Plateau</option>
+                                    <option value="Rivers">Rivers</option>
+                                    <option value="Sokoto">Sokoto</option>
+                                    <option value="Taraba">Taraba</option>
+                                    <option value="Yobe">Yobe</option>
+                                    <option value="Zamfara">Zamafara</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="lga">Current LGA of your address</label>
+                                <select id="lga" asp-for="UpdateUserManager.LGA" class="form-control select-lga" required="required">
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="UpdateUserManager.DateOfBirth" class="control-label">Date of Birth</label>
+                                <input asp-for="UpdateUserManager.DateOfBirth" class="form-control" required="required" type="date" />
+                                <span asp-validation-for="UpdateUserManager.BankName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="UpdateUserManager.Occupation" class="control-label">Occupation</label>
+                                <input asp-for="UpdateUserManager.Occupation" class="form-control" required="required" />
+                                <span asp-validation-for="UpdateUserManager.Occupation" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="UpdateUserManager.About" class="control-label"></label>
+                                <textarea asp-for="UpdateUserManager.About" class="form-control" required="required"></textarea>
+                                <span asp-validation-for="UpdateUserManager.About" class="text-danger"></span>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="">Select State of Origin</label>
+                                <select asp-for="UpdateUserManager.StateOfOrigin" class="form-control" id="statesx" required="required">
+
+                                    <option value="" >Please select state of origin</option>
+                                     
+                                    <option value="Abia">Abia</option>
+                                    <option value="Adamawa">Adamawa</option>
+                                    <option value="AkwaIbom">AkwaIbom</option>
+                                    <option value="Anambra">Anambra</option>
+                                    <option value="Bauchi">Bauchi</option>
+                                    <option value="Bayelsa">Bayelsa</option>
+                                    <option value="Benue">Benue</option>
+                                    <option value="Borno">Borno</option>
+                                    <option value="Cross River">Cross River</option>
+                                    <option value="Delta">Delta</option>
+                                    <option value="Ebonyi">Ebonyi</option>
+                                    <option value="Edo">Edo</option>
+                                    <option value="Ekiti">Ekiti</option>
+                                    <option value="Enugu">Enugu</option>
+                                    <option value="FCT">FCT</option>
+                                    <option value="Gombe">Gombe</option>
+                                    <option value="Imo">Imo</option>
+                                    <option value="Jigawa">Jigawa</option>
+                                    <option value="Kaduna">Kaduna</option>
+                                    <option value="Kano">Kano</option>
+                                    <option value="Katsina">Katsina</option>
+                                    <option value="Kebbi">Kebbi</option>
+                                    <option value="Kogi">Kogi</option>
+                                    <option value="Kwara">Kwara</option>
+                                    <option value="Lagos">Lagos</option>
+                                    <option value="Nasarawa">Nasarawa</option>
+                                    <option value="Niger">Niger</option>
+                                    <option value="Ogun">Ogun</option>
+                                    <option value="Ondo">Ondo</option>
+                                    <option value="Osun">Osun</option>
+                                    <option value="Oyo">Oyo</option>
+                                    <option value="Plateau">Plateau</option>
+                                    <option value="Rivers">Rivers</option>
+                                    <option value="Sokoto">Sokoto</option>
+                                    <option value="Taraba">Taraba</option>
+                                    <option value="Yobe">Yobe</option>
+                                    <option value="Zamfara">Zamafara</option>
+                                </select>
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label class="control-label">Passport</label><br />
+                                <input type="file" class="control-label" asp-for="Passport" required="required" />
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="control-label">NIN ID Card</label><br />
+                                <input type="file" class="control-label" asp-for="IDcard" required="required" />
+                            </div>
+
+                            <div class="form-group">
+                                <input type="submit" value="Submit" class="btn btn-primary" />
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+                <!-- /.row -->
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+            </div>
+        </div>
+        <div class="lockscreen-footer text-center">
+            Copyright &copy; @DateTime.UtcNow.Year <b><a href="/" class="text-black">Koboview</a></b><br>
+            All rights reserved
+        </div>
+    </div>
+    <!-- /.center -->
+    <!-- jQuery -->
+    <script src="~/dashboard/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/dashboard/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/lga.js"></script>
+
+</body>
+</html>
+
+@*<script>
+        $(document).ready(function () {
+            $("#states").change(function () {
+                console.log("check in");
+                var stateId = $(this).val();
+                console.log("check ID");
+                console.log(stateId);
+
+
+                // Make sure to wrap this code within a function or an event handler
+                async function loadLGAs(stateId) {
+                    try {
+                        const response = await fetch(`/Auth/Account/UpdateUserData?handler=LGAs&stateId=${stateId}`, {
+                            method: 'GET',
+                            headers: {
+                                'Content-Type': 'application/json; charset=utf-8'
+                            },
+                            // You can include other options here if needed
+                        });
+
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! Status: ${response.status}`);
+                        }
+
+                        const data = await response.json();
+                        console.log(data);
+                        // Assuming your response is an array of objects with 'text' and 'value' properties
+                        $("#lgas").empty();
+                        $.each(data, function (index, item) {
+                            $("#lgas").append($('<option>').text(item.text).attr('value', item.value));
+                        });
+                    } catch (error) {
+                        console.error('Error fetching LGAs:', error);
+                    }
+                }
+
+                // Call the function with the desired stateId
+                loadLGAs(stateId);
+
+
+                console.log("check out");
+                console.log(stateId);
+            });
+        });
+    </script>
+
+
+    <script>
+        $(document).ready(function () {
+            $("#statesx").change(function () {
+                console.log("xxx in");
+                var statexId = $(this).val();
+                console.log("xxx ID");
+                console.log(statexId);
+
+
+                // Make sure to wrap this code within a function or an event handler
+                async function loadLGAs(statexId) {
+                    try {
+                        const response = await fetch(`/Auth/Account/UpdateUserData?handler=OnGetLGAsOfOrigin=${statexId}`, {
+                            method: 'GET',
+                            headers: {
+                                'Content-Type': 'application/json; charset=utf-8'
+                            },
+                            // You can include other options here if needed
+                        });
+
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! Status: ${response.status}`);
+                        }
+
+                        const data = await response.json();
+                        console.log(data);
+                        // Assuming your response is an array of objects with 'text' and 'value' properties
+                        $("#lgasxx").empty();
+                        $.each(data, function (index, item) {
+                            $("#lgasxx").append($('<option>').text(item.text).attr('value', item.value));
+                        });
+                    } catch (error) {
+                        console.error('Error fetching LGAs:', error);
+                    }
+                }
+
+                // Call the function with the desired stateId
+                loadLGAs(statexId);
+
+
+                console.log("check out");
+                console.log(statexId);
+            });
+        });
+    </script>*@

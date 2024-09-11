@@ -1,0 +1,115 @@
+﻿@page
+@model JurayKV.UI.Areas.KvMain.Pages.ITransactions.RemoveModel
+@{
+}
+
+<div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title">UPDATE Transaction</h3>
+
+    </div>
+    <!-- /.card-header -->
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                  
+                     <dl class="row">
+                         <dt class="col-sm-2">
+                             @Html.DisplayNameFor(model => model.UpdateTransaction.WalletBalance)
+                         </dt>
+                         <dd class="col-sm-10">
+                             @Html.DisplayFor(model => model.UpdateTransaction.WalletBalance)
+                         </dd>
+                         <dt class="col-sm-2">
+                             @Html.DisplayNameFor(model => model.UpdateTransaction.Fullname)
+                         </dt>
+                         <dd class="col-sm-10">
+                             @Html.DisplayFor(model => model.UpdateTransaction.Fullname)
+                         </dd>
+                         <dt class="col-sm-2">
+                             @Html.DisplayNameFor(model => model.UpdateTransaction.UniqueReference)
+                         </dt>
+                         <dd class="col-sm-10">
+                             @Html.DisplayFor(model => model.UpdateTransaction.UniqueReference)
+                         </dd>
+                         <dt class="col-sm-2">
+                             @Html.DisplayNameFor(model => model.UpdateTransaction.OptionalNote)
+                         </dt>
+                         <dd class="col-sm-10">
+                             @Html.DisplayFor(model => model.UpdateTransaction.OptionalNote)
+                         </dd>
+                         <dt class="col-sm-2">
+                             @Html.DisplayNameFor(model => model.UpdateTransaction.Amount)
+                         </dt>
+                         <dd class="col-sm-10">
+                             @Html.DisplayFor(model => model.UpdateTransaction.Amount)
+                         </dd>
+                         <dt class="col-sm-2">
+                             @Html.DisplayNameFor(model => model.UpdateTransaction.CreatedAtUtc)
+                         </dt>
+                         <dd class="col-sm-10">
+                             @Html.DisplayFor(model => model.UpdateTransaction.CreatedAtUtc)
+                         </dd>
+
+                         <dt class="col-sm-2">
+                             @Html.DisplayNameFor(model => model.UpdateTransaction.TransactionType)
+                         </dt>
+                         <dd class="col-sm-10">
+                             @Html.DisplayFor(model => model.UpdateTransaction.TransactionType)
+                         </dd>
+
+                         <dt class="col-sm-2">
+                             @Html.DisplayNameFor(model => model.UpdateTransaction.Status)
+                         </dt>
+                         <dd class="col-sm-10">
+                             @Html.DisplayFor(model => model.UpdateTransaction.Status)
+                         </dd>
+
+                         <dt class="col-sm-2">
+                             @Html.DisplayNameFor(model => model.UpdateTransaction.TransactionReference)
+                         </dt>
+                         <dd class="col-sm-10">
+                             @Html.DisplayFor(model => model.UpdateTransaction.TransactionReference)
+                         </dd>
+
+                         <dt class="col-sm-2">
+                             @Html.DisplayNameFor(model => model.UpdateTransaction.Description)
+                         </dt>
+                         <dd class="col-sm-10">
+                             @Html.DisplayFor(model => model.UpdateTransaction.Description)
+                         </dd>
+
+                         <dt class="col-sm-2">
+                             @Html.DisplayNameFor(model => model.UpdateTransaction.TrackCode)
+                         </dt>
+                         <dd class="col-sm-10">
+                             @Html.DisplayFor(model => model.UpdateTransaction.TrackCode)
+                         </dd>
+                     </dl>
+
+                     
+                    <div class="form-group">
+                        <form method="post">
+                            <input type="hidden" asp-for="UpdateTransaction.Id" />
+                            <input type="submit" value="Submit" class="btn btn-primary" />
+                            <a asp-page="./Index" class="btn bg-gradient-warning btn-sm" style="float:right;">Back</a>
+                            </form>
+                    </div>
+                
+            </div>
+        </div>
+
+
+        <!-- /.row -->
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,120 @@
+﻿@page
+@model JurayKV.UI.Areas.User.Pages.Account.AdsHistoryModel
+@{
+}
+
+<div class="row">
+
+
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header border-transparent">
+                <h3 class="card-title">ADs History (@Model.Ads.Count())</h3>
+
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table m-0">
+                        <thead>
+                            <tr>
+                                <th>S/N</th>
+                                <th>Date</th>
+                                <th>ADs</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        @{ int sn = 0;}
+                        <tbody>
+                            @foreach (var item in Model.Ads)
+                            {
+                                <tr>
+                                    @{
+                                        sn++;
+                                    }
+                                    <td>@sn</td>
+                                    <td>
+                                        <a href="">@item.CreatedAtUtc.ToString("dd/MM/yyyy")</a>
+                                        <br style="margin-top: 0; padding-top: 0;" />
+                                        <a href="" style="font-size:10px;">@item.CreatedAtUtc.ToString("hh:mm tt")</a>
+                                    </td>
+                                    <td>
+                                        
+                                        <a href="@item.ImageUrl" target="_blank" style="">
+                                            @if (item.ImageKey.EndsWith(".jpg") || item.ImageKey.EndsWith(".jpeg") || item.ImageKey.EndsWith(".png") || item.ImageKey.EndsWith(".gif") || item.ImageKey.EndsWith(".bmp"))
+                                            {
+                                                <img src="@item.ImageUrl" class="img-fluid" style="max-height: 50px;" />
+                                            }
+                                            else if (item.ImageKey.EndsWith(".mp4") || item.ImageKey.EndsWith(".avi") || item.ImageKey.EndsWith(".mov") || item.ImageKey.EndsWith(".wmv") || item.ImageKey.EndsWith(".flv"))
+                                            {
+                                                <video controls style="height:120px;width:250px;">
+                                                    <source src="@item.ImageUrl" type="video/mp4">
+                                                    Your browser does not support the video tag.
+                                                </video>
+                                            }
+                                        </a>
+
+                                    </td>
+
+                                    <td>
+                                        @if (item.AdsStatus == JurayKV.Domain.Primitives.Enum.AdsStatus.Credited)
+                                        {
+                                            <a class="btn btn-success">
+                                                <span class="" style="margin-right:2px;">(@item.Points)</span>
+                                                @Html.DisplayFor(model => item.AdsStatus)
+                                                @if (!String.IsNullOrEmpty(item.VideoUrl))
+                                                {
+
+
+                                                    <i class="fa fa-check text-success"></i>
+                                                }
+                                                else
+                                                {
+                                                    <i class="fa fa-times text-danger"></i>
+
+                                                }
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <a class="btn btn-warning">
+                                                @Html.DisplayFor(model => item.AdsStatus)
+                                                @if (!String.IsNullOrEmpty(item.VideoUrl))
+                                                {
+
+
+                                                    <i class="fa fa-check text-success"></i>
+                                                }
+                                                else
+                                                {
+                                                    <i class="fa fa-times text-danger"></i>
+
+                                                }
+                                            </a>
+                                        }
+
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+
+@section Scripts {
+
+
+
+
+
+
+}

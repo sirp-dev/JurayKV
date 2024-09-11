@@ -1,0 +1,146 @@
+﻿@page
+@model JurayKV.UI.Areas.KvMain.Pages.ISetting.IndexModel
+@{
+}
+<div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title">SETTING DETAILS</h3>
+
+    </div>
+    <!-- /.card-header -->
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+
+                <dl class="row">
+
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Setting.MinimumAmountBudget)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Setting.MinimumAmountBudget)
+                    </dd>
+
+
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Setting.DefaultAmountPerView)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Setting.DefaultAmountPerView)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Setting.DefaultReferralAmmount)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Setting.DefaultReferralAmmount)
+                    </dd>
+
+
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Setting.BillGateway)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Setting.BillGateway)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Setting.PaymentGateway)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Setting.PaymentGateway)
+                    </dd>
+
+
+
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Setting.DisableReferralBonus)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Setting.DisableReferralBonus)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Setting.DisableAirtime)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Setting.DisableAirtime)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Setting.DisableData)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Setting.DisableData)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Setting.DisableElectricity)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Setting.DisableElectricity)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Setting.DisableBetting)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Setting.DisableBetting)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Setting.DisableTV)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Setting.DisableTV)
+                    </dd>
+
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Setting.AirtimeMaxRechargeTieOne)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Setting.AirtimeMaxRechargeTieOne)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Setting.AirtimeMaxRechargeTieTwo)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Setting.AirtimeMaxRechargeTieTwo)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Setting.AirtimeMinRecharge)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Setting.AirtimeMinRecharge)
+                    </dd>
+
+
+
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Setting.BankName)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Setting.BankName)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Setting.BankAccount)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Setting.BankAccount)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Setting.BankAccountNumber)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Setting.BankAccountNumber)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+
+
+        <!-- /.row -->
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+        <a class="btn btn-warning" asp-page="./Update" asp-route-id="@Model.Setting.Id">Update</a>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

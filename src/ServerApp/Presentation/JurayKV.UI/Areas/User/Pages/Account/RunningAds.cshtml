@@ -1,0 +1,176 @@
+﻿@page
+@model JurayKV.UI.Areas.User.Pages.Account.RunningAdsModel
+@{
+}
+<div class="row">
+
+
+    <div class="col-md-12">
+        <div class="">
+            <div class="card-header border-transparent">
+                <h3 class="card-title">Running ADs (@Model.Ads.Count())</h3>
+
+                <a asp-page="./AdsHistory" class="btn bg-gradient-warning btn-sm" style="float:right;">History</a>
+
+            </div>
+            <!-- /.card-header -->
+
+            <div class="card-body">
+                <div class="row">
+                    @foreach (var item in Model.Ads)
+                    {
+                        <div class="col-md-4">
+                            <!-- Widget: user widget style 1 -->
+                            <div class="card card-widget widget-user">
+                                <!-- Add the bg color to the header using any of the bg-* classes -->
+                                <div class="widget-user-header bg-info">
+                                    <h3 class="widget-user-username" style="font-size: 17px; font-weight: 800;">@item.CreatedAtUtc.ToString("dd/MM/yyyy hh:mm tt")</h3>
+
+                                    @{
+
+                                        DateTime sixAMDateTimec = new DateTime(item.CreatedAtUtc.Year, item.CreatedAtUtc.Month, item.CreatedAtUtc.Day, 6, 0, 0).AddDays(1);
+                                    }
+
+                                    @if (sixAMDateTimec < DateTime.UtcNow.AddHours(1))
+                                    {
+                                        <h5 class="widget-user-desc"><span class="countdown btn btn-xs btn-danger" data-target-time="6:00:00"></span></h5>
+
+                                    }
+
+                                </div>
+                                <div class="widget-user-image" style="left: auto; margin-left: 0px; position: unset; top: 80px; text-align: center; margin: -50px auto;">
+                                    <div style="height:100px;width:100px;text-align:center;">
+                                        @if (!string.IsNullOrEmpty(item.ImageKey))
+                                        {
+                                            <a href="@item.ImageUrl" target="_blank" style="">
+                                                @if (item.ImageKey.EndsWith(".jpg") || item.ImageKey.EndsWith(".jpeg") || item.ImageKey.EndsWith(".png") || item.ImageKey.EndsWith(".gif") || item.ImageKey.EndsWith(".bmp"))
+                                                {
+                                                    <img src="@item.ImageUrl" class="img-fluid elevation-2" style="max-height: 100px;text-align:center;margin:0 auto;" />
+                                                }
+                                                else if (item.ImageKey.EndsWith(".mp4") || item.ImageKey.EndsWith(".avi") || item.ImageKey.EndsWith(".mov") || item.ImageKey.EndsWith(".wmv") || item.ImageKey.EndsWith(".flv"))
+                                                {
+                                                    <video controls style="height:120px;width:250px;">
+                                                        <source src="@item.ImageUrl" type="video/mp4">
+                                                        Your browser does not support the video tag.
+                                                    </video>
+                                                }
+                                            </a>
+
+                                        }
+                                    </div>
+
+
+                                </div>
+                                <hr />
+                                <div class="clearfix"></div>
+                                <div class="card-footer" style="padding-top: 20px;">
+                                    <div class="row">
+
+                                        <!-- /.col -->
+                                        <div class="col-sm-12">
+                                            <div class="description-block">
+                                                @{
+                                                    DateTime currentDate = DateTime.UtcNow.AddHours(1);
+                                                    DateTime nextDay6AM = currentDate.Date.AddDays(1).AddHours(6);
+
+                                                    bool isLinkEnabled = item.CreatedAtUtc < nextDay6AM;
+
+
+                                                }
+                                                @if (isLinkEnabled)
+                                                {
+                                                    <a asp-page="./UploadVideoProof"
+                                                       asp-route-id="@item.Id"
+                                                       class="btn btn-warning">
+                                                        Upload View Evidence  @if (!String.IsNullOrEmpty(item.VideoUrl))
+                                                        {
+
+
+                                                            <i class="fa fa-check text-success"></i>
+                                                        }
+                                                        else
+                                                        {
+                                                            <i class="fa fa-times text-danger"></i>
+
+                                                        }
+                                                    </a>
+                                                }
+                                                else
+                                                {
+                                                    <a class="btn btn-danger" disabled="disabled">
+                                                        Upload View Evidence  @if (!String.IsNullOrEmpty(item.VideoUrl))
+                                                        {
+
+
+                                                            <i class="fa fa-check text-success"></i>
+                                                        }
+                                                        else
+                                                        {
+                                                            <i class="fa fa-times text-danger"></i>
+
+                                                        }
+                                                    </a>
+                                                }
+
+                                            </div>
+                                            <!-- /.description-block -->
+                                        </div>
+                                        <!-- /.col -->
+                                    </div>
+                                    <!-- /.row -->
+                                </div>
+                            </div>
+                            <!-- /.widget-user -->
+                        </div>
+                    }
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+</div>
+
+
+
+@section Scripts {
+    <script>
+        // Function to update countdown for all items with the "countdown" class
+        function updateCountdowns() {
+            var now = new Date();
+            var countdownElements = document.getElementsByClassName("countdown");
+
+            for (var i = 0; i < countdownElements.length; i++) {
+                var element = countdownElements[i];
+                var targetTime = new Date(now);
+                var targetTimeString = element.getAttribute("data-target-time").split(":");
+                targetTime.setHours(targetTimeString[0], targetTimeString[1], targetTimeString[2], 0); // Set the target time for the current item
+
+                if (now >= targetTime) {
+                    // If it's already past the target time, set the target time to the next day
+                    targetTime.setDate(targetTime.getDate() + 1);
+                }
+
+                var timeDifference = targetTime - now; // Calculate the time difference in milliseconds
+                var hoursRemaining = Math.floor(timeDifference / 3600000); // Convert to hours
+                var minutesRemaining = Math.floor((timeDifference % 3600000) / 60000); // Convert to minutes
+                var secondsRemaining = Math.floor((timeDifference % 60000) / 1000); // Convert to seconds
+
+                element.textContent = hoursRemaining + "h " + minutesRemaining + "m " + secondsRemaining + "s";
+            }
+        }
+
+        // Update the countdown for all items every second (1,000 milliseconds)
+        setInterval(updateCountdowns, 1000);
+
+        // Initial call to set the initial countdown
+        updateCountdowns();
+    </script>
+
+
+
+
+
+}

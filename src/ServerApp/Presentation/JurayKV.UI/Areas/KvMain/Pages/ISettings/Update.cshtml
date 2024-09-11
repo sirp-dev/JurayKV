@@ -1,0 +1,131 @@
+﻿@page
+@model JurayKV.UI.Areas.KvMain.Pages.ISetting.UpdateModel
+@{
+}
+
+<div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title">UPDATE SETTING</h3>
+
+    </div>
+    <!-- /.card-header -->
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Setting.Id" />
+                    <div class="form-group">
+                        <label asp-for="Setting.MinimumAmountBudget" class="control-label"></label>
+                        <input asp-for="Setting.MinimumAmountBudget" class="form-control" />
+                        <span asp-validation-for="Setting.MinimumAmountBudget" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Setting.DefaultAmountPerView" class="control-label"></label>
+                        <input asp-for="Setting.DefaultAmountPerView" class="form-control" />
+                        <span asp-validation-for="Setting.DefaultAmountPerView" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Setting.DefaultReferralAmmount" class="control-label"></label>
+                        <input asp-for="Setting.DefaultReferralAmmount" class="form-control" />
+                        <span asp-validation-for="Setting.DefaultReferralAmmount" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Setting.BillGateway" class="control-label"></label>
+                        @Html.DropDownListFor(model => model.Setting.BillGateway, new SelectList(Enum.GetValues(typeof(JurayKV.Domain.Primitives.Enum.BillGateway))), new { @class = "form-control" })
+                        <span asp-validation-for="Setting.BillGateway" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Setting.PaymentGateway" class="control-label"></label>
+                        @Html.DropDownListFor(model => model.Setting.PaymentGateway, new SelectList(Enum.GetValues(typeof(JurayKV.Domain.Primitives.Enum.PaymentGateway))), new { @class = "form-control" })
+                        <span asp-validation-for="Setting.PaymentGateway" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="Setting.DisableReferralBonus" /> @Html.DisplayNameFor(model => model.Setting.DisableReferralBonus)
+                        </label>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="Setting.DisableAirtime" /> @Html.DisplayNameFor(model => model.Setting.DisableAirtime)
+                        </label>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="Setting.DisableData" /> @Html.DisplayNameFor(model => model.Setting.DisableData)
+                        </label>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="Setting.DisableElectricity" /> @Html.DisplayNameFor(model => model.Setting.DisableElectricity)
+                        </label>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="Setting.DisableBetting" /> @Html.DisplayNameFor(model => model.Setting.DisableBetting)
+                        </label>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="Setting.DisableTV" /> @Html.DisplayNameFor(model => model.Setting.DisableTV)
+                        </label>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label asp-for="Setting.AirtimeMaxRechargeTieOne" class="control-label"></label>
+                        <input asp-for="Setting.AirtimeMaxRechargeTieOne" class="form-control" />
+                        <span asp-validation-for="Setting.AirtimeMaxRechargeTieOne" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Setting.AirtimeMaxRechargeTieTwo" class="control-label"></label>
+                        <input asp-for="Setting.AirtimeMaxRechargeTieTwo" class="form-control" />
+                        <span asp-validation-for="Setting.AirtimeMaxRechargeTieTwo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Setting.AirtimeMinRecharge" class="control-label"></label>
+                        <input asp-for="Setting.AirtimeMinRecharge" class="form-control" />
+                        <span asp-validation-for="Setting.AirtimeMinRecharge" class="text-danger"></span>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label asp-for="Setting.BankAccount" class="control-label"></label>
+                        <input asp-for="Setting.BankAccount" class="form-control" />
+                        <span asp-validation-for="Setting.BankAccount" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Setting.BankName" class="control-label"></label>
+                        <input asp-for="Setting.BankName" class="form-control" />
+                        <span asp-validation-for="Setting.BankName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Setting.BankAccountNumber" class="control-label"></label>
+                        <input asp-for="Setting.BankAccountNumber" class="form-control" />
+                        <span asp-validation-for="Setting.BankAccountNumber" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Submit" class="btn btn-primary" />
+                        <a asp-page="./Index" class="btn bg-gradient-warning btn-sm" style="float:right;">Back</a>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <!-- /.row -->
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

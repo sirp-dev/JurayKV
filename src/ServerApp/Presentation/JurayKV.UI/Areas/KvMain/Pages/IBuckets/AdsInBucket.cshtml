@@ -1,0 +1,201 @@
+﻿@page
+@model JurayKV.UI.Areas.KvMain.Pages.IBuckets.AdsInBucketModel
+@{
+}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">KV ADVERT ON @Model.UpdateBucket.Name</h3>
+        <a asp-page="./Index" class="btn bg-gradient-warning btn-sm" style="float:right;">Active Bucket</a>
+        <a asp-page="./AllActiveADs" class="btn bg-gradient-warning btn-sm" style="float:right;">All ADs By Date</a>
+
+
+    </div>
+    <div class="card-body ">
+        <div class="boxed-div">
+
+            <div class="card-header">
+                <h4 class="">ACTIVE AND UPCOMING ADs</h4>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>S/N</th>
+
+                                <th>
+                                    Company
+                                </th>
+                                <th>Date</th>
+                                <th>Image</th>
+                                <th>Status </th>
+                                @*<th>Active </th>*@
+
+                                @*<th> </th>*@
+
+                            </tr>
+                        </thead>
+                        @{
+                            int sn = 0;
+                        }
+                        <tbody>
+                            @foreach (var item in Model.KvAdsUpcoming)
+                            {
+                                <tr>
+                                    <td>
+                                        @{
+                                            sn++;
+                                        }
+                                        @sn
+                                    </td>
+
+                                    <td>
+                                        <a asp-page="./Details" asp-route-id="@item.Id">
+                                            @Html.DisplayFor(modelItem => item.CompanyName)
+                                        </a>
+                                    </td>
+                                    <td>
+                                        @item.CreatedAtUtc.ToString("ddd dd/MMM/yyyy")
+                                    </td>
+
+                                    <td>
+                                        <a href="@item.ImageUrl" target="_blank">
+                                            <img src="@item.ImageUrl" class="img-fluid" style="height:50px" />
+                                        </a>
+                                    </td>
+                                    <td>
+                                        @{
+ 
+                                            DateTime sixAMDateTime = new DateTime(item.CreatedAtUtc.Year, item.CreatedAtUtc.Month, item.CreatedAtUtc.Day, 6, 0, 0);
+                                            DateTime sixAMDateTimec = new DateTime(item.CreatedAtUtc.Year, item.CreatedAtUtc.Month, item.CreatedAtUtc.Day, 6, 0, 0).AddDays(1);
+                                        }
+                                         
+                                        @if (sixAMDateTime <= DateTime.UtcNow.AddHours(1) && DateTime.UtcNow.AddHours(1) <= sixAMDateTimec)
+                                        {
+
+
+                                            <span class="btn btn-success">ACTIVE</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="btn btn-warning">UPCOMING</span>
+
+                                        }
+                                    </td>
+                                    @*<td>
+
+                                            <form method="post">
+                                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                                <input asp-for="BucketId" value="@item.BucketId" type="hidden" />
+                                                <input asp-for="AdsId" value="@item.Id" type="hidden" />
+                                                <div class="form-group">
+                                                    @if (item.Active == false)
+                                                    {
+                                                        <input asp-for="Active" value="true" type="hidden" />
+
+
+                                                        <input type="submit" value="Make Active" class="btn btn-primary" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <input asp-for="Active" value="false" type="hidden" />
+
+
+                                                        <input type="submit" value="Cancel Active" class="btn btn-danger" />
+                                                    }
+                                                </div>
+                                            </form>
+                                        </td>*@
+
+                                    @*<td>
+                                        <div class="btn-group">
+
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-success btn-xs dropdown-toggle dropdown-icon" data-toggle="dropdown" aria-expanded="false">
+                                                    Action
+                                                </button>
+                                                <div class="dropdown-menu" style="">
+
+                                                    <a class="dropdown-item" asp-page="./Info" asp-route-id="@item.Id">Details</a>
+                                                    <a class="dropdown-item" asp-page="./Update" asp-route-id="@item.Id">Update</a>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </td>*@
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body ">
+        <div class="boxed-div">
+
+            <div class="card-header">
+                <h4 class="">COMPLETED ADs</h4>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>S/N</th>
+
+                                <th>
+                                    Company
+                                </th>
+                                <th>Date</th>
+                                <th>Image</th>
+ 
+
+                            </tr>
+                        </thead>
+                        @{
+                            int ssn = 0;
+                        }
+                        <tbody>
+                            @foreach (var item in Model.KvAdsFinished)
+                            {
+                                <tr>
+                                    <td>
+                                        @{
+                                            ssn++;
+                                        }
+                                        @ssn
+                                    </td>
+
+                                    <td>
+                                        <a asp-page="./Details" asp-route-id="@item.Id">
+                                            @Html.DisplayFor(modelItem => item.CompanyName)
+                                        </a>
+                                    </td>
+                                    <td>
+                                        @item.CreatedAtUtc.ToString("ddd dd/MMM/yyyy")
+                                    </td>
+
+                                    <td>
+                                        <a href="@item.ImageUrl" target="_blank">
+                                            <img src="@item.ImageUrl" class="img-fluid" style="height:50px" />
+                                        </a>
+                                    </td>
+
+                                     
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

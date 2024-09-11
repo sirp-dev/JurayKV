@@ -1,0 +1,153 @@
+﻿ 
+
+     
+
+        .container .box .top {
+            position: relative;
+            background-color: red;
+        }
+
+            .container .box .top:before {
+                content: "";
+                width: 100%;
+                height: 100%;
+                background-color: rgba(43, 187, 175, 0.829);
+                position: absolute;
+                left: 0;
+                top: 0;
+                transition: 0.3s;
+                opacity: 0;
+            }
+
+            .container .box .top:hover:before {
+                opacity: 1;
+            }
+             
+            .container .box .top:hover:after {
+                opacity: 1;
+            }
+
+            .container .box .top img {
+                width: 100%;
+                margin-bottom: 0;
+                height:226px;
+            }
+
+            .container .box .top span {
+                position: absolute;
+                right: 20px;
+                bottom: 15px;
+                color: white;
+                font-size: 20px;
+            }
+
+                .container .box .top span i {
+                    margin-left: 5px;
+                }
+
+        .container .box .bottom {
+            padding: 20px 15px;
+            position: relative;
+        }
+
+        .container .box:not(:last-of-type) .bottom:before {
+            content: "Hot";
+            background-color: #ea723d;
+            color: white;
+            font-size: 11px;
+            padding: 4px 7px;
+            position: absolute;
+            left: 20px;
+            top: -40px;
+            z-index: 1;
+        }
+
+        .container .box .bottom h3 {
+            font-size: 15px;
+        }
+
+        .container .box .bottom > p {
+            margin: 15px 0;
+            font-size: 13px;
+            line-height: 1.4;
+            color: #777;
+        }
+
+        .container .box .bottom .advants {
+            display: flex;
+        }
+
+            .container .box .bottom .advants > div {
+                margin-right: 15px;
+            }
+
+                .container .box .bottom .advants > div > span {
+                    font-weight: bold;
+                    font-size: 12px;
+                }
+
+                .container .box .bottom .advants > div > div {
+                    margin-top: 10px;
+                    display: flex;
+                    align-items: center;
+                }
+
+                    .container .box .bottom .advants > div > div i {
+                        color: #777;
+                        font-size: 22px;
+                    }
+
+                    .container .box .bottom .advants > div > div > span {
+                        font-size: 12px;
+                        font-weight: bold;
+                        margin-left: 10px;
+                    }
+
+                        .container .box .bottom .advants > div > div > span > span {
+                            color: #777;
+                            font-weight: normal;
+                            margin-left: 5px;
+                        }
+
+        .container .box .bottom .price {
+            margin-top: 20px;
+        }
+
+            .container .box .bottom .price span:first-of-type {
+                display: block;
+                font-size: 13px;
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+
+            .container .box .bottom .price span:last-of-type {
+                color: #3eaba1;
+                font-size: 22px;
+            }
+.container .box .bottom {
+    padding: 20px 15px;
+    position: relative;
+    border-left: 1px solid #8b8b8b91;
+    border-right: 1px solid #8b8b8b91;
+    border-bottom: 1px solid #8b8b8b91;
+}
+.row-feature-1 {
+    display: flex;
+    justify-content: space-between;
+}
+
+    .row-feature-1 > .col-feature {
+        width: 33.3%;
+    }
+.container .box .bottom .price {
+    margin-top: 20px;
+    background-color: #d2d2d2;
+    padding: 4px 20px;
+    text-align: center;
+}
+    .container .box .bottom .price span:first-of-type {
+        display: block;
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 0;
+    }

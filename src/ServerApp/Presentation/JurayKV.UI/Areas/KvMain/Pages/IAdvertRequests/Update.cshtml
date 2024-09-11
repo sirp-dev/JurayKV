@@ -1,0 +1,75 @@
+﻿@page
+@model JurayKV.UI.Areas.KvMain.Pages.IAdvertRequests.UpdateModel
+@{
+}
+
+<div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title">UPDATE AdvertRequest</h3>
+
+    </div>
+    <!-- /.card-header -->
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Command.Id" />
+                    <div class="form-group">
+                        <label for="BucketId">Select Company</label>
+                        <select asp-for="Command.CompanyId" class="form-control" id="myDropdown" asp-items="Model.ListCompanies"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Command.Amount" class="control-label"></label>
+                        <input asp-for="Command.Amount" class="form-control" />
+                        <span asp-validation-for="Command.Amount" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Command.Note" class="control-label"></label>
+                        <input asp-for="Command.Note" class="form-control" id="upper" onkeyup="myUppercase()" />
+                        <span asp-validation-for="Command.Note" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Command.CreatedAtUtc" class="control-label"></label>
+                        <input asp-for="Command.CreatedAtUtc" class="form-control" />
+                        <span asp-validation-for="Command.CreatedAtUtc" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Command.TransactionReference" class="control-label"></label>
+                        <input asp-for="Command.TransactionReference" class="form-control" />
+                        <span asp-validation-for="Command.TransactionReference" class="text-danger"></span>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label asp-for="Command.Status" class="control-label"></label>
+                        @Html.DropDownListFor(model => model.Command.Status, new SelectList(Enum.GetValues(typeof(JurayKV.Domain.Primitives.Enum.EntityStatus))), new { @class = "form-control" })
+                        <span asp-validation-for="Command.Status" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Upload Advert Image If Any</label><br />
+                        <input type="file" class="control-label" asp-for="imagefile" />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Submit" class="btn btn-primary" />
+                        <a asp-page="./Index" class="btn bg-gradient-warning btn-sm" style="float:right;">Back</a>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <!-- /.row -->
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

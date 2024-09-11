@@ -1,0 +1,81 @@
+﻿@page
+@model JurayKV.UI.Areas.KvMain.Pages.IAds.InfoModel
+@{
+}
+
+<div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title">KV ADVERT DETAILS</h3>
+    </div>
+    <!-- /.card-header -->
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+
+                <dl class="row">
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.UpdateKvAd.BucketName)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.UpdateKvAd.BucketName)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.UpdateKvAd.CompanyName)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.UpdateKvAd.CompanyName)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.UpdateKvAd.Fullname)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.UpdateKvAd.Fullname)
+                    </dd>
+                    <dt class="col-sm-2">
+                       Advert Image
+                    </dt>
+                    <dd class="col-sm-10">
+                        
+                        <a href="@Model.UpdateKvAd.ImageUrl" target="_blank">
+
+
+                            @if (Model.UpdateKvAd.ImageKey.EndsWith(".jpg") || Model.UpdateKvAd.ImageKey.EndsWith(".jpeg") || Model.UpdateKvAd.ImageKey.EndsWith(".png") || Model.UpdateKvAd.ImageKey.EndsWith(".gif") || Model.UpdateKvAd.ImageKey.EndsWith(".bmp"))
+                            {
+                                <img src="@Model.UpdateKvAd.ImageUrl" class="img-fluid" style="max-height: 100px;" />
+                            }
+                            else if (Model.UpdateKvAd.ImageKey.EndsWith(".mp4") || Model.UpdateKvAd.ImageKey.EndsWith(".avi") || Model.UpdateKvAd.ImageKey.EndsWith(".mov") || Model.UpdateKvAd.ImageKey.EndsWith(".wmv") || Model.UpdateKvAd.ImageKey.EndsWith(".flv"))
+                            {
+                                <video controls style="height:120px;width:250px;">
+                                    <source src="@Model.UpdateKvAd.ImageUrl" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            }
+
+
+                        </a>
+
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.UpdateKvAd.CreatedAtUtc)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.UpdateKvAd.CreatedAtUtc)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+
+
+        <!-- /.row -->
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+        <a class="btn btn-warning" asp-page="./Update" asp-route-id="@Model.UpdateKvAd.Id">Update</a>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

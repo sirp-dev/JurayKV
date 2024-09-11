@@ -1,0 +1,192 @@
+﻿@page
+@model JurayKV.UI.Areas.KvMain.Pages.IUsers.UserListModel
+@{
+}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">USER MANAGER LIST</h3>
+ 
+    </div>
+    <div class="card-header">
+        <h6>Duplicate Manager</h6>
+        <a class="btn btn-primary">
+            Emails (@Model.DistintEmail) (@Model.DistintEmailCount)
+        </a>
+        <a class="btn btn-success">
+            Active: @Model.DistintEmailCountActive
+        </a>
+        <a class="btn btn-primary">
+            Phone (@Model.DistintPhone) (@Model.DistintPhoneCount)
+        </a>
+        <a class="btn btn-success">
+            Active: @Model.DistintPhoneCountActive
+        </a>
+
+
+    </div>
+    <div class="card-header">
+        <a asp-page="./Index" asp-route-all="true" class="btn btn-primary">
+            All Users (@Model.All)
+        </a>
+
+        <a asp-page="./Index" asp-route-status="@JurayKV.Domain.Primitives.Enum.AccountStatus.Active" asp-route-startdate="@DateTime.MinValue" asp-route-enddate="@DateTime.MaxValue" asp-route-searchstring="@Model.Searchstring" class="btn btn-primary">
+            Active Users (@Model.ActiveOnly)
+        </a>
+       
+        <a asp-page="./Index" asp-route-status="@JurayKV.Domain.Primitives.Enum.AccountStatus.Suspended" asp-route-startdate="@DateTime.MinValue" asp-route-enddate="@DateTime.MaxValue" asp-route-searchstring="@Model.Searchstring" class="btn btn-danger">
+            Suspended Users (@Model.Suspended)
+        </a>
+        <a asp-page="./Index" asp-route-status="@JurayKV.Domain.Primitives.Enum.AccountStatus.Disabled" asp-route-startdate="@DateTime.MinValue" asp-route-enddate="@DateTime.MaxValue" asp-route-searchstring="@Model.Searchstring" class="btn btn-warning">
+            Disabled Users (@Model.Disabled)
+        </a>
+    </div>
+     
+     
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>
+                            Fullname
+
+                        </th>
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            Email
+                        </th>
+                        <th>Phone </th>
+                        <th>Date </th>
+                        <th>LoggedIn </th>
+                        <th>Balance</th>
+                        <th>Transactions Credit</th>
+                        <th>Transactions Debit</th>
+                        <th>Points</th>
+                        <th>Role</th>
+                        <th> Status</th>
+                        <th> Referral</th>
+                        <th>Referral Sum</th>
+
+                        <th> Verified</th>
+                        <th> </th>
+
+                    </tr>
+                </thead>
+                @{
+                    int sn = 0;
+                    if (Model.PageNumber > 1)
+                    {
+                        sn = Model.PageSize * (Model.PageNumber - 1);
+                    }
+                }
+                <tbody>
+                    @foreach (var item in Model.UserManagers)
+                    {
+                        <tr>
+                            <td>
+                                @{
+                                    sn++;
+                                }
+                                @sn
+                            </td>
+                            <td>
+                                <a asp-page="./Info" asp-route-id="@item.Id">
+                                    @Html.DisplayFor(modelItem => item.Fullname)
+                                </a>
+
+
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IdNumber)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PhoneNumber)
+                            </td>
+
+                            <td>
+                                @item.CreationUTC
+                            </td>
+                            <td>
+                                @item.LastLoggedInAtUtc
+                            </td>
+                            <td>
+                                @{
+                                    string ava = string.Format("₦{0:F0}", item.WalletBalance).Replace(".00", "");
+                                }
+                                @ava
+                            </td>
+                            <td>
+                                @{
+                                    string ttans = string.Format("₦{0:F0}", item.TotalTransactionCredit).Replace(".00", "");
+                                }
+                                @ttans
+                            </td>
+                            <td>
+                                @{
+                                    string dttans = string.Format("₦{0:F0}", item.TotalTransactionDebit).Replace(".00", "");
+                                }
+                                @dttans
+                            </td>
+                            <td>
+                                @{
+                                    string points = string.Format("₦{0:F0}", item.TotalPoints).Replace(".00", "");
+                                }
+                                @points
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Role)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AccountStatus)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ReferralCount)
+                            </td>
+                            <td>
+                                @{
+                                    string reff = string.Format("₦{0:F0}", item.TotalReferralAmount).Replace(".00", "");
+                                }
+                                @reff
+                            </td>
+                            <td>
+                                @if (item.Verified == true)
+                                {
+                                    <span>verified</span>
+                                }
+                            </td>
+
+                            <td>
+                                <div class="btn-group">
+
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-success btn-xs dropdown-toggle dropdown-icon" data-toggle="dropdown" aria-expanded="false">
+                                            Action
+                                        </button>
+                                        <div class="dropdown-menu" style="">
+
+                                            <a class="dropdown-item" asp-page="./Info" asp-route-id="@item.Id">Details</a>
+                                            <a class="dropdown-item" asp-page="./Update" asp-route-id="@item.Id">Update</a>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+ 
+
+    </div>
+</div>

@@ -1,0 +1,208 @@
+﻿@page
+@model JurayKV.UI.Areas.User.Pages.Account.IndexModel
+@{
+}
+@if (TempData["error"] != null)
+{
+    <div class="alert alert-danger">
+        <strong>Ops!</strong> @TempData["error"]
+    </div>
+}
+
+@if (TempData["success"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["success"]
+    </div>
+}
+
+<div class="row">
+    <div class="col-12 col-sm-6 col-md-3">
+        <div class="info-box">
+
+            <div class="info-box-content">
+                <span class="info-box-text">@Model.DashboardData.Fullname</span>
+                <span class="info-box-text" style="text-overflow: unset;font-size:9px;">
+                    @Model.DashboardData.Status
+                    @if (Model.DashboardData.Upgrade == true)
+                    {
+                        <a asp-page="./CSA" class="btn btn-warning btn-xs">Upgrade to CSA</a>
+                    }
+                </span>
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+    <div class="col-12 col-sm-6 col-md-3">
+        <div class="info-box mb-3">
+            <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-coins"></i></span>
+
+            <div class="info-box-content">
+                <span class="info-box-text">Points</span>
+                <span class="info-box-number">@Model.DashboardData.Points</span>
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+    <!-- fix for small devices only -->
+    <div class="clearfix hidden-md-up"></div>
+
+    <div class="col-12 col-sm-6 col-md-3">
+        <div class="info-box mb-3">
+            <span class="info-box-icon bg-success elevation-1"><i class="fab fa-square-whatsapp"></i></span>
+
+            <div class="info-box-content">
+                <span class="info-box-text">Ads Running</span>
+                <span class="info-box-number">@Model.DashboardData.AdsRunning</span>
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+    <div class="col-12 col-sm-6 col-md-3">
+        <div class="info-box mb-3">
+            <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-money"></i></span>
+
+            <div class="info-box-content">
+                <span class="info-box-text">Exchange Rate</span>
+                <span class="info-box-number">@Model.DashboardData.ExchangeRate</span>
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+</div>
+<div class="row">
+
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header border-transparent">
+                <h3 class="card-title">Latest Point History</h3>
+
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table m-0">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Point</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.DashboardData.LastTenPoints)
+                            {
+                                <tr>
+                                    <td><a href="">@item.CreatedAtUtc.ToString("dd/MM/yyyy")</a></td>
+                                    <td>@item.Point</td>
+                                    <td>@item.Status</td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer clearfix">
+                <a asp-page="./Points" class="btn btn-sm btn-secondary float-right">View More</a>
+            </div>
+            <!-- /.card-footer -->
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header border-transparent">
+                <h3 class="card-title">Latest Transaction History</h3>
+
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table m-0">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Type</th>
+                                <td>
+                                    Note
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.DashboardData.LastTenTransactions)
+                            {
+
+
+                                <tr>
+                                    <td><a asp-page="./TransactionInfo" asp-route-id="@item.Id">@item.CreatedAtUtc.ToString("dd/MM/yyyy")</a></td>
+                                    <td>@item.Amount</td>
+                                    <td>@item.Status</td>
+                                    <td>@item.TransactionType</td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Note)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer clearfix">
+                <a asp-page="./Transactions" class="btn btn-sm btn-secondary float-right">View More</a>
+            </div>
+            <!-- /.card-footer -->
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+
+    <div class="modal fade" id="mainModal" data-backdrop="static">
+        <div class="modal-dialog modal-md" style="width: 70% !important;">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <a target="_blank" href="https://chat.whatsapp.com/GEdI02VVEvWLpIG6avUpK7" class="btn btn-primary" style="width:100%;">
+                    
+                        <i class="fab fa-whatsapp" style="color: #017561; font-weight: 900; font-size: 20px; background-color: white; padding: 5px; border-radius: 10px; "></i>
+                      Koboview WhatsApp Community Link</a>
+                    <h5 style="text-align:center;">    Click on the link to join Koboview WhatsApp Community. 
+
+                    </h5>
+                    <br />
+                    <a target="_blank" href="https://youtu.be/YP7sRRNpaOM" class="btn btn-primary" style="width:100%;">
+                    <i class="fab fa-youtube" style="color: #f40000; font-weight: 900; font-size: 20px; background-color: white; padding: 5px; border-radius: 10px; "></i>  Youtube Link</a>
+                    <h5 style="text-align:center;">   Click on the above link to learn how Koboview works
+                    </h5>
+
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="closeModal()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(window).on('load', function () {
+            $('#mainModal').modal('show');
+        });
+    </script>
+
+}

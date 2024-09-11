@@ -1,0 +1,634 @@
+﻿@page
+@model JurayKV.UI.Areas.KvMain.Pages.IUsers.IndexDataModel
+@{
+}
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">@Model.Title</h3>
+
+        <a asp-page="./UserList" class="btn bg-gradient-warning btn-sm" style="float:right;">Users List JQuery</a>
+
+    </div>
+    <div class="card-header">
+        <h6>Duplicate Phone Manager</h6>
+
+        <div class="">
+            @Model.DistintPhone
+        </div>
+    </div>
+    <div class="card-header">
+        <a asp-page="./Index" asp-route-all="true" class="btn btn-primary">
+            All Users (@Model.All)
+        </a>
+
+        <a asp-page="./Index" asp-route-status="@JurayKV.Domain.Primitives.Enum.AccountStatus.Active" asp-route-startdate="@DateTime.MinValue" asp-route-enddate="@DateTime.MaxValue" asp-route-searchstring="@Model.Searchstring" class="btn btn-primary">
+            Active Users (@Model.ActiveOnly)
+        </a>
+
+        <a asp-page="./Index" asp-route-status="@JurayKV.Domain.Primitives.Enum.AccountStatus.Suspended" asp-route-startdate="@DateTime.MinValue" asp-route-enddate="@DateTime.MaxValue" asp-route-searchstring="@Model.Searchstring" class="btn btn-danger">
+            Suspended Users (@Model.Suspended)
+        </a>
+        <a asp-page="./Index" asp-route-status="@JurayKV.Domain.Primitives.Enum.AccountStatus.Disabled" asp-route-startdate="@DateTime.MinValue" asp-route-enddate="@DateTime.MaxValue" asp-route-searchstring="@Model.Searchstring" class="btn btn-warning">
+            Disabled Users (@Model.Disabled)
+        </a>
+    </div>
+    <div class="card-header">
+        @if (Model.Status == JurayKV.Domain.Primitives.Enum.AccountStatus.NotDefind && Model.Searchstring == null)
+        {
+            <h6>CURRENT PAGE STATISTICS</h6>
+        }
+        else if (Model.Searchstring != null)
+        {
+            <h6>@Model.Searchstring.ToUpper() CURRENT PAGE  STATISTICS</h6>
+        }
+        else if (Model.StartDate != null)
+        {
+            <h6>Update from <span class="bg-info btn">@Model.StartDate</span> to <span class="bg-info btn">@Model.EndDate</span> CURRENT PAGE STATISTICS</h6>
+
+        }
+        <a asp-page="./Index" asp-route-all="true" class="btn btn-primary">
+            Dated Users (@Model.DayAll)
+        </a>
+
+        <a asp-page="./Index" asp-route-status="@JurayKV.Domain.Primitives.Enum.AccountStatus.Active" asp-route-startdate="@Model.StartDate" asp-route-enddate="@Model.EndDate" asp-route-searchstring="@Model.Searchstring" class="btn btn-primary">
+            Dated Active Users (@Model.DayActiveOnly)
+        </a>
+
+        <a asp-page="./Index" asp-route-status="@JurayKV.Domain.Primitives.Enum.AccountStatus.Suspended" asp-route-startdate="@Model.StartDate" asp-route-enddate="@Model.EndDate" asp-route-searchstring="@Model.Searchstring" class="btn btn-danger">
+            Dated Suspended Users (@Model.DaySuspended)
+        </a>
+        <a asp-page="./Index" asp-route-status="@JurayKV.Domain.Primitives.Enum.AccountStatus.Disabled" asp-route-startdate="@Model.StartDate" asp-route-enddate="@Model.EndDate" asp-route-searchstring="@Model.Searchstring" class="btn btn-warning">
+            Dated Disabled Users (@Model.DayDisabled)
+        </a>
+    </div>
+    <div class="card-header">
+        <form class="">
+            <div class="row">
+
+                <div class="form-group col-md-3">
+                    <label for="searchBox" class="">Search:</label>
+                    <input type="text" name="searchstring" class="form-control" id="searchBox" value="@Model.Searchstring" placeholder="Enter search term">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="startDate" class="">Start Date:</label>
+                    <input type="date" name="startdate" class="form-control" id="startDate" value="@Model.StartDate">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="endDate" class="">End Date:</label>
+                    <input type="date" name="enddate" class="form-control" id="endDate" value="@Model.EndDate">
+                </div>
+                <div class="form-group col-md-3">
+
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>
+                            ID
+
+                        </th>
+                        <th>
+                            Fullname
+
+                            @if (Model.ShowAll == true || Model.ShowWithoutDate == true)
+                            {
+                                <a asp-page="./Index" asp-route-pageNumber="@Model.PageNumber)" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-searchstring="@Model.Searchstring" asp-route-sortOrder="0"><i class="fa fa-arrow-down"></i></a>
+                            }
+                            else
+                            {
+                                <a asp-page="./Index" asp-route-pageNumber="@Model.PageNumber" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-startdate="@Model.StartDate" asp-route-enddate="@Model.EndDate" asp-route-searchstring="@Model.Searchstring" asp-route-sortOrder="0" class=""><i class="fa fa-arrow-down"></i></a>
+                            }
+                        </th>
+
+                        <th>
+                            Email
+
+
+                            @if (Model.ShowAll == true || Model.ShowWithoutDate == true)
+                            {
+                                <a asp-page="./Index" asp-route-pageNumber="@Model.PageNumber)" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-searchstring="@Model.Searchstring" asp-route-sortOrder="2"><i class="fa fa-arrow-down"></i></a>
+                            }
+                            else
+                            {
+                                <a asp-page="./Index" asp-route-pageNumber="@Model.PageNumber" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-startdate="@Model.StartDate" asp-route-enddate="@Model.EndDate" asp-route-searchstring="@Model.Searchstring" asp-route-sortOrder="2" class=""><i class="fa fa-arrow-down"></i></a>
+                            }
+                        </th>
+                        <th>
+                            Phone
+
+
+                            @if (Model.ShowAll == true || Model.ShowWithoutDate == true)
+                            {
+                                <a asp-page="./Index" asp-route-pageNumber="@Model.PageNumber)" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-searchstring="@Model.Searchstring" asp-route-sortOrder="3"><i class="fa fa-arrow-down"></i></a>
+                            }
+                            else
+                            {
+                                <a asp-page="./Index" asp-route-pageNumber="@Model.PageNumber" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-startdate="@Model.StartDate" asp-route-enddate="@Model.EndDate" asp-route-searchstring="@Model.Searchstring" asp-route-sortOrder="3" class=""><i class="fa fa-arrow-down"></i></a>
+                            }
+                        </th>
+                        <th>
+                            Date
+
+                            @if (Model.ShowAll == true || Model.ShowWithoutDate == true)
+                            {
+                                <a asp-page="./Index" asp-route-pageNumber="@Model.PageNumber)" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-searchstring="@Model.Searchstring" asp-route-sortOrder="4"><i class="fa fa-arrow-down"></i></a>
+                            }
+                            else
+                            {
+                                <a asp-page="./Index" asp-route-pageNumber="@Model.PageNumber" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-startdate="@Model.StartDate" asp-route-enddate="@Model.EndDate" asp-route-searchstring="@Model.Searchstring" asp-route-sortOrder="4" class=""><i class="fa fa-arrow-down"></i></a>
+                            }
+                        </th>
+                        <th>
+                            LoggedIn
+
+                            @if (Model.ShowAll == true || Model.ShowWithoutDate == true)
+                            {
+                                <a asp-page="./Index" asp-route-pageNumber="@Model.PageNumber)" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-searchstring="@Model.Searchstring" asp-route-sortOrder="6"><i class="fa fa-arrow-down"></i></a>
+                            }
+                            else
+                            {
+                                <a asp-page="./Index" asp-route-pageNumber="@Model.PageNumber" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-startdate="@Model.StartDate" asp-route-enddate="@Model.EndDate" asp-route-searchstring="@Model.Searchstring" asp-route-sortOrder="6" class=""><i class="fa fa-arrow-down"></i></a>
+                            }
+                        </th>
+                        <th>
+                            Balance
+
+                            @if (Model.ShowAll == true || Model.ShowWithoutDate == true)
+                            {
+                                <a asp-page="./Index" asp-route-pageNumber="@Model.PageNumber)" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-searchstring="@Model.Searchstring" asp-route-sortOrder="5"><i class="fa fa-arrow-down"></i></a>
+                            }
+                            else
+                            {
+                                <a asp-page="./Index" asp-route-pageNumber="@Model.PageNumber" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-startdate="@Model.StartDate" asp-route-enddate="@Model.EndDate" asp-route-searchstring="@Model.Searchstring" asp-route-sortOrder="5" class=""><i class="fa fa-arrow-down"></i></a>
+                            }
+                        </th>
+                        <th>
+                            Transactions Credit
+
+                            @if (Model.ShowAll == true || Model.ShowWithoutDate == true)
+                            {
+                                <a asp-page="./Index" asp-route-pageNumber="@Model.PageNumber)" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-searchstring="@Model.Searchstring" asp-route-sortOrder="7"><i class="fa fa-arrow-down"></i></a>
+                            }
+                            else
+                            {
+                                <a asp-page="./Index" asp-route-pageNumber="@Model.PageNumber" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-startdate="@Model.StartDate" asp-route-enddate="@Model.EndDate" asp-route-searchstring="@Model.Searchstring" asp-route-sortOrder="7" class=""><i class="fa fa-arrow-down"></i></a>
+                            }
+                        </th>
+                        <th>
+                            Transactions Debit
+
+                            @if (Model.ShowAll == true || Model.ShowWithoutDate == true)
+                            {
+                                <a asp-page="./Index" asp-route-pageNumber="@Model.PageNumber)" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-searchstring="@Model.Searchstring" asp-route-sortOrder="14"><i class="fa fa-arrow-down"></i></a>
+                            }
+                            else
+                            {
+                                <a asp-page="./Index" asp-route-pageNumber="@Model.PageNumber" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-startdate="@Model.StartDate" asp-route-enddate="@Model.EndDate" asp-route-searchstring="@Model.Searchstring" asp-route-sortOrder="14" class=""><i class="fa fa-arrow-down"></i></a>
+                            }
+                        </th>
+                        <th>
+                            Tie
+
+                            @if (Model.ShowAll == true || Model.ShowWithoutDate == true)
+                            {
+                                <a asp-page="./Index" asp-route-pageNumber="@Model.PageNumber)" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-searchstring="@Model.Searchstring" asp-route-sortOrder="15"><i class="fa fa-arrow-down"></i></a>
+                            }
+                            else
+                            {
+                                <a asp-page="./Index" asp-route-pageNumber="@Model.PageNumber" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-startdate="@Model.StartDate" asp-route-enddate="@Model.EndDate" asp-route-searchstring="@Model.Searchstring" asp-route-sortOrder="15" class=""><i class="fa fa-arrow-down"></i></a>
+                            }
+                        </th>
+                        <th>
+                            Request Date
+
+                            @if (Model.ShowAll == true || Model.ShowWithoutDate == true)
+                            {
+                                <a asp-page="./Index" asp-route-pageNumber="@Model.PageNumber)" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-searchstring="@Model.Searchstring" asp-route-sortOrder="16"><i class="fa fa-arrow-down"></i></a>
+                            }
+                            else
+                            {
+                                <a asp-page="./Index" asp-route-pageNumber="@Model.PageNumber" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-startdate="@Model.StartDate" asp-route-enddate="@Model.EndDate" asp-route-searchstring="@Model.Searchstring" asp-route-sortOrder="16" class=""><i class="fa fa-arrow-down"></i></a>
+                            }
+                        </th>
+                        <th>
+                            Points
+
+                            @if (Model.ShowAll == true || Model.ShowWithoutDate == true)
+                            {
+                                <a asp-page="./Index" asp-route-pageNumber="@Model.PageNumber)" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-searchstring="@Model.Searchstring" asp-route-sortOrder="8"><i class="fa fa-arrow-down"></i></a>
+                            }
+                            else
+                            {
+                                <a asp-page="./Index" asp-route-pageNumber="@Model.PageNumber" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-startdate="@Model.StartDate" asp-route-enddate="@Model.EndDate" asp-route-searchstring="@Model.Searchstring" asp-route-sortOrder="8" class=""><i class="fa fa-arrow-down"></i></a>
+                            }
+                        </th>
+                        <th>
+                            Role
+
+                            @if (Model.ShowAll == true || Model.ShowWithoutDate == true)
+                            {
+                                <a asp-page="./Index" asp-route-pageNumber="@Model.PageNumber)" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-searchstring="@Model.Searchstring" asp-route-sortOrder="9"><i class="fa fa-arrow-down"></i></a>
+                            }
+                            else
+                            {
+                                <a asp-page="./Index" asp-route-pageNumber="@Model.PageNumber" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-startdate="@Model.StartDate" asp-route-enddate="@Model.EndDate" asp-route-searchstring="@Model.Searchstring" asp-route-sortOrder="9" class=""><i class="fa fa-arrow-down"></i></a>
+                            }
+                        </th>
+                        <th>
+                            Status
+
+                            @if (Model.ShowAll == true || Model.ShowWithoutDate == true)
+                            {
+                                <a asp-page="./Index" asp-route-pageNumber="@Model.PageNumber)" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-searchstring="@Model.Searchstring" asp-route-sortOrder="10"><i class="fa fa-arrow-down"></i></a>
+                            }
+                            else
+                            {
+                                <a asp-page="./Index" asp-route-pageNumber="@Model.PageNumber" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-startdate="@Model.StartDate" asp-route-enddate="@Model.EndDate" asp-route-searchstring="@Model.Searchstring" asp-route-sortOrder="10" class=""><i class="fa fa-arrow-down"></i></a>
+                            }
+                        </th>
+                        <th>
+                            Referral
+
+                            @if (Model.ShowAll == true || Model.ShowWithoutDate == true)
+                            {
+                                <a asp-page="./Index" asp-route-pageNumber="@Model.PageNumber)" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-searchstring="@Model.Searchstring" asp-route-sortOrder="11"><i class="fa fa-arrow-down"></i></a>
+                            }
+                            else
+                            {
+                                <a asp-page="./Index" asp-route-pageNumber="@Model.PageNumber" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-startdate="@Model.StartDate" asp-route-enddate="@Model.EndDate" asp-route-searchstring="@Model.Searchstring" asp-route-sortOrder="11" class=""><i class="fa fa-arrow-down"></i></a>
+                            }
+                        </th>
+                        <th>
+                            Referral Sum
+
+                            @if (Model.ShowAll == true || Model.ShowWithoutDate == true)
+                            {
+                                <a asp-page="./Index" asp-route-pageNumber="@Model.PageNumber)" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-searchstring="@Model.Searchstring" asp-route-sortOrder="12"><i class="fa fa-arrow-down"></i></a>
+                            }
+                            else
+                            {
+                                <a asp-page="./Index" asp-route-pageNumber="@Model.PageNumber" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-startdate="@Model.StartDate" asp-route-enddate="@Model.EndDate" asp-route-searchstring="@Model.Searchstring" asp-route-sortOrder="12" class=""><i class="fa fa-arrow-down"></i></a>
+                            }
+                        </th>
+
+                        <th>
+                            Verified
+
+                            @if (Model.ShowAll == true || Model.ShowWithoutDate == true)
+                            {
+                                <a asp-page="./Index" asp-route-pageNumber="@Model.PageNumber)" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-searchstring="@Model.Searchstring" asp-route-sortOrder="13"><i class="fa fa-arrow-down"></i></a>
+                            }
+                            else
+                            {
+                                <a asp-page="./Index" asp-route-pageNumber="@Model.PageNumber" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-startdate="@Model.StartDate" asp-route-enddate="@Model.EndDate" asp-route-searchstring="@Model.Searchstring" asp-route-sortOrder="13" class=""><i class="fa fa-arrow-down"></i></a>
+                            }
+                        </th>
+                        <th> V Code</th>
+                        <th> </th>
+
+                    </tr>
+                </thead>
+                @{
+                    int sn = 0;
+                    if (Model.PageNumber > 1)
+                    {
+                        sn = Model.PageSize * (Model.PageNumber - 1);
+                    }
+                }
+                <tbody>
+                    @foreach (var item in Model.UserManagers)
+                    {
+                        <tr>
+                            <td>
+                                @{
+                                    sn++;
+                                }
+                                @sn
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IdNumber)
+                            </td>
+                            <td>
+                                <a asp-page="./Info" asp-route-id="@item.Id">
+                                    @Html.DisplayFor(modelItem => item.Fullname)
+                                </a>
+
+
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PhoneNumber)
+                            </td>
+
+                            <td>
+                                @item.CreationUTC
+                            </td>
+                            <td>
+                                @item.LastLoggedInAtUtc
+                            </td>
+                            <td>
+                                @{
+                                    string ava = string.Format("₦{0:F0}", item.WalletBalance).Replace(".00", "");
+                                }
+                                @ava
+                            </td>
+                            <td>
+                                @{
+                                    string ttans = string.Format("₦{0:F0}", item.TotalTransactionCredit).Replace(".00", "");
+                                }
+                                @ttans
+                            </td>
+                            <td>
+                                @{
+                                    string dttans = string.Format("₦{0:F0}", item.TotalTransactionDebit).Replace(".00", "");
+                                }
+                                @dttans
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Tier)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.RequestDateTie2Upgraded)
+                            </td>
+                            <td>
+                                @{
+                                    string points = string.Format("₦{0:F0}", item.TotalPoints).Replace(".00", "");
+                                }
+                                @points
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Role)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AccountStatus)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ReferralCount)
+                            </td>
+                            <td>
+                                @{
+                                    string reff = string.Format("₦{0:F0}", item.TotalReferralAmount).Replace(".00", "");
+                                }
+                                @reff
+                            </td>
+                            <td>
+                                @if (item.Verified == true)
+                                {
+                                    <span>verified</span>
+                                }
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.VerificationCode)
+                            </td>
+                            <td>
+                                <div class="btn-group">
+
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-success btn-xs dropdown-toggle dropdown-icon" data-toggle="dropdown" aria-expanded="false">
+                                            Action
+                                        </button>
+                                        <div class="dropdown-menu" style="">
+
+                                            <a class="dropdown-item" asp-page="./Info" asp-route-id="@item.Id">Details</a>
+                                            <a class="dropdown-item" asp-page="./Update" asp-route-id="@item.Id">Update</a>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        @*<div class="pagination">
+                @for (int i = 1; i <= Model.TotalPages; i++)
+                {
+                    <a href="?pageNumber=@i&pageSize=@Model.PageSize" class="@(i == Model.PageNumber ? "active" : "")">@i</a>
+                }
+            </div>*@
+
+
+        <div class="pagination">
+            @if (Model.PageNumber > 1)
+            {
+                @if (Model.ShowAll == true || Model.ShowWithoutDate == true)
+                {
+                    <a asp-page="./Index" asp-route-pageNumber="@(Model.PageNumber - 1)" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-searchstring="@Model.Searchstring" class="">Previous</a>
+                }
+                else
+                {
+                    <a asp-page="./Index" asp-route-pageNumber="@(Model.PageNumber - 1)" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-startdate="@Model.StartDate" asp-route-enddate="@Model.EndDate" asp-route-searchstring="@Model.Searchstring" class="">Previous</a>
+                }
+            }
+
+            @for (int i = 1; i <= Model.TotalPages; i++)
+            {
+                if (i == (Model.PageNumber - 2) && i != (Model.TotalPages - 2))
+                {
+                    if (Model.ShowAll == true || Model.ShowWithoutDate == true)
+                    {
+                        <a asp-page="./Index" asp-route-pageNumber="@i" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-searchstring="@Model.Searchstring" class="@(i == Model.PageNumber ? "active" : "")">@i</a>
+                    }
+                    else
+                    {
+                        <a asp-page="./Index" asp-route-pageNumber="@i" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-startdate="@Model.StartDate" asp-route-enddate="@Model.EndDate" asp-route-searchstring="@Model.Searchstring" class="@(i == Model.PageNumber ? "active" : "")">@i</a>
+                    }
+                }
+                if (i == (Model.PageNumber - 1) && i != (Model.TotalPages - 1))
+                {
+                    if (Model.ShowAll == true || Model.ShowWithoutDate == true)
+                    {
+                        <a asp-page="./Index" asp-route-pageNumber="@i" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-searchstring="@Model.Searchstring" class="@(i == Model.PageNumber ? "active" : "")">@i</a>
+                    }
+                    else
+                    {
+                        <a asp-page="./Index" asp-route-pageNumber="@i" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-startdate="@Model.StartDate" asp-route-enddate="@Model.EndDate" asp-route-searchstring="@Model.Searchstring" class="@(i == Model.PageNumber ? "active" : "")">@i</a>
+                    }
+                }
+                if (i == Model.PageNumber)
+                {
+                    if (Model.ShowAll == true || Model.ShowWithoutDate == true)
+                    {
+                        <a asp-page="./Index" asp-route-pageNumber="@i" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-searchstring="@Model.Searchstring" class="@(i == Model.PageNumber ? "active" : "")">@i</a>
+                    }
+                    else
+                    {
+                        <a asp-page="./Index" asp-route-pageNumber="@i" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-startdate="@Model.StartDate" asp-route-enddate="@Model.EndDate" asp-route-searchstring="@Model.Searchstring" class="@(i == Model.PageNumber ? "active" : "")">@i</a>
+                    }
+                }
+                if (i == (Model.PageNumber + 1) && i != (Model.TotalPages + 1))
+                {
+                    if (Model.ShowAll == true || Model.ShowWithoutDate == true)
+                    {
+                        <a asp-page="./Index" asp-route-pageNumber="@i" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-searchstring="@Model.Searchstring" class="@(i == Model.PageNumber ? "active" : "")">@i</a>
+                    }
+                    else
+                    {
+                        <a asp-page="./Index" asp-route-pageNumber="@i" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-startdate="@Model.StartDate" asp-route-enddate="@Model.EndDate" asp-route-searchstring="@Model.Searchstring" class="@(i == Model.PageNumber ? "active" : "")">@i</a>
+                    }
+                }
+                if (i == (Model.PageNumber + 2) && i != (Model.TotalPages + 2))
+                {
+                    if (Model.ShowAll == true || Model.ShowWithoutDate == true)
+                    {
+                        <a asp-page="./Index" asp-route-pageNumber="@i" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-searchstring="@Model.Searchstring" class="@(i == Model.PageNumber ? "active" : "")">@i</a>
+                    }
+                    else
+                    {
+                        <a asp-page="./Index" asp-route-pageNumber="@i" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-startdate="@Model.StartDate" asp-route-enddate="@Model.EndDate" asp-route-searchstring="@Model.Searchstring" class="@(i == Model.PageNumber ? "active" : "")">@i</a>
+                    }
+                }
+                if (i > (Model.PageNumber + 2))
+                {
+
+                    <span>.</span>
+
+                }
+                @*if (i == (Model.TotalPages - 2))
+                    {
+                        if (Model.ShowAll == true || Model.ShowWithoutDate == true)
+                        {
+                            <a asp-page="./Index" asp-route-pageNumber="@i" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-searchstring="@Model.Searchstring" class="@(i == Model.PageNumber ? "active" : "")">@i</a>
+                        }
+                        else
+                        {
+                            <a asp-page="./Index" asp-route-pageNumber="@i" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-startdate="@Model.StartDate" asp-route-enddate="@Model.EndDate" asp-route-searchstring="@Model.Searchstring" class="@(i == Model.PageNumber ? "active" : "")">@i</a>
+                        }
+                    }
+                    if (i == (Model.TotalPages - 1))
+                    {
+                        if (Model.ShowAll == true || Model.ShowWithoutDate == true)
+                        {
+                            <a asp-page="./Index" asp-route-pageNumber="@i" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-searchstring="@Model.Searchstring" class="@(i == Model.PageNumber ? "active" : "")">@i</a>
+                        }
+                        else
+                        {
+                            <a asp-page="./Index" asp-route-pageNumber="@i" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-startdate="@Model.StartDate" asp-route-enddate="@Model.EndDate" asp-route-searchstring="@Model.Searchstring" class="@(i == Model.PageNumber ? "active" : "")">@i</a>
+                        }
+                    }*@
+                if (i == (Model.TotalPages) && i != Model.PageNumber)
+                {
+                    if (Model.ShowAll == true || Model.ShowWithoutDate == true)
+                    {
+                        <a asp-page="./Index" asp-route-pageNumber="@i" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-searchstring="@Model.Searchstring" class="@(i == Model.PageNumber ? "active" : "")">@i</a>
+                    }
+                    else
+                    {
+                        <a asp-page="./Index" asp-route-pageNumber="@i" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-startdate="@Model.StartDate" asp-route-enddate="@Model.EndDate" asp-route-searchstring="@Model.Searchstring" class="@(i == Model.PageNumber ? "active" : "")">@i</a>
+                    }
+                }
+            }
+
+            @if (Model.PageNumber < Model.TotalPages)
+            {
+
+                @if (Model.ShowAll == true || Model.ShowWithoutDate == true)
+                {
+                    <a asp-page="./Index" asp-route-pageNumber="@(Model.PageNumber + 1)" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-searchstring="@Model.Searchstring" class="">Next</a>
+                }
+                else
+                {
+                    <a asp-page="./Index" asp-route-pageNumber="@(Model.PageNumber + 1)" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-startdate="@Model.StartDate" asp-route-enddate="@Model.EndDate" asp-route-searchstring="@Model.Searchstring" class="">Next</a>
+                }
+
+            }
+
+            @if (Model.ShowAll == true || Model.ShowWithoutDate == true)
+            {
+                <a asp-page="./Index" asp-route-pageNumber="@Model.TotalPages" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-searchstring="@Model.Searchstring" class="">Last</a>
+            }
+            else
+            {
+                <a asp-page="./Index" asp-route-pageNumber="@Model.TotalPages" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-startdate="@Model.StartDate" asp-route-enddate="@Model.EndDate" asp-route-searchstring="@Model.Searchstring" class="">Last</a>
+            }
+        </div>
+
+
+
+
+        @*<div class="pagination">
+                @if (Model.PageNumber > 1)
+                {
+                    <a href="?pageNumber=@(Model.PageNumber - 1)&pageSize=@Model.PageSize">Previous</a>
+                }
+
+                @for (int i = 1; i <= Model.TotalPages; i++)
+                {
+                    if (i == 1 || i == 2 || i == Model.TotalPages - 1 || i == Model.TotalPages)
+                    {
+                        if (Model.ShowAll == true || Model.ShowWithoutDate == true)
+                        {
+                            <a asp-page="./Index" asp-route-pageNumber="@i" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-searchstring="@Model.Searchstring" class="@(i == Model.PageNumber ? "active" : "")">@i</a>
+
+                        }
+                        else
+                        {
+                            <a asp-page="./Index" asp-route-pageNumber="@i" asp-route-pageSize="@Model.PageSize" asp-route-status="@Model.Status" asp-route-startdate="@Model.StartDate" asp-route-enddate="@Model.EndDate" asp-route-searchstring="@Model.Searchstring" class="@(i == Model.PageNumber ? "active" : "")">@i</a>
+
+                        }
+                    }
+                    else if (i > 2 && i < Model.TotalPages - 1)
+                    {
+                        if (i == 3)
+                        {
+                            <span>...</span>
+                        }
+                    }
+                }
+
+                @if (Model.PageNumber < Model.TotalPages)
+                {
+                    <a href="?pageNumber=@(Model.PageNumber + 1)&pageSize=@Model.PageSize">Next</a>
+                }
+            </div>*@
+
+    </div>
+</div>
+<style>
+    .pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+        .pagination a {
+            padding: 8px 16px;
+            margin: 0 4px;
+            text-decoration: none;
+            color: #333;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+            .pagination a.active {
+                background-color: #4CAF50;
+                color: white;
+                border: 1px solid #4CAF50;
+            }
+
+            .pagination a:hover:not(.active) {
+                background-color: #ddd;
+            }
+
+    .fa-arrow-down:before {
+        content: "\f063";
+        font-size: 12px;
+        color: #000000a3;
+    }
+</style>

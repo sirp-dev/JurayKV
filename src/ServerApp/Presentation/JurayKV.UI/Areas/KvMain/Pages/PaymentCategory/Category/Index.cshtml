@@ -1,0 +1,103 @@
+﻿@page
+@model JurayKV.UI.Areas.KvMain.Pages.PaymentCategory.Category.IndexModel
+@{
+}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">CATEGORY VARIATION</h3>
+
+
+        <a asp-page="./Add" class="btn bg-gradient-warning btn-sm" style="float:right;">Add New</a>
+
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            Name
+                        </th>
+
+                        <th>
+                            Type
+                        </th>
+
+                        <th> Code</th>
+                        <th> Active</th>
+                        <th> Image</th>
+                        <th>Charge </th>
+                        <th>Biller </th>
+                        <th>Tier </th>
+                        <th> </th>
+
+                    </tr>
+                </thead>
+                @{
+                    int sn = 0;
+                }
+                <tbody>
+                    @foreach (var item in Model.CategoryVariation)
+                    {
+                        <tr>
+                            <td>
+                                <a asp-page="./List" asp-route-id="@item.Id">
+                                    @item.Name
+                                </a>
+
+
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => item.VariationType)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => item.Code)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => item.Active)
+                            </td>
+
+
+                            <td>
+                                <a href="@item.Url">
+                                    <img src="@item.Url" height="50" />
+
+                                </a>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => item.Charge)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => item.BillGateway)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => item.Tier)
+                            </td>
+                            
+                            <td>
+                                <div class="btn-group">
+
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-success btn-xs dropdown-toggle dropdown-icon" data-toggle="dropdown" aria-expanded="false">
+                                            Action
+                                        </button>
+                                        <div class="dropdown-menu" style="">
+
+                                            <a class="dropdown-item" asp-page="./Info" asp-route-id="@item.Id">Details</a>
+                                            <a class="dropdown-item" asp-page="./Update" asp-route-id="@item.Id">Update</a>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

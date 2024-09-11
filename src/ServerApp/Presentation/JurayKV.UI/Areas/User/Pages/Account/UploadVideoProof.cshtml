@@ -1,0 +1,135 @@
+﻿@page
+@model JurayKV.UI.Areas.User.Pages.Account.UploadVideoProofModel
+@{
+}
+<div class="row">
+    <div class="col-md-12">
+
+
+        <div class="col-md-4"></div>
+        <div class="col-md-4 text-center service-simple" style="margin-top:15px;padding:10px;">
+            <h3>ADs from @Model.IdentityKvAdDetailsDto.KvAdName</h3>
+            <p>Kindly upload your whatsapp status proof of views</p>
+            <h4><span class="countdown btn btn-success" data-target-time="6:00:00"></span></h4>
+            <div class="alert alert-danger">
+                Note: Use Onscreen Record and record your status views for that post.<br />
+                <a href="">View Sample</a>
+            </div>
+
+            @if (!String.IsNullOrEmpty(Model.IdentityKvAdDetailsDto.VideoUrl))
+            {
+                <a href="@Model.IdentityKvAdDetailsDto.VideoUrl" target="_blank" class="btn btn-success">Watch Video Proof <i class="fa fa-check"></i></a>
+            }
+        </div>
+    </div>
+    <div class="col-md-12">
+
+
+        <div class="col-md-4"></div>
+        <div class="col-md-4 service-simple" style="margin-top: 15px; padding: 10px;">
+            <form method="post" enctype="multipart/form-data" id="form">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="IdentityKvAdDetailsDto.Id" />
+                <div class="form-group">
+                    <label asp-for="VideoFile" class="control-label">Video Proof</label>
+                    <input asp-for="VideoFile" class="form-control" accept="video/*" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-xs btn-primary" />
+                    <a asp-page="./RunningAds" class="btn bg-gradient-warning btn-xs" style="">Back</a>
+
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-12">
+
+
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="service-simple" style="margin-top: 15px; padding: 10px;">
+                <a href="@Model.IdentityKvAdDetailsDto.KvAdImage">
+                    <div class="position-relative">
+                        <img src="@Model.IdentityKvAdDetailsDto.KvAdImage" alt="" class="img-fluid">
+
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<style>
+    #loadingModal {
+        background: rgba(0, 0, 0, 0.5); /* Adjust the alpha value for darkness */
+    }
+
+        /*#loadingModal .modal-content {
+            background: none;*/ /* Remove the default white background */
+        /*}*/
+</style>
+<div class="modal" id="loadingModalXXX" tabindex="-1" role="dialog" aria-labelledby="loadingModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p>Please wait, the upload is in progress. Do not close or refresh the page.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+
+    <script>
+        $(document).ready(function () {
+            $('form').submit(function () {
+                // Show the loading modal
+                $('#loadingModalXXX').modal('show');
+            });
+        });
+    </script>
+    <script>
+        jQuery(function ($) {
+            $(document).ajaxSend(function () {
+                $("#overlay").fadeIn(300);
+            });
+         
+        });
+    </script>
+    <script>
+        // Function to update countdown for all items with the "countdown" class
+        function updateCountdowns() {
+            var now = new Date();
+            var countdownElements = document.getElementsByClassName("countdown");
+
+            for (var i = 0; i < countdownElements.length; i++) {
+                var element = countdownElements[i];
+                var targetTime = new Date(now);
+                var targetTimeString = element.getAttribute("data-target-time").split(":");
+                targetTime.setHours(targetTimeString[0], targetTimeString[1], targetTimeString[2], 0); // Set the target time for the current item
+
+                if (now >= targetTime) {
+                    // If it's already past the target time, set the target time to the next day
+                    targetTime.setDate(targetTime.getDate() + 1);
+                }
+
+                var timeDifference = targetTime - now; // Calculate the time difference in milliseconds
+                var hoursRemaining = Math.floor(timeDifference / 3600000); // Convert to hours
+                var minutesRemaining = Math.floor((timeDifference % 3600000) / 60000); // Convert to minutes
+                var secondsRemaining = Math.floor((timeDifference % 60000) / 1000); // Convert to seconds
+
+                element.textContent = hoursRemaining + "h " + minutesRemaining + "m " + secondsRemaining + "s";
+            }
+        }
+
+        // Update the countdown for all items every second (1,000 milliseconds)
+        setInterval(updateCountdowns, 1000);
+
+        // Initial call to set the initial countdown
+        updateCountdowns();
+    </script>
+
+
+}

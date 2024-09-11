@@ -1,0 +1,158 @@
+﻿@page
+@model JurayKV.UI.Areas.Payment.Pages.Account.VerifyElectricityModel
+@{
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 style="text-align:center;">BUY ELECTRICITY (@Model.CategoryVariation.Name <img src="@Model.CategoryVariation.Url" height="20" />)</h3>
+                <h4>Wallet Balance (@Model.WalletDetailsDto.Amount)</h4>
+            </div>
+            @if (TempData["error"] != null)
+            {
+                <div class="alert alert-danger">
+                    <strong>Ops!</strong> @TempData["error"]
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="col-md-12">
+
+        <div class="card">
+
+            <div class="card-body">
+                @if (Model.Verified == false)
+                {
+
+
+
+                    <form method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="Request.ServiceId" value="@Model.CategoryVariation.Code" />
+                        <input type="hidden" asp-for="CategoryId" value="@Model.CategoryVariation.Id" />
+                        <input type="hidden" asp-for="Request.ServiceId" value="@Model.CategoryVariation.Code" />
+
+
+                        <div class="form-group">
+                            <label asp-for="Request.CustomerId" class="control-label">Meter Number</label>
+                            <input asp-for="Request.CustomerId" class="form-control" />
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Request.VariationId" class="control-label">Prepaid/Postpaid</label>
+                            <select asp-for="Request.VariationId" class="form-control" required="required">
+                                <option value="">Choose</option>
+                                <option value="prepaid">Prepaid</option>
+                                <option value="postpaid">Postpaid</option>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            <input type="submit" value="Verify Account" class="btn btn-primary" />
+                            <a asp-page="./Index" class="btn bg-gradient-warning btn-sm" style="float:right;">Back</a>
+
+                        </div>
+                    </form>
+                }
+                else if (Model.Verified == true)
+                {
+                    <form id="payEEForm" method="post" asp-page-handler="PayEE">
+                        <table class="table table-bordered" style="margin-top:10px;margin-bottom:30px;">
+                            <thead>
+                                <tr>
+                                    <th>Meter Number</th>
+                                    <th>@Model.VerifyResponseData.data.customer_id</th>
+                                </tr>
+                                <tr>
+                                    <th>Customer</th>
+                                    <th>@Model.VerifyResponseData.data.customer_name</th>
+                                </tr>
+                                <tr>
+                                    <th>Address</th>
+                                    <th>@Model.VerifyResponseData.data.customer_address</th>
+                                </tr>
+                                <tr>
+                                    <th>Prepaid/Postpaid</th>
+                                    <th>@Model.VariationId</th>
+                                </tr>
+
+                            </thead>
+
+                        </table>
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="ElectricityRequest.ServiceId" value="@Model.CategoryVariation.Code" />
+                        <input type="hidden" asp-for="ElectricityRequest.VariationId" value="@Model.VariationId" />
+                        <input type="hidden" asp-for="CategoryId" value="@Model.CategoryVariation.Id" />
+                        <input type="hidden" asp-for="ElectricityRequest.MeterNumber" value="@Model.VerifyResponseData.data.customer_id" />
+
+                        <div class="form-group">
+                            <label asp-for="ElectricityRequest.Amount" class="control-label">Amount</label>
+                            <input asp-for="ElectricityRequest.Amount" class="form-control" />
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="ElectricityRequest.PhoneNumber" class="control-label">Phone Number</label>
+                            <input asp-for="ElectricityRequest.PhoneNumber" class="form-control" />
+                        </div>
+
+
+                        <div class="form-group">
+                            <input type="submit" value="Complete" class="btn btn-primary" />
+                            <a asp-page="./Index" class="btn bg-gradient-warning btn-sm" style="float:right;">Back</a>
+
+                        </div>
+                    </form>
+                }
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<style>
+    #loadingModal {
+        background: rgba(0, 0, 0, 0.5); /* Adjust the alpha value for darkness */
+    }
+
+    /*#loadingModal .modal-content {
+            background: none;*/ /* Remove the default white background */
+    /*}*/
+</style>
+<div class="modal" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="loadingModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p>Processing...</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+
+    <script>
+        $(document).ready(function () {
+            $('#payEEForm').on('submit', function (event) {
+                // Prevent the default form submission
+                //event.preventDefault();
+                // Show the loading modal
+                $('#loadingModal').modal('show');
+            });
+        });
+    </script>
+    <script>
+        jQuery(function ($) {
+            $(document).ajaxSend(function () {
+                $("#overlay").fadeIn(300);
+            });
+
+        });
+    </script>
+}

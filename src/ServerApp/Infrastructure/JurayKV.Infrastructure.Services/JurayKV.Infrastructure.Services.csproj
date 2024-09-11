@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<EnableNETAnalyzers>true</EnableNETAnalyzers>
+		<AnalysisMode>AllEnabledByDefault</AnalysisMode>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="SendGrid" Version="9.28.1" />
+		<PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.507">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="TanvirArjel.ArgumentChecker" Version="1.4.0" />
+		<PackageReference Include="Twilio" Version="6.15.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\..\PostmarkEmailService\PostmarkEmailService.csproj" />
+		<ProjectReference Include="..\..\Core\JurayKV.Application\JurayKV.Application.csproj" />
+		<ProjectReference Include="..\JurayKV.Persistence.RelationalDB\JurayKV.Persistence.RelationalDB.csproj" />
+	</ItemGroup>
+
+</Project>

@@ -1,0 +1,20 @@
+﻿@page
+@model JurayKV.UI.Pages.PayModel
+@{
+} 
+@{
+    ViewData["Title"] = "Payment";
+    Layout = null;
+}
+
+<h2>Payment</h2>
+<form method="post">
+    <label for="customerName">Customer Name:</label>
+    <input type="text" id="customerName" name="customerName" />
+
+    <!-- Add other necessary input fields -->
+
+    <button type="submit" class="btn btn-primary">Make Payment</button>
+</form>
+
+@Html.Raw(Model.Outcome)

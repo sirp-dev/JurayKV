@@ -1,0 +1,70 @@
+﻿@page
+@model JurayKV.UI.Areas.KvMain.Pages.ISetting.InfoModel
+@{
+}
+
+<div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title">SETTING DETAILS</h3>
+
+    </div>
+    <!-- /.card-header -->
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+
+                <dl class="row">
+
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Setting.MinimumAmountBudget)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Setting.MinimumAmountBudget)
+                    </dd>
+
+
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Setting.DefaultAmountPerView)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Setting.DefaultAmountPerView)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Setting.DefaultReferralAmmount)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Setting.DefaultReferralAmmount)
+                    </dd>
+
+
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Setting.BillGateway)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Setting.BillGateway)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Setting.PaymentGateway)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Setting.PaymentGateway)
+                    </dd>
+
+                </dl>
+            </div>
+        </div>
+
+
+        <!-- /.row -->
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+        <a class="btn btn-warning" asp-page="./Update" asp-route-id="@Model.Setting.Id">Update</a>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

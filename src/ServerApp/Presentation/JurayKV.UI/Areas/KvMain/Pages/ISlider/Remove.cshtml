@@ -1,0 +1,97 @@
+﻿@page
+@model JurayKV.UI.Areas.KvMain.Pages.ISlider.RemoveModel
+@{
+}
+
+<div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title">UPDATE SLIDER</h3>
+
+    </div>
+    <!-- /.card-header -->
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                  
+                     <dl class="row">
+                         <dt class="col-sm-2">
+                             @Html.DisplayNameFor(model => model.Slider.Url)
+                         </dt>
+                         <dd class="col-sm-10">
+                             @Html.DisplayFor(model => model.Slider.Url)
+                         </dd>
+                         <dt class="col-sm-2">
+                             @Html.DisplayNameFor(model => model.Slider.Key)
+                         </dt>
+                         <dd class="col-sm-10">
+                             @Html.DisplayFor(model => model.Slider.Key)
+                         </dd>
+                         <dt class="col-sm-2">
+                             @Html.DisplayNameFor(model => model.Slider.IsVideo)
+                         </dt>
+                         <dd class="col-sm-10">
+                             @Html.DisplayFor(model => model.Slider.IsVideo)
+                         </dd>
+                         <dt class="col-sm-2">
+                             @Html.DisplayNameFor(model => model.Slider.SortOrder)
+                         </dt>
+                         <dd class="col-sm-10">
+                             @Html.DisplayFor(model => model.Slider.SortOrder)
+                         </dd>
+                         <dt class="col-sm-2">
+                             @Html.DisplayNameFor(model => model.Slider.Show)
+                         </dt>
+                         <dd class="col-sm-10">
+                             @Html.DisplayFor(model => model.Slider.Show)
+                         </dd>
+                         <dt class="col-sm-2">
+                             @Html.DisplayNameFor(model => model.Slider.Title)
+                         </dt>
+                         <dd class="col-sm-10">
+                             @Html.DisplayFor(model => model.Slider.Title)
+                         </dd>
+                         <dt class="col-sm-2">
+                             @Html.DisplayNameFor(model => model.Slider.Text)
+                         </dt>
+                         <dd class="col-sm-10">
+                             @Html.DisplayFor(model => model.Slider.Text)
+                         </dd>
+                         <dt class="col-sm-2">
+                             @Html.DisplayNameFor(model => model.Slider.ButtonText)
+                         </dt>
+                         <dd class="col-sm-10">
+                             @Html.DisplayFor(model => model.Slider.ButtonText)
+                         </dd>
+                         <dt class="col-sm-2">
+                             @Html.DisplayNameFor(model => model.Slider.ButtonLink)
+                         </dt>
+                         <dd class="col-sm-10">
+                             @Html.DisplayFor(model => model.Slider.ButtonLink)
+                         </dd>
+                     </dl>
+                     
+                    <div class="form-group">
+                        <form method="post">
+                            <input type="hidden" asp-for="Slider.Id" />
+                            <input type="submit" value="Submit" class="btn btn-primary" />
+                            <a asp-page="./Index" class="btn bg-gradient-warning btn-sm" style="float:right;">Back</a>
+                            </form>
+                    </div>
+                
+            </div>
+        </div>
+
+
+        <!-- /.row -->
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

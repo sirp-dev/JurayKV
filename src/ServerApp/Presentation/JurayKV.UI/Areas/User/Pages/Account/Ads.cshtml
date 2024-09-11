@@ -1,0 +1,183 @@
+﻿@page
+ 
+
+@model JurayKV.UI.Areas.User.Pages.Account.AdsModel
+@{
+}
+
+<style>
+    #button {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 30px;
+        background-color: #eee;
+        border: solid #ccc 1px;
+        cursor: pointer;
+    }
+
+    #overlay {
+        position: fixed;
+        top: 0;
+        z-index: 100;
+        width: 100%;
+        height: 100%;
+        display: none;
+        background: rgba(0,0,0,0.6);
+    }
+
+    .cv-spinner {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px #ddd solid;
+        border-top: 4px #2e93e6 solid;
+        border-radius: 50%;
+        animation: sp-anime 0.8s infinite linear;
+    }
+
+    @@keyframes sp-anime {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .is-hide {
+        display: none;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-12 text-center">
+        <h3>ADs from @Model.Bucket.Name</h3>
+        <p>Click to Share to Your Whatsapp Status</p>
+        <a class="btn btn-primary pull-right" asp-page="./Bucket">Back</a>
+    </div>
+    @if(Model.Ads != null)
+    {
+        
+        <div class="col-sm-4">
+            <div class="service-simple">
+
+
+                <form method="post">
+
+                    <input type="hidden" asp-for="kId" value="@Model.Ads.Id" />
+                    <input type="hidden" asp-for="Date" value="@Model.Ads.CreatedAtUtc" />
+
+
+                    <div class="position-relative">
+                        <input @*type="image"*@ src="@Model.Ads.ImageUrl" alt="Submit" class="img-fluid">
+
+
+                             @if (Model.Ads.ImageKey.EndsWith(".jpg") || Model.Ads.ImageKey.EndsWith(".jpeg") || Model.Ads.ImageKey.EndsWith(".png") || Model.Ads.ImageKey.EndsWith(".gif") || Model.Ads.ImageKey.EndsWith(".bmp"))
+                            {
+                                <img src="@Model.Ads.ImageUrl" class="img-fluid" />
+                            }
+                            else if (Model.Ads.ImageKey.EndsWith(".mp4") || Model.Ads.ImageKey.EndsWith(".avi") || Model.Ads.ImageKey.EndsWith(".mov") || Model.Ads.ImageKey.EndsWith(".wmv") || Model.Ads.ImageKey.EndsWith(".flv"))
+                            {
+                                <video controls style="height:120px;width:250px;">
+                                    <source src="@Model.Ads.ImageUrl" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            }
+ 
+                    </div>
+                </form>
+
+            </div>
+        </div>
+     }
+    else{
+        <h4>No ADs</h4>
+    }
+</div>
+
+<div id="overlay">
+    <div class="cv-spinner">
+        <span class="spinner"></span>
+    </div>
+</div>
+@section Scripts {
+
+
+    <script>
+        jQuery(function ($) {
+            $(document).ajaxSend(function () {
+                $("#overlay").fadeIn(300);
+            });
+
+            $('#button').click(function () {
+                $.ajax({
+                    type: 'GET',
+                    success: function (data) {
+                        console.log(data);
+                    }
+                }).done(function () {
+                    //setTimeout(function () {
+                    //    $("#overlay").fadeOut(300);
+                    //}, 500);
+                });
+            });
+        });
+        // Function to convert an image URL to a base64 data URI.
+        function imageUrlToBase64(imageUrl, callback) {
+            // You can fetch the image using AJAX and convert it to base64.
+            // Here's a simplified example using the FileReader API:
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET", imageUrl, true);
+            xhr.responseType = "blob";
+
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    const blob = xhr.response;
+                    const reader = new FileReader();
+                    reader.onload = function () {
+                        const base64 = reader.result;
+                        callback(base64);
+                    };
+                    reader.readAsDataURL(blob);
+                }
+            };
+
+            xhr.send();
+        }
+        function shareToWhatsApp(imageUrl, itemId) {
+
+            // Make an AJAX request to update the post content.
+            $.ajax({
+
+                type: "GET",
+                url: "/User/Account/RegisterAds",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: { id: itemId },
+                success: function (data) {
+                    console.log("22 here we are");
+                    if (data == "Successfuly") {
+
+                        window.open(imageUrl);
+
+                        var url = '/User/Account/Bucket?success=Ads Registered Successfuly';
+
+                        // Redirect to the constructed URL
+                        window.location.href = url;
+                    }
+                },
+                error: function () {
+                    @{
+                        ViewData["Error"] = "Unable to register your Ads";
+                    }
+                    var url2 = '/User/Account/Bucket?error=Unable to register your Ads';
+                    window.location.href = url2;
+                }
+            });
+        }
+    </script>
+
+}

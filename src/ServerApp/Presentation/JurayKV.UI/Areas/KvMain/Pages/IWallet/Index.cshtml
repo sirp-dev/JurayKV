@@ -1,0 +1,80 @@
+﻿@page
+@model JurayKV.UI.Areas.KvMain.Pages.IWallet.IndexModel
+@{
+}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">KV WALLET</h3>
+
+         
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Amount
+                        </th>
+                        <th>Last Updated</th>
+                        
+                        <th> </th>
+
+                    </tr>
+                </thead>
+                @{
+                    int sn = 0;
+                }
+                <tbody>
+                    @foreach (var item in Model.Wallets)
+                    {
+                        <tr>
+                            <td>
+                                @{
+                                    sn++;
+                                }
+                                @sn
+                            </td>
+                            <td>
+                                <a asp-page="/IUsers/Info" asp-route-id="@item.UserId">
+                                    @Html.DisplayFor(modelItem => item.Fullname)
+                                </a>
+                            </td>
+                            <td>
+                                <a asp-page="./Details" asp-route-id="@item.Id">
+                                    @Html.DisplayFor(modelItem => item.Amount)
+                                </a>
+                            </td>
+                            <td>
+                                @item.LastUpdateAtUtc
+                            </td>
+                             
+                            <td>
+                                <div class="btn-group">
+
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-success btn-xs dropdown-toggle dropdown-icon" data-toggle="dropdown" aria-expanded="false">
+                                            Action
+                                        </button>
+                                        <div class="dropdown-menu" style="">
+
+                                            <a class="dropdown-item" asp-page="./Info" asp-route-id="@item.Id">Details</a>
+ 
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

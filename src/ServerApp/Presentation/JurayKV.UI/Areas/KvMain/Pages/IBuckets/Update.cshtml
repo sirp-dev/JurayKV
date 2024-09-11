@@ -1,0 +1,60 @@
+﻿@page
+@model JurayKV.UI.Areas.KvMain.Pages.IBuckets.UpdateModel
+@{
+}
+
+<div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title">UPDATE BUCKET</h3>
+
+    </div>
+    <!-- /.card-header -->
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="UpdateBucket.Id" />
+                    <div class="form-group">
+                        <label asp-for="UpdateBucket.Name" class="control-label"></label>
+                        <input asp-for="UpdateBucket.Name" class="form-control" id="upper" onkeyup="myUppercase()" />
+                        <span asp-validation-for="UpdateBucket.Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="UpdateBucket.Disable" /> @Html.DisplayNameFor(model => model.UpdateBucket.Disable)
+                        </label>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="UpdateBucket.AdminActive" /> @Html.DisplayNameFor(model => model.UpdateBucket.AdminActive)
+                        </label>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="UpdateBucket.UserActive" /> @Html.DisplayNameFor(model => model.UpdateBucket.UserActive)
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Submit" class="btn btn-primary" />
+                        <a asp-page="./Index" class="btn bg-gradient-warning btn-sm" style="float:right;">Back</a>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <!-- /.row -->
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

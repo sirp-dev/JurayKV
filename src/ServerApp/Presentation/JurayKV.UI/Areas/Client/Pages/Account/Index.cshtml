@@ -1,0 +1,164 @@
+﻿@page
+@model JurayKV.UI.Areas.Client.Pages.Account.IndexModel
+@{
+}
+
+<div class="row">
+    <div class="col-12 col-sm-6 col-md-3">
+        <div class="info-box">
+
+            <div class="info-box-content">
+                @*passport*@
+                <span class="info-box-text">@Model.DashboardData.Company</span>
+                <span class="info-box-text">@Model.DashboardData.Status</span>
+
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+    <div class="col-12 col-sm-6 col-md-3">
+        <div class="info-box mb-3">
+            <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-coins"></i></span>
+
+            <div class="info-box-content">
+                <span class="info-box-text">Balance</span>
+                <span class="info-box-number">@Model.DashboardData.Balance</span>
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+    <!-- fix for small devices only -->
+    <div class="clearfix hidden-md-up"></div>
+
+    <div class="col-12 col-sm-6 col-md-3">
+        <div class="info-box mb-3">
+            <span class="info-box-icon bg-success elevation-1"><i class="fab fa-square-whatsapp"></i></span>
+
+            <div class="info-box-content">
+                <span class="info-box-text">Ads Running</span>
+                <span class="info-box-number">@Model.DashboardData.AdsRunning</span>
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+    <div class="col-12 col-sm-6 col-md-3">
+        <div class="info-box mb-3">
+            <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-money"></i></span>
+
+            <div class="info-box-content">
+                <span class="info-box-text">Total Views</span>
+                <span class="info-box-number">@Model.DashboardData.TotalViews</span>
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+</div>
+<div class="row">
+
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header border-transparent">
+                <h3 class="card-title">Latest Advert History</h3>
+
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table m-0">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>ADs</th>
+                                <th>Point</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.DashboardData.LastTenAds)
+                            {
+                                <tr>
+                                    <td><a href="">@item.CreatedAtUtc.ToString("dd/MM/yyyy")</a></td>
+                                    <td>
+                                        <a href="@item.Image">
+
+                                            @if (item.ImageKey.EndsWith(".jpg") || item.ImageKey.EndsWith(".jpeg") || item.ImageKey.EndsWith(".png") || item.ImageKey.EndsWith(".gif") || item.ImageKey.EndsWith(".bmp"))
+                                            {
+                                                <img src="@item.Image" class="img-fluid" style="max-height: 50px;" />
+                                            }
+                                            else if (item.ImageKey.EndsWith(".mp4") || item.ImageKey.EndsWith(".avi") || item.ImageKey.EndsWith(".mov") || item.ImageKey.EndsWith(".wmv") || item.ImageKey.EndsWith(".flv"))
+                                            {
+                                                <video controls style="height:120px;width:250px;">
+                                                    <source src="@item.Image" type="video/mp4">
+                                                    Your browser does not support the video tag.
+                                                </video>
+                                            }
+                                        </a>
+                                    </td>
+                                    <td>@item.Views</td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer clearfix">
+                <a asp-page="./Points" class="btn btn-sm btn-secondary float-right">View More</a>
+            </div>
+            <!-- /.card-footer -->
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header border-transparent">
+                <h3 class="card-title">Latest Transaction History</h3>
+
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table m-0">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.DashboardData.LastTenTransactions)
+                            {
+
+
+                                <tr>
+                                    <td><a href="">@item.CreatedAtUtc.ToString("dd/MM/yyyy")</a></td>
+                                    <td>@item.Amount</td>
+                                    <td>@item.Status</td>
+                                    <td>@item.TransactionType</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer clearfix">
+                <a asp-page="./Transactions" class="btn btn-sm btn-secondary float-right">View More</a>
+            </div>
+            <!-- /.card-footer -->
+        </div>
+    </div>
+</div>

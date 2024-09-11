@@ -1,0 +1,870 @@
+﻿
+
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+      <!--[if IE]>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <![endif]-->
+      <meta name="description" content="">
+      <meta name="author" content="ScriptsBundle">
+      <title>Carspot | Car Dealership - Vehicle Marketplace And Car Services</title>
+      <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
+      <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+      <!-- =-=-=-=-=-=-= Mobile Specific =-=-=-=-=-=-= -->
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+      <!-- =-=-=-=-=-=-= Bootstrap CSS Style =-=-=-=-=-=-= -->
+      <link rel="stylesheet" href="css/bootstrap.css">
+      <!-- =-=-=-=-=-=-= Template CSS Style =-=-=-=-=-=-= -->
+      <link rel="stylesheet" href="css/style.css">
+      <!-- =-=-=-=-=-=-= Font Awesome =-=-=-=-=-=-= -->
+      <link rel="stylesheet" href="css/font-awesome.css" type="text/css">
+      <!-- =-=-=-=-=-=-= Flat Icon =-=-=-=-=-=-= -->
+      <link href="css/flaticon.css" rel="stylesheet">
+      <!-- =-=-=-=-=-=-= Et Line Fonts =-=-=-=-=-=-= -->
+      <link rel="stylesheet" href="css/et-line-fonts.css" type="text/css">
+      <!-- =-=-=-=-=-=-= Menu Drop Down =-=-=-=-=-=-= -->
+      <link rel="stylesheet" href="css/carspot-menu.css" type="text/css">
+      <!-- =-=-=-=-=-=-= Animation =-=-=-=-=-=-= -->
+      <link rel="stylesheet" href="css/animate.min.css" type="text/css">
+      <!-- =-=-=-=-=-=-= Select Options =-=-=-=-=-=-= -->
+      <link href="css/select2.min.css" rel="stylesheet" />
+      <!-- =-=-=-=-=-=-= noUiSlider =-=-=-=-=-=-= -->
+      <link href="css/nouislider.min.css" rel="stylesheet">
+      <!-- =-=-=-=-=-=-= Listing Slider =-=-=-=-=-=-= -->
+      <link href="css/slider.css" rel="stylesheet">
+      <!-- =-=-=-=-=-=-= Owl carousel =-=-=-=-=-=-= -->
+      <link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
+      <link rel="stylesheet" type="text/css" href="css/owl.theme.css">
+      <!-- =-=-=-=-=-=-= Check boxes =-=-=-=-=-=-= -->
+      <link href="skins/minimal/minimal.css" rel="stylesheet">
+      <!-- =-=-=-=-=-=-= PrettyPhoto =-=-=-=-=-=-= -->
+      <link rel="stylesheet" href="css/jquery.fancybox.min.css" type="text/css" media="screen"/>
+      <!-- =-=-=-=-=-=-= Responsive Media =-=-=-=-=-=-= -->
+      <link href="css/responsive-media.css" rel="stylesheet">
+      <!-- =-=-=-=-=-=-= Template Color =-=-=-=-=-=-= -->
+      <link rel="stylesheet" id="color" href="css/colors/defualt.css">
+      <!-- =-=-=-=-=-=-= For This Page Only =-=-=-=-=-=-= -->
+      <link rel="stylesheet" href="css/dropzone.css">
+      <link href="css/jquery.tagsinput.min.css" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600%7CSource+Sans+Pro:400,400i,600" rel="stylesheet">
+      <!-- JavaScripts -->
+      <script src="js/modernizr.js"></script>
+      <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+      <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <![endif]-->
+   </head>
+   <body>
+      <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
+      <div class="preloader"></div>
+      <!-- =-=-=-=-=-=-= Color Switcher =-=-=-=-=-=-= -->
+      <div class="color-switcher" id="choose_color">
+         <a href="#." class="picker_close"><i class="fa fa-gear"></i></a>
+         <h5>STYLE SWITCHER</h5>
+         <div class="theme-colours">
+            <p> Choose Colour style </p>
+            <ul>
+               <li>
+                  <a href="#." class="defualt" id="defualt"></a>
+               </li>
+               <li>
+                  <a href="#." class="green" id="green"></a>
+               </li>
+               <li>
+                  <a href="#." class="purple" id="purple"></a>
+               </li>
+            </ul>
+         </div>
+         <div class="clearfix"> </div>
+      </div>
+      <!-- =-=-=-=-=-=-= Main Header =-=-=-=-=-=-= -->
+      <div class="colored-header">
+         <!-- Top Bar -->
+         <div class="header-top dark">
+            <div class="container">
+               <div class="row">
+                  <!-- Header Top Left -->
+                  <div class="header-top-left col-md-6 col-sm-6 col-xs-12 hidden-xs">
+                     <ul class="listnone">
+                        <li><a href="about.html"><i class="fa fa-heart-o" aria-hidden="true"></i> About</a></li>
+                        <li><a href="faqs.html"><i class="fa fa-folder-open-o" aria-hidden="true"></i> FAQS</a></li>
+                        <li class="dropdown">
+                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-globe" aria-hidden="true"></i> Language <span class="caret"></span></a>
+                           <ul class="dropdown-menu">
+                              <li><a href="#">English</a></li>
+                              <li><a href="#">Swedish</a></li>
+                              <li><a href="#">Arabic</a></li>
+                              <li><a href="#">Russian</a></li>
+                              <li><a href="#">chinese</a></li>
+                           </ul>
+                        </li>
+                     </ul>
+                  </div>
+                  <!-- Header Top Right Social -->
+                  <div class="header-right col-md-6 col-sm-6 col-xs-12 ">
+                     <div class="pull-right">
+                        <ul class="listnone">
+                           <li><a href="login.html"><i class="fa fa-sign-in"></i> Log in</a></li>
+                           <li class="hidden-xs hidden-sm"><a href="register.html"><i class="fa fa-unlock" aria-hidden="true"></i> Register</a></li>
+                           <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img class="img-circle resize" alt="" src="images/users/3.jpg"> <span class="myname hidden-xs"> Umair </span> <span class="caret"></span></a>
+                              <ul class="dropdown-menu">
+                                 <li><a href="profile.html">User Profile</a></li>
+                                 <li><a href="archives.html">Archives</a></li>
+                                 <li><a href="active-ads.html">Active Ads</a></li>
+                                 <li><a href="favourite.html">Favourite Ads</a></li>
+                                 <li><a href="messages.html">Message Panel</a></li>
+                                 <li><a href="deactive.html">Account Deactivation</a></li>
+                              </ul>
+                           </li>
+                           <li>
+                              <a href="post-ad-1.html" class="btn btn-theme">Sell Your Car</a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- Top Bar End -->
+         <!-- Navigation Menu -->
+         <div class="clearfix"></div>
+         <!-- menu start -->
+         <nav id="menu-1" class="mega-menu">
+            <!-- menu list items container -->
+            <section class="menu-list-items">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-lg-12 col-md-12">
+                        <!-- menu logo -->
+                        <ul class="menu-logo">
+                           <li>
+                              <a href="index.html"><img src="images/logo.png" alt="logo"> </a>
+                           </li>
+                        </ul>
+                        <!-- menu links -->
+                        <ul class="menu-links">
+                           <!-- active class -->
+                           <li>
+                              <a href="javascript:void(0)">Home <i class="fa fa-angle-down fa-indicator"></i></a>
+                              <!-- drop down multilevel  -->
+                              <ul class="drop-down-multilevel">
+                                 <li><a href="index-1.html">Home 1</a></li>
+                                 <li><a href="index-2.html">Home 2</a></li>
+                                 <li><a href="index-3.html">Home 3</a></li>
+                                 <li><a href="index-4.html">Home 4</a></li>
+                                 <li><a href="index-5.html">Home 5</a></li>
+                              </ul>
+                           </li>
+                           <li>
+                              <a href="javascript:void(0)"> Cars <i class="fa fa-angle-down fa-indicator"></i></a>
+                              <div class="drop-down grid-col-12">
+                                 <!--grid row-->
+                                 <div class="grid-row">
+                                    <!--grid column 3-->
+                                    <div class="grid-col-2">
+                                       <h3>Condition</h3>
+                                       <ul>
+                                          <li><a href="listing.html">New</a></li>
+                                          <li><a href="listing-4.html">Used</a></li>
+                                          <li><a href="listing-3.html">Reconditioned </a></li>
+                                          <li><a href="#">Featured Cars </a></li>
+                                       </ul>
+                                    </div>
+                                    <div class="grid-col-6">
+                                       <h3>Brands</h3>
+                                       <ul class="by-make list-inline">
+                                          <li>
+                                             <a href="#">
+                                             <img src="images/brands/1.png" class="img-responsive" alt="Brand Image">
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="#">
+                                             <img src="images/brands/2.png" class="img-responsive" alt="Brand Image">
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="#">
+                                             <img src="images/brands/3.png" class="img-responsive" alt="Brand Image">
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="#">
+                                             <img src="images/brands/4.png" class="img-responsive" alt="Brand Image">
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="#">
+                                             <img src="images/brands/5.png" class="img-responsive" alt="Brand Image">
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="#">
+                                             <img src="images/brands/6.png" class="img-responsive" alt="Brand Image">
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="#">
+                                             <img src="images/brands/7.png" class="img-responsive" alt="Brand Image">
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="#">
+                                             <img src="images/brands/8.png" class="img-responsive" alt="Brand Image">
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="#">
+                                             <img src="images/brands/9.png" class="img-responsive" alt="Brand Image">
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="#">
+                                             <img src="images/brands/11.png" class="img-responsive" alt="Brand Image">
+                                             </a>
+                                          </li>
+                                       </ul>
+                                    </div>
+                                    <div class="grid-col-4">
+                                       <h3>Body Type</h3>
+                                       <ul class="list-inline by-category ">
+                                          <li>
+                                             <a href="#">
+                                        		<img alt="Hybrid" src="images/bodytype/1.png">
+                                        		Convertible
+                                        	 </a> 
+                                          </li>
+                                          <li>
+                                             <a href="#">
+                                        		<img alt="Hybrid" src="images/bodytype/2.png">
+                                        		Coupe
+                                        	 </a> 
+                                          </li>
+                                          <li>
+                                             <a href="#">
+                                        		<img alt="Hybrid" src="images/bodytype/3.png">
+                                        		Sedan
+                                        	 </a> 
+                                          </li>
+                                          <li>
+                                             <a href="#">
+                                        		<img alt="Hybrid" src="images/bodytype/4.png">
+                                        		Van/Minivan
+                                        	 </a> 
+                                          </li>
+                                          <li>
+                                             <a href="#">
+                                        		<img alt="Hybrid" src="images/bodytype/5.png">
+                                        		Truck
+                                        	 </a> 
+                                          </li>
+                                          <li>
+                                             <a href="#">
+                                        		<img alt="Hybrid" src="images/bodytype/6.png">
+                                        		Hybrid
+                                        	 </a> 
+                                          </li>
+                                          
+                                       </ul>
+                                    </div>
+                                 </div>
+                              </div>
+                           </li>
+                           <li>
+                              <a href="javascript:void(0)">Listing <i class="fa fa-angle-down fa-indicator"></i></a>
+                              <!-- drop down multilevel  -->
+                              <ul class="drop-down-multilevel">
+                                 <li>
+                                    <a href="javascript:void(0)">Grid Style<i class="fa fa-angle-right fa-indicator"></i> </a>
+                                    <!-- drop down second level -->
+                                    <ul class="drop-down-multilevel">
+                                       <li><a href="listing.html"> Grid Style (Defualt)</a></li>
+                                       <li><a href="listing-1.html"> Grid Style 1</a></li>
+                                       <li><a href="listing-2.html"> Grid Style 2</a></li>
+                                       <li><a href="listing-3.html"> Grid Style 3</a></li>
+                                       <li><a href="listing-4.html"> Grid Style 4</a></li>
+                                    </ul>
+                                 </li>
+                                 <li>
+                                    <a href="javascript:void(0)">List Style<i class="fa fa-angle-right fa-indicator"></i> </a>
+                                    <!-- drop down second level -->
+                                    <ul class="drop-down-multilevel">
+                                       <li><a href="#">List View 1</a></li>
+                                       <li><a href="listing-6.html">List View 2</a></li>
+                                       <li><a href="listing-7.html">List View 3</a></li>
+                                       <li><a href="listing-8.html">List View 4</a></li>
+                                    </ul>
+                                 </li>
+                                 <li>
+                                    <a href="javascript:void(0)">Single Ad<i class="fa fa-angle-right fa-indicator"></i></a>
+                                    <!-- drop down second level -->
+                                    <ul class="drop-down-multilevel">
+                                       <li><a href="single-page-listing.html">Single Ad Detail</a></li>
+                                       <li><a href="single-page-listing-1.html">Single Ad (Gallery)</a></li>
+                                       <li><a href="single-page-listing-2.html">Single Ad (Gallery 2)</a></li>
+                                       <li><a href="single-page-listing-3.html">Single Ad Variation</a></li>
+                                    </ul>
+                                 </li>
+                                 <li><a href="icons.html">Template Icons </a></li>
+                              </ul>
+                           </li>
+                           <li>
+                              <a href="javascript:void(0)">Reviews <i class="fa fa-angle-down fa-indicator"></i></a>
+                              <!-- drop down multilevel  -->
+                              <ul class="drop-down-multilevel">
+                                 <li><a href="reviews.html">Expert Reviews</a></li>
+                                 <li><a href="review-detail.html">Review Detial</a></li>
+                              </ul>
+                           </li>
+                           <li>
+                              <a href="javascript:void(0)">Compare <i class="fa fa-angle-down fa-indicator"></i></a>
+                              <!-- drop down multilevel  -->
+                              <ul class="drop-down-multilevel">
+                                 <li><a href="compare.html">Car Comparison</a></li>
+                                 <li><a href="compare-1.html">Comparison Style 2</a></li>
+                                 <li><a href="compare-2.html">Comparison Detial</a></li>
+                              </ul>
+                           </li>
+                           <li>
+                              <a href="javascript:void(0)">Dashboard <i class="fa fa-angle-down fa-indicator"></i></a>
+                              <!-- drop down multilevel  -->
+                              <ul class="drop-down-multilevel">
+                                 <li><a href="profile.html">User Profile</a></li>
+                                 <li><a href="archives.html">Archives</a></li>
+                                 <li><a href="active-ads.html">Active Ads</a></li>
+                                 <li><a href="favourite.html">Favourite Ads</a></li>
+                                 <li><a href="messages.html">Message Panel</a></li>
+                                 <li><a href="deactive.html">Account Deactivation</a></li>
+                              </ul>
+                           </li>
+                           <li>
+                              <a href="javascript:void(0)">Pages <i class="fa fa-angle-down fa-indicator"></i></a>
+                              <!-- drop down full width -->
+                              <div class="drop-down grid-col-12">
+                                 <!--grid row-->
+                                 <div class="grid-row">
+                                    <!--grid column 2-->
+                                    <div class="grid-col-2">
+                                       <h4>Blog</h4>
+                                       <ul>
+                                          <li><a href="blog.html"> Right Sidebar</a></li>
+                                          <li><a href="blog-1.html"> Masonry Style</a></li>
+                                          <li><a href="blog-2.html"> Without Sidebar</a></li>
+                                          <li><a href="blog-details.html">Single Blog </a></li>
+                                       </ul>
+                                    </div>
+                                    <!--grid column 2-->
+                                    <div class="grid-col-2">
+                                       <h4>Miscellaneous</h4>
+                                       <ul>
+                                          <li><a href="about.html">About Us</a></li>
+                                          <li><a href="about-1.html">About Us 2</a></li>
+                                          <li><a href="cooming-soon.html">Comming Soon</a></li>
+                                          <li><a href="elements.html">Shortcodes</a></li>
+                                       </ul>
+                                    </div>
+                                    <!--grid column 2-->
+                                    <div class="grid-col-2">
+                                       <h4>Others</h4>
+                                       <ul>
+                                          <li><a href="error.html">404 Page</a></li>
+                                          <li><a href="faqs.html">FAQS</a></li>
+                                          <li><a href="login.html">Login</a></li>
+                                          <li><a href="register.html">Register</a></li>
+                                       </ul>
+                                    </div>
+                                    <!--grid column 2-->
+                                    <div class="grid-col-2">
+                                       <h4>Extra Page</h4>
+                                       <ul>
+                                          <li><a href="post-ad-1.html">Post Ad</a></li>
+                                          <li><a href="pricing.html">Pricing</a></li>
+                                          <li><a href="site-map.html">Site Map</a></li>
+                                          <li><a href="contact.html">Contact Us</a></li>
+                                       </ul>
+                                    </div>
+                                    <!--grid column 2-->
+                                    <div class="grid-col-2">
+                                       <h4>Services Page</h4>
+                                       <ul>
+                                          <li><a href="services.html">Services</a></li>
+                                          <li><a href="services-1.html">Services 2</a></li>
+                                          <li><a href="profile.html">Profile</a></li>
+                                          <li><a href="messages.html">Messages</a></li>
+                                       </ul>
+                                    </div>
+                                    <!--grid column 2-->
+                                    <div class="grid-col-2">
+                                       <h4>Trending</h4>
+                                       <ul>
+                                          <li><a href="reviews.html">Reviews</a></li>
+                                          <li><a href="review-detail.html">Review Detail</a></li>
+                                          <li><a href="compare.html">Compare</a></li>
+                                          <li><a href="compare-2.html">Comapre Detail</a></li>
+                                       </ul>
+                                    </div>
+                                    <!--grid column 2-->
+                                 </div>
+                              </div>
+                           </li>
+                        </ul>
+                        <ul class="menu-search-bar">
+                           <li>
+                              <a>
+                                 <div class="contact-in-header clearfix">
+                                    <i class="flaticon-customer-service"></i>
+                                    <span>
+                                    Call Us Now
+                                    <br>
+                                    <strong>111 222 333 444</strong>
+                                    </span>
+                                 </div>
+                              </a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </section>
+         </nav>
+         <!-- menu end -->
+      </div>
+      <!-- =-=-=-=-=-=-= Main Header End  =-=-=-=-=-=-= --> 
+      <!-- =-=-=-=-=-=-= Breadcrumb =-=-=-=-=-=-= -->
+      <div class="page-header-area-2 gray">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <div class="small-breadcrumb">
+                     <div class="breadcrumb-link">
+                        <ul>
+                           <li><a href="index.html">Home Page</a></li>
+                           <li><a class="active" href="#">Ad Posting</a></li>
+                        </ul>
+                     </div>
+                     <div class="header-page">
+                        <h1>Post Your Ad</h1>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- =-=-=-=-=-=-= Breadcrumb End =-=-=-=-=-=-= -->
+      <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
+      <div class="main-content-area clearfix">
+         <!-- =-=-=-=-=-=-= Latest Ads =-=-=-=-=-=-= -->
+         <section class="section-padding no-top gray ">
+            <!-- Main Container -->
+            <div class="container">
+               <!-- Row -->
+               <div class="row">
+                  <div class="col-md-8 col-lg-8 col-xs-12 col-sm-12">
+                     <!-- end post-padding -->
+                     <div class="post-ad-form postdetails">
+                        <form  class="submit-form">
+                           <!-- Title  -->
+                           <div class="row">
+                              <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+                                 <label class="control-label">Car Title</label>
+                                 <input class="form-control" placeholder="Brand new honda civic 2017 for sale" type="text">
+                              </div>
+                           </div>
+                           <div class="row">
+                              <!-- Category  -->
+                              <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+                                 <label class="control-label">Select Make </label>
+                                 <select class=" form-control make">
+                                    <option label="Any Make"></option>
+                                    <option>BMW</option>
+                                    <option>Honda </option>
+                                    <option>Hyundai </option>
+                                    <option>Nissan </option>
+                                    <option>Mercedes Benz </option>
+                                 </select>
+                              </div>
+                              <!-- Price  -->
+                              <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+                                 <label class="control-label">Price<small>USD only</small></label>
+                                 <input class="form-control" placeholder="$350" type="text">
+                              </div>
+                           </div>
+                           <!-- end row -->
+                           <div class="row">
+                              <!-- Category  -->
+                              <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+                                 <label class="control-label">Manufacture Year </label>
+                                 <select class=" form-control make">
+                                    <option label="Any Make"></option>
+                                    <option>BMW</option>
+                                    <option>Honda </option>
+                                    <option>Hyundai </option>
+                                    <option>Nissan </option>
+                                    <option>Mercedes Benz </option>
+                                 </select>
+                              </div>
+                              <!-- Price  -->
+                              <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+                                 <label class="control-label">Select Body Type</label>
+                                 <select class=" form-control make">
+                                    <option label="Any Make"></option>
+                                    <option>BMW</option>
+                                    <option>Honda </option>
+                                    <option>Hyundai </option>
+                                    <option>Nissan </option>
+                                    <option>Mercedes Benz </option>
+                                 </select>
+                              </div>
+                           </div>
+                           <!-- end row -->
+                           <div class="row">
+                              <!-- Category  -->
+                              <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+                                 <label class="control-label">Transmission Type</label>
+                                 <select class=" form-control make">
+                                    <option label="Any Make"></option>
+                                    <option>BMW</option>
+                                    <option>Honda </option>
+                                    <option>Hyundai </option>
+                                    <option>Nissan </option>
+                                    <option>Mercedes Benz </option>
+                                 </select>
+                              </div>
+                              <!-- Price  -->
+                              <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+                                 <label class="control-label">Drive Type</label>
+                                 <select class=" form-control make">
+                                    <option label="Any Make"></option>
+                                    <option>BMW</option>
+                                    <option>Honda </option>
+                                    <option>Hyundai </option>
+                                    <option>Nissan </option>
+                                    <option>Mercedes Benz </option>
+                                 </select>
+                              </div>
+                           </div>
+                           <!-- end row -->
+                           <!-- Image Upload  -->
+                           <div class="row">
+                              <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+                                 <label class="control-label">Select Additional Features Your Car Has</label>
+                                 <!-- Brands List -->                    
+                                 <div class="skin-minimal">
+                                    <ul class="list">
+                                       <li class="col-md-4 col-sm-6 col-xs-12">
+                                          <input  type="checkbox" id="minimal-checkbox-1">
+                                          <label for="minimal-checkbox-1">Alloy Wheels </label>
+                                       </li>
+                                       <li class="col-md-4 col-sm-6 col-xs-12">
+                                          <input  type="checkbox" id="minimal-checkbox-2">
+                                          <label for="minimal-checkbox-2">ABS </label>
+                                       </li>
+                                       <li class="col-md-4 col-sm-6 col-xs-12">
+                                          <input  type="checkbox" id="minimal-checkbox-3">
+                                          <label for="minimal-checkbox-3">Air Bags </label>
+                                       </li>
+                                       <li class="col-md-4 col-sm-6 col-xs-12">
+                                          <input  type="checkbox" id="minimal-checkbox-4">
+                                          <label for="minimal-checkbox-4">Air Conditioning</label>
+                                       </li>
+                                       <li class="col-md-4 col-sm-6 col-xs-12">
+                                          <input  type="checkbox" id="minimal-checkbox-5">
+                                          <label for="minimal-checkbox-5">CD Player</label>
+                                       </li>
+                                       <li class="col-md-4 col-sm-6 col-xs-12">
+                                          <input  type="checkbox" id="minimal-checkbox-6">
+                                          <label for="minimal-checkbox-6">Cool Box</label>
+                                       </li>
+                                       <li class="col-md-4 col-sm-6 col-xs-12">
+                                          <input  type="checkbox" id="minimal-checkbox-7">
+                                          <label for="minimal-checkbox-7">AM/FM Radio</label>
+                                       </li>
+                                       <li class="col-md-4 col-sm-6 col-xs-12">
+                                          <input  type="checkbox" id="minimal-checkbox-8">
+                                          <label for="minimal-checkbox-8">Bonnet Protector</label>
+                                       </li>
+                                       <li class="col-md-4 col-sm-6 col-xs-12">
+                                          <input  type="checkbox" id="minimal-checkbox-9">
+                                          <label for="minimal-checkbox-9">Power Steering</label>
+                                       </li>
+                                    </ul>
+                                 </div>
+                                 <!-- Brands List End -->  
+                              </div>
+                           </div>
+                           <!-- end row -->
+                           <!-- Image Upload  -->
+                           <div class="row">
+                              <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+                                 <label class="control-label">Photos for your ad <small>Please add images of your ad. (350x450)</small></label>
+                                 <div id="dropzone" class="dropzone"></div>
+                              </div>
+                           </div>
+                           <!-- end row -->
+                           <!-- Ad Description  -->
+                           <div class="row">
+                              <div class="col-md-12 col-lg-12 col-xs-12  col-sm-12">
+                                 <label class="control-label">Ad Description <small>Enter long description for your project</small></label>
+                                 <textarea name="editor1" id="editor1" rows="12" class="form-control" placeholder=""></textarea>
+                              </div>
+                           </div>
+                           <!-- end row -->
+                           <!-- Ad Tags  -->
+                           <div class="row">
+                              <div class="col-md-12 col-lg-12 col-xs-12  col-sm-12">
+                                 <label class="control-label">Ad Tags </label>
+                                 <input class="form-control" name="tags" id="tags" value="honda ,honda civic,sport car" >
+                              </div>
+                           </div>
+                           <!-- end row -->
+                           <!-- Ad Type  -->
+                           <div class="row">
+                              <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+                                 <label class="control-label">Type Of Ad<small>want to buy or sale</small></label>
+                                 <div class="skin-minimal">
+                                    <ul class="list">
+                                       <li>
+                                          <input tabindex="7" type="radio" id="minimal-radio-1" name="minimal-radio">
+                                          <label  for="minimal-radio-1">I want to sell </label>
+                                       </li>
+                                       <li>
+                                          <input tabindex="8" type="radio" id="minimal-radio-2" name="minimal-radio" checked>
+                                          <label for="minimal-radio-2">I want to buy</label>
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </div>
+                              <!-- Ad Condition  -->
+                              <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+                                 <label class="control-label">Condition<small>Item Condition</small></label>
+                                 <div class="skin-minimal">
+                                    <ul class="list">
+                                       <li>
+                                          <input type="radio" id="new" name="minimal-radio">
+                                          <label  for="new">New</label>
+                                       </li>
+                                       <li>
+                                          <input type="radio" id="used" name="minimal-radio" checked>
+                                          <label for="used">Used</label>
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- end row -->
+                           <div class="row">
+                              <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+                                 <label class="control-label">Your Name</label>
+                                 <input class="form-control" placeholder="eg John Doe" type="text">
+                              </div>
+                              <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+                                 <label class="control-label">Your Email ID<small>where you receive your emails</small></label>
+                                 <input class="form-control" placeholder="contact@scriptsbundle.com" type="text">
+                              </div>
+                           </div>
+                           <!-- end row -->
+                           <div class="row">
+                              <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+                                 <label class="control-label">Mobile Number<small>number for conformation</small></label>
+                                 <input class="form-control" placeholder="eg +92-0321-123-456-789" type="text">
+                              </div>
+                              <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+                                 <label class="control-label">Address<small>your permanent address</small></label>
+                                 <input class="form-control" placeholder="eg House no 8 Streent no 2 New York" type="text">
+                              </div>
+                           </div>
+                           <button class="btn btn-theme pull-right">Publish My Ad</button>
+                        </form>
+                     </div>
+                     <!-- end post-ad-form-->
+                  </div>
+                  <!-- end col -->
+                  <!-- Right Sidebar -->
+                  <div class="col-md-4 col-xs-12 col-sm-12">
+                     <!-- Sidebar Widgets -->
+                     <div class="blog-sidebar">
+                        <!-- Categories --> 
+                        <div class="widget">
+                           <div class="widget-heading">
+                              <h4 class="panel-title"><a>Saftey Tips </a></h4>
+                           </div>
+                           <div class="widget-content">
+                              <p class="lead">Posting an ad on <a href="#">Carspot</a> is free! However, all ads must follow our rules:</p>
+                              <ol>
+                                 <li>Make sure you post in the correct category.</li>
+                                 <li>Do not post the same ad more than once or repost an ad within 48 hours.</li>
+                                 <li>Do not upload pictures with watermarks.</li>
+                                 <li>Do not post ads containing multiple items unless it's a package deal.</li>
+                                 <li>Do not put your email or phone numbers in the title or description.</li>
+                                 <li>Make sure you post in the correct category.</li>
+                                 <li>Do not post the same ad more than once or repost an ad within 48 hours.</li>
+                                 <li>Do not upload pictures with watermarks.</li>
+                                 <li>Do not post ads containing multiple items unless it's a package deal.</li>
+                              </ol>
+                           </div>
+                        </div>
+                        <!-- Latest News --> 
+                     </div>
+                     <!-- Sidebar Widgets End -->
+                  </div>
+                  <!-- Middle Content Area  End --><!-- end col -->
+               </div>
+               <!-- Row End -->
+            </div>
+            <!-- Main Container End -->
+         </section>
+         <!-- =-=-=-=-=-=-= Ads Archives End =-=-=-=-=-=-= -->
+         <!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->
+         <footer class="footer-bg">
+            <!-- Footer Content -->
+            <div class="footer-top">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-3  col-sm-6 col-xs-12">
+                        <!-- Info Widget -->
+                        <div class="widget">
+                           <div class="logo"> <img alt="" src="images/logo.png"> </div>
+                           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et dolor eget erat fringilla port.</p>
+                           <ul class="apps-donwloads">
+                              <li><img src="images/googleplay.png" alt=""></li>
+                              <li><img src="images/appstore.png" alt=""></li>
+                           </ul>
+                        </div>
+                        <!-- Info Widget Exit -->
+                     </div>
+                     <div class="col-md-2 col-sm-6 col-xs-12">
+                        <!-- Follow Us -->
+                        <div class="widget socail-icons">
+                           <h5>Follow Us</h5>
+                           <ul>
+                              <li><a class="Facebook" href=""><i class="fa fa-facebook"></i></a><span>Facebook</span></li>
+                              <li><a class="Twitter" href=""><i class="fa fa-twitter"></i></a><span>Twitter</span></li>
+                              <li><a class="Linkedin" href=""><i class="fa fa-linkedin"></i></a><span>Linkedin</span></li>
+                              <li><a class="Google" href=""><i class="fa fa-google-plus"></i></a><span>Google+</span></li>
+                           </ul>
+                        </div>
+                        <!-- Follow Us End -->
+                     </div>
+                     <div class="col-md-2  col-sm-6 col-xs-12">
+                        <!-- Follow Us -->
+                        <div class="widget my-quicklinks">
+                           <h5>Quick Links</h5>
+                           <ul >
+                              <li><a href="#">About Us</a></li>
+                              <li><a href="#">Faqs</a></li>
+                              <li><a href="#">Packages</a></li>
+                              <li><a href="#">Contact Us</a></li>
+                           </ul>
+                        </div>
+                        <!-- Follow Us End -->
+                     </div>
+                     <div class="col-md-5  col-sm-6 col-xs-12">
+                        <!-- Newslatter -->
+                        <div class="widget widget-newsletter">
+                           <h5>Singup for Weekly Newsletter</h5>
+                           <div class="fieldset">
+                              <p>We may send you information about related events, webinars, products and services which we believe.</p>
+                              <form>
+                                 <input class="" value="Enter your email address" type="text">
+                                 <input class="submit-btn" name="submit" value="Submit" type="submit"> 
+                              </form>
+                           </div>
+                        </div>
+                        <div class="copyright">
+                           <p>© 2017 Carspot All rights reserved. Design by <a href="http://themeforest.net/user/scriptsbundle/portfolio" target="_blank">Scriptsbundle</a> </p>
+                        </div>
+                        <!-- Newslatter -->
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </footer>
+         <!-- =-=-=-=-=-=-= FOOTER END =-=-=-=-=-=-= -->
+      </div>
+      <!-- Main Content Area End --> 
+      <!-- Back To Top -->
+      <a href="#0" class="cd-top">Top</a>
+      <!-- =-=-=-=-=-=-= JQUERY =-=-=-=-=-=-= -->
+      <script src="js/jquery.min.js"></script>
+      <!-- Bootstrap Core Css  -->
+      <script src="js/bootstrap.min.js"></script>
+      <!-- Jquery Easing -->
+      <script src="js/easing.js"></script>
+      <!-- Menu Hover  -->
+      <script src="js/carspot-menu.js"></script>
+      <!-- Jquery Appear Plugin -->
+      <script src="js/jquery.appear.min.js"></script>
+      <!-- Numbers Animation   -->
+      <script src="js/jquery.countTo.js"></script>
+      <!-- Jquery Select Options  -->
+      <script src="js/select2.min.js"></script>
+      <!-- noUiSlider -->
+      <script src="js/nouislider.all.min.js"></script>
+      <!-- Carousel Slider  -->
+      <script src="js/carousel.min.js"></script>
+      <script src="js/slide.js"></script>
+      <!-- Image Loaded  -->
+      <script src="js/imagesloaded.js"></script>
+      <script src="js/isotope.min.js"></script>
+      <!-- CheckBoxes  -->
+      <script src="js/icheck.min.js"></script>
+      <!-- Jquery Migration  -->
+      <script src="js/jquery-migrate.min.js"></script>
+
+      <!-- Style Switcher -->
+      <script src="js/color-switcher.js"></script>
+      <!-- PrettyPhoto -->
+      <script src="js/jquery.fancybox.min.js"></script>
+      <!-- Wow Animation -->
+      <script src="js/wow.js"></script>
+      <!-- Template Core JS -->
+      <script src="js/custom.js"></script>
+      <!-- For this Page Only -->
+      <!-- Ckeditor  -->
+      <script src="js/ckeditor/ckeditor.js" ></script>
+      <!-- Ad Tags  -->
+      <script src="js/jquery.tagsinput.min.js"></script>
+      <!-- DROPZONE JS  -->
+      <script src="js/dropzone.js" ></script>
+      <script src="js/form-dropzone.js" ></script>
+      <script type="text/javascript">
+         "use strict";
+         
+         /*--------- Textarea Ck Editor --------*/
+           CKEDITOR.replace( 'editor1' );
+         
+         /*--------- Ad Tags --------*/ 
+         $('#tags').tagsInput({
+         		'width':'100%'
+         });
+         
+              /*--------- create remove function in dropzone --------*/
+              Dropzone.autoDiscover = false;
+              var acceptedFileTypes = "image/*"; //dropzone requires this param be a comma separated list
+              var fileList = new Array;
+              var i = 0;
+              $("#dropzone").dropzone({
+                addRemoveLinks: true,
+                maxFiles: 5, //change limit as per your requirements
+              acceptedFiles: '.jpeg,.jpg,.png,.gif',
+                dictMaxFilesExceeded: "Maximum upload limit reached",
+                acceptedFiles: acceptedFileTypes,
+              url: "uploads",
+                dictInvalidFileType: "upload only JPG/PNG",
+                init: function () {
+                    // Hack: Add the dropzone class to the element
+                    $(this.element).addClass("dropzone");
+                }
+              });
+         (jQuery);
+           
+      </script>
+      <!-- JS -->
+   </body>
+</html>
+

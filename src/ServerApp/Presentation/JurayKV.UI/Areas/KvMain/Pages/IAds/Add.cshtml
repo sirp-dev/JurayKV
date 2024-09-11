@@ -1,0 +1,63 @@
+﻿@page
+@model JurayKV.UI.Areas.KvMain.Pages.IAds.AddModel
+@{
+}
+
+<div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title">NEW ADVERT</h3>
+
+    </div>
+    <!-- /.card-header -->
+    
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <label for="BucketId">Select Bucket</label>
+                        <select asp-for="Command.BucketId" class="form-control" id="myDropdown" asp-items="Model.ListBuckets"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="BucketId">Select Company</label>
+                        <select asp-for="Command.CompanyId" class="form-control" id="myDropdown" asp-items="Model.ListCompanies"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Command.ImageId" class="control-label">Image</label>
+                        <select asp-for="Command.ImageId" class="form-control" id="myDropdownw" asp-items="Model.ListImages">
+                            <option value="">Choose Image</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Command.Date" class="control-label"></label>
+                        <input asp-for="Command.Date" class="form-control" id="upper" />
+                        <span asp-validation-for="Command.Date" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Command.Status" class="control-label"></label>
+                        @Html.DropDownListFor(model => model.Command.Status, new SelectList(Enum.GetValues(typeof(JurayKV.Domain.Primitives.Enum.DataStatus))), new { @class = "form-control" })
+                        <span asp-validation-for="Command.Status" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Submit" class="btn btn-primary" />
+                        <a asp-page="./Index" class="btn bg-gradient-warning btn-sm" style="float:right;">Back</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <!-- /.row -->
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

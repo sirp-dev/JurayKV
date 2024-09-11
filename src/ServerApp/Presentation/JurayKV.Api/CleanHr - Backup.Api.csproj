@@ -1,0 +1,50 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <IncludeOpenAPIAnalyzers>true</IncludeOpenAPIAnalyzers>
+    <UserSecretsId>a5a03509-4553-498c-a6b3-5bb891a732b3</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..\..\..</DockerfileContext>
+    <DockerComposeProjectPath>..\..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Carter" Version="7.1.0" />
+    <PackageReference Include="AspNetCore.HealthChecks.UI" Version="7.0.2" />
+    <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="7.1.0" />
+    <PackageReference Include="AspNetCore.HealthChecks.UI.InMemory.Storage" Version="7.0.0" />
+    <PackageReference Include="AspNetCore.HealthChecks.System" Version="7.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="7.0.11" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.11" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Twitter" Version="7.0.11" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.11">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
+    <PackageReference Include="Serilog.Sinks.Map" Version="1.0.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.5.0" />
+    <PackageReference Include="TanvirArjel.ArgumentChecker" Version="1.4.0" />
+    <PackageReference Include="TanvirArjel.CustomValidation.AspNetCore" Version="1.2.2" />
+    <PackageReference Include="TanvirArjel.Extensions.Microsoft.DependencyInjection" Version="2.2.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="7.0.0" />
+    <PackageReference Include="Serilog.Sinks.MSSqlServer" Version="6.3.0" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.507">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\JurayKV.Application\JurayKV.Application.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\JurayKV.Infrastructure.Services\JurayKV.Infrastructure.Services.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\JurayKV.Persistence.Cache\JurayKV.Persistence.Cache.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\JurayKV.Persistence.RelationalDB\JurayKV.Persistence.RelationalDB.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,139 @@
+﻿@page
+@model JurayKV.UI.Areas.KvMain.Pages.IBuckets.AllActiveADsModel
+@{
+}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">KV ADVERT ON Date</h3>
+        <a asp-page="./Index" class="btn bg-gradient-warning btn-sm" style="float:right;">Active Bucket</a>
+
+
+    </div>
+    <div class="card-body ">
+        <div class="boxed-div">
+            <div class="card-header">
+                <form method="get">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">Date </label>
+                                <input name="date" type="date" class="form-control" id="upper" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">(@TempData["date"])</label>
+                                <input type="submit" value="Submit" class="btn btn-primary" style="width:100%;" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>S/N</th>
+                                <th>Date</th>
+                                <th>
+                                    Company
+                                </th>
+                                <th>Bucket</th>
+
+                                <th>Image</th>
+                                <th>Status </th>
+
+                                <th> </th>
+
+                            </tr>
+                        </thead>
+                        @{
+                            int sn = 0;
+                        }
+                        <tbody>
+                            @foreach (var item in Model.KvAds)
+                            {
+                                <tr>
+                                    <td>
+                                        @{
+                                            sn++;
+                                        }
+                                        @sn
+                                    </td>
+                                    <td>
+                                        @item.CreatedAtUtc.ToString("ddd dd/MMM/yyyy")
+                                    </td>
+                                    <td>
+                                        <a asp-page="./Details" asp-route-id="@item.Id">
+                                            @Html.DisplayFor(modelItem => item.CompanyName)
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a asp-page="./Details" asp-route-id="@item.Id">
+                                            @Html.DisplayFor(modelItem => item.BucketName)
+                                        </a>
+                                    </td>
+
+
+                                    <td>
+                                        <a href="@item.ImageUrl" target="_blank">
+                                            <img src="@item.ImageUrl" class="img-fluid" style="height:50px" />
+                                        </a>
+                                    </td>
+                                    <td>
+                                        @*@DateTime.UtcNow.AddHours(1)*@
+                                        @{
+                                            DateTime sixAMDateTime = new DateTime(item.CreatedAtUtc.Year, item.CreatedAtUtc.Month, item.CreatedAtUtc.Day, 6, 0, 0);
+                                            DateTime sixAMDateTimec = new DateTime(item.CreatedAtUtc.Year, item.CreatedAtUtc.Month, item.CreatedAtUtc.Day, 6, 0, 0).AddDays(1);
+                                        }
+
+                                        @if (sixAMDateTime <= DateTime.UtcNow.AddHours(1) && DateTime.UtcNow.AddHours(1) <= sixAMDateTimec)
+                                        {
+
+
+                                            <span class="btn btn-success btn-xs">ACTIVE</span>
+                                        }
+                                        else if (DateTime.UtcNow.AddHours(1) < sixAMDateTime)
+                                        {
+
+
+                                            <span class="btn btn-primary btn-xs">UPCOMING</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="btn btn-danger btn-xs">Expired</span>
+
+                                        }
+                                    </td>
+
+
+                                    <td>
+                                        <div class="btn-group">
+
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-success btn-xs dropdown-toggle dropdown-icon" data-toggle="dropdown" aria-expanded="false">
+                                                    Action
+                                                </button>
+                                                <div class="dropdown-menu" style="">
+
+                                                    <a class="dropdown-item" asp-page="./Info" asp-route-id="@item.Id">Details</a>
+                                                    <a class="dropdown-item" asp-page="./Update" asp-route-id="@item.Id">Update</a>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

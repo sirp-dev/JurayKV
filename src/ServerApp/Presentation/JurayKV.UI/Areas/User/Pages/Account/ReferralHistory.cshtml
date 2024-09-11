@@ -1,0 +1,169 @@
+﻿@page
+@model JurayKV.UI.Areas.User.Pages.Account.ReferralHistoryModel
+@{
+    string myreflink = "";
+    try
+    {
+        string last10DigitsPhoneNumber1 = Model.Phonenumber.Substring(Math.Max(0, Model.Phonenumber.Length - 10));
+
+        myreflink = Url.Page(
+         "/Account/Register",
+         pageHandler: null,
+         values: new { refx = last10DigitsPhoneNumber1, area = "Auth" },
+         protocol: Request.Scheme);
+    }
+    catch (Exception c) { }
+}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">MY REFERRAL LIST</h3>
+
+
+    </div>
+    <!-- /.widget-user -->
+    <div class="card">
+        <div class="card-header">
+            <h6 class="">Referral Link (click to copy)</h6>
+
+            <div id="referralLink" style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; cursor: pointer;"
+                 onclick="copyToClipboard()">
+                @myreflink.ToLower()
+            </div>
+        </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>
+                            Fullname
+                        </th>
+                        <th>Phone Number </th>
+                        <th>Date </th>
+                        <th>Last LoggedIn </th>
+                        <th>Verified </th>
+                        <th>Posted </th>
+                        <th>Video Upload </th>
+                        <th>Success </th>
+
+
+                    </tr>
+                </thead>
+                @{
+                    int sn = 0;
+                }
+                <tbody>
+                    @foreach (var item in Model.UserData)
+                    {
+                        <tr>
+                            <td>
+                                @{
+                                    sn++;
+                                }
+                                @sn
+                            </td>
+                            <td>
+
+                                @Html.DisplayFor(modelItem => item.Fullname)
+
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PhoneNumber)
+                            </td>
+                            <td>
+                                @item.CreationUTC.ToString("dd/MM/yyyy")
+                            </td>
+                            <td>
+                                @item.LastLoggedInAtUtc
+                            </td>
+
+                            <td>
+                                @if (item.Verified == true)
+                                {
+
+
+                                    <span class="btn btn-success btn-xs"><i class="fa fa-check"></i></span>
+                                }
+                                else
+                                {
+                                    <span class="btn btn-danger btn-xs"><i class="fa fa-times"></i></span>
+
+                                }
+                            </td>
+                            <td>
+                                @if (item.Posted == true)
+                                {
+
+
+                                    <span class="btn btn-success btn-xs"><i class="fa fa-check"></i></span>
+                                }
+                                else
+                                {
+                                    <span class="btn btn-danger btn-xs"><i class="fa fa-times"></i></span>
+
+                                }
+                            </td>
+                            <td>
+                                @if (item.VideoUpload == true)
+                                {
+
+
+                                    <span class="btn btn-success btn-xs"><i class="fa fa-check"></i></span>
+                                }
+                                else
+                                {
+                                    <span class="btn btn-danger btn-xs"><i class="fa fa-times"></i></span>
+
+                                }
+                            </td>
+                            <td>
+                                @if (item.SuccessPoint == true)
+                                {
+
+
+                                    <span class="btn btn-success btn-xs"><i class="fa fa-check"></i></span>
+                                }
+                                else
+                                {
+                                    <span class="btn btn-danger btn-xs"><i class="fa fa-times"></i></span>
+
+                                }
+                            </td>
+
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script>
+        function copyToClipboard() {
+            /* Get the text content of the div */
+            var copyText = document.getElementById("referralLink");
+
+            /* Create a range to select text */
+            var range = document.createRange();
+            range.selectNode(copyText);
+
+            /* Select the text inside the div */
+            window.getSelection().removeAllRanges(); // Clear any previous selection
+            window.getSelection().addRange(range);
+
+            /* Copy the selected text */
+            document.execCommand("copy");
+
+            /* Alert the copied text */
+            alert("Copied to clipboard: " + copyText.innerText);
+        }
+    </script>
+}
+

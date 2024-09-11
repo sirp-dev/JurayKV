@@ -1,0 +1,262 @@
+﻿@page
+@model JurayKV.UI.Areas.Auth.Pages.Account.ComfirmationModel
+@{
+    Layout = "~/Pages/Shared/_Register.cshtml";
+    ViewData["Title"] = "Account Comfirmation";
+
+}
+
+<style>
+    #wrapper {
+        font-family: Lato;
+        font-size: 1.5rem;
+        text-align: center;
+        box-sizing: border-box;
+        color: #333;
+    }
+
+        #wrapper #dialog {
+            border: solid 1px #ccc0;
+            margin: 10px auto;
+            padding: 20px 30px;
+            display: inline-block;
+            box-shadow: 0 0 4px #ccc0;
+            background-color: #faf8f800;
+            overflow: hidden;
+            position: relative;
+            max-width: 650px;
+        }
+
+            #wrapper #dialog h3 {
+                margin: 0 0 10px;
+                padding: 0;
+                line-height: 1.25;
+            }
+
+            #wrapper #dialog span {
+                font-size: 90%;
+            }
+
+            #wrapper #dialog #form {
+                max-width: 550px;
+                margin: 25px auto 0;
+            }
+
+                #wrapper #dialog #form input {
+                    margin: 0 5px;
+                    text-align: center;
+                    line-height: 80px;
+                    font-size: 50px;
+                    border: solid 1px #ccc;
+                    box-shadow: 0 0 5px #ccc inset;
+                    outline: none;
+                    width: 100%;
+                    transition: all 0.2s ease-in-out;
+                    border-radius: 3px;
+                }
+
+                    #wrapper #dialog #form input:focus {
+                        border-color: purple;
+                        box-shadow: 0 0 5px purple inset;
+                    }
+
+                    #wrapper #dialog #form input::-moz-selection {
+                        background: transparent;
+                    }
+
+                    #wrapper #dialog #form input::selection {
+                        background: transparent;
+                    }
+
+                #wrapper #dialog #form button {
+                    margin: 30px 0 50px;
+                    width: 80%;
+                    padding: 6px;
+                    background-color: #B85FC6;
+                    border: none;
+                    text-transform: uppercase;
+                }
+
+            #wrapper #dialog button.close {
+                border: solid 2px;
+                border-radius: 30px;
+                line-height: 19px;
+                font-size: 120%;
+                width: 22px;
+                position: absolute;
+                right: 5px;
+                top: 5px;
+            }
+
+            #wrapper #dialog div {
+                position: relative;
+                z-index: 1;
+            }
+
+            #wrapper #dialog img {
+                position: absolute;
+                bottom: -70px;
+                right: -63px;
+            }
+</style>
+<div id="wrapper">
+    <div id="dialog">
+
+        <h3 style="font-size: 1.175rem;;">Please enter the 6-digit verification code sent to your email</h3>
+        @if (TempData["xsuccess"] != null)
+        {
+            <div class="alert alert-success">
+                <strong>Success!</strong> @TempData["xsuccess"]
+            </div>
+        }
+        @if (TempData["xerror"] != null)
+        {
+
+
+            <div class="alert alert-danger">
+                <strong>Oops!</strong> @TempData["xerror"]
+            </div>
+        }
+
+        @*<div id="countdown">01:00</div>
+        Didn't receive the code?
+        <form asp-page-handler="SendEmail" method="post">
+            <input asp-for="Xtxnt" type="hidden" />
+            <input asp-for="NotificationNumber" type="hidden" value="2" />
+
+            <input type="submit" value="Resend" class="" />
+        </form>*@
+        <div id="countdown">01:00</div>
+        <div id="resendForm" style="display: none;">
+            <form asp-page-handler="SendEmail" method="post">
+                <input asp-for="Xtxnt" type="hidden" />
+                <input asp-for="NotificationNumber" type="hidden" value="2" />
+                Didn't receive the code? <input type="submit" value="Resend" class="" style=" background: none !important; border: none !important; color: blue !important;"/>
+            </form>
+        </div>
+        <div id="form">
+            <form method="post">
+                <input asp-for="Xtxnt" type="hidden" />
+                <input type="text" id="inputField" asp-for="One" onkeyup="removeSpace(event)" onpaste="removeSpacesAndLetters(event)" />
+                <button type="submit" class="btn btn-primary btn-embossed">Verify</button>
+            </form>
+        </div>
+
+        <div>
+
+
+            @*<form method="post" asp-page="Verify">
+                <input asp-for="Xtxnt" type="hidden" />
+                <input asp-for="NotificationNumber" type="hidden" value="4" />
+
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="btn-section">
+                            <button class="btn btn-success">
+
+                                <span class="btn-text">Resend Via Whatsapp <i class="fa fa-envelope" style="margin-left:20px;"></i></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>*@
+
+            <h6>Submitted a Wrong Whatsapp Number. Update Now</h6>
+            <form method="post" asp-page-handler="UpdatePhone">
+                <input name="xcode" type="hidden" value="@Model.XC" />
+                <input name="xmal" type="hidden" value="@Model.XM" />
+                <input name="txtd" type="hidden" value="@Model.TX" />
+
+                <div class="row">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" asp-for="OldPhoneNumber" placeholder="Old Phone Number" required="required">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-phone"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" asp-for="NewPhoneNumber" placeholder="Whatsapp Number" required="required">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-phone"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="btn-section">
+                            <button type="submit" class="btn btn-primary btn-block">Click to Change</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+ 
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        function removeSpace(event) {
+            // Get the input field value
+            let inputField = document.getElementById('inputField');
+            let inputValue = inputField.value;
+
+            // Remove spaces from the input value
+            inputValue = inputValue.replace(/ /g, '');
+
+            // Update the input field with the modified value
+            inputField.value = inputValue;
+        }
+
+        function removeSpacesAndLetters(event) {
+            // Get the pasted text
+            let clipboardData = event.clipboardData || window.clipboardData;
+            let pastedData = clipboardData.getData('text');
+
+            // Remove spaces and letters from the pasted text
+            let sanitizedText = pastedData.replace(/ /g, '').replace(/[a-zA-Z]/g, '');
+
+            // Prevent the default paste action
+            event.preventDefault();
+
+            // Insert the sanitized text into the input field
+            document.execCommand('insertText', false, sanitizedText);
+        }
+    </script>
+
+    <script>
+        // Set the time for the countdown in seconds
+        const countdownTime = 1 * 60; // 5 minutes in seconds
+        let remainingTime = countdownTime;
+
+        const countdownElement = document.getElementById('countdown');
+
+        function updateCountdown() {
+            const minutes = Math.floor(remainingTime / 60);
+            const seconds = remainingTime % 60;
+
+            // Display the countdown in the format MM:SS
+            countdownElement.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+            // Check if the countdown has reached zero
+            if (remainingTime === 0) {
+                clearInterval(countdownInterval); // Stop the countdown
+                countdownElement.style.display = 'none'; // Hide the countdown
+                resendForm.style.display = 'block'; // Show the resend form
+            }
+
+            // Decrement the remaining time
+            remainingTime--;
+        }
+
+        // Update the countdown every second
+        const countdownInterval = setInterval(updateCountdown, 1000);
+    </script>
+}

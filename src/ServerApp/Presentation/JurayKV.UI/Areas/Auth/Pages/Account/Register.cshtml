@@ -1,0 +1,329 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Pages/Shared/_Register.cshtml";
+
+}
+<style>
+    .errmsg {
+        color: blue;
+    }
+</style>
+<p class="login-box-msg">Register a new Account</p>
+<p>
+    Kindly register your names as they appear on your official documents because our AI has the ability to block irregular and very unconventional names.  Hence, may affect you from receiving your incentives.
+</p>
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<form id="registrationForm" method="post">
+    <input type="hidden" asp-for="RefPhone" />
+    @if (Model.RefName != null)
+    {
+        <div class="row">
+            <div class="col-12">
+                <div class="">
+                    <label for="">
+                        Referred by (@Model.RefName)
+                    </label>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" asp-for="Input.Surname" placeholder="Surname" onkeyup="myUppercaseName(this)" required="required">
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-user"></span>
+            </div>
+        </div>
+    </div>
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" asp-for="Input.FirstName" placeholder="Firstname" onkeyup="myUppercaseNameTwo(this)" required="required">
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-user"></span>
+            </div>
+        </div>
+    </div>
+    <div class="input-group mb-3">
+        <input type="email" class="form-control" asp-for="Input.Email" placeholder="Email" required="required">
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-envelope"></span>
+            </div>
+        </div>
+    </div>
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" asp-for="Input.PhoneNumber" id="phoneNumberInput" placeholder="Valid Whatsapp Phone Number" required="required" oninput="removeSpacesAndFormat()">
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-phone"></span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="">Current Address</label>
+        <input type="text" class="form-control" asp-for="Input.Address" placeholder="Current Location" required="required">
+        
+    </div>
+    <div class="form-group">
+        <label for="">Current State of your Address</label>
+
+        <select asp-for="Input.State" onchange="toggleLGA(this);" id="state" class="form-control" required="required">
+            <option value="" selected="selected">- Select -</option>
+            <option value="Abia">Abia</option>
+            <option value="Adamawa">Adamawa</option>
+            <option value="AkwaIbom">AkwaIbom</option>
+            <option value="Anambra">Anambra</option>
+            <option value="Bauchi">Bauchi</option>
+            <option value="Bayelsa">Bayelsa</option>
+            <option value="Benue">Benue</option>
+            <option value="Borno">Borno</option>
+            <option value="Cross River">Cross River</option>
+            <option value="Delta">Delta</option>
+            <option value="Ebonyi">Ebonyi</option>
+            <option value="Edo">Edo</option>
+            <option value="Ekiti">Ekiti</option>
+            <option value="Enugu">Enugu</option>
+            <option value="FCT">FCT</option>
+            <option value="Gombe">Gombe</option>
+            <option value="Imo">Imo</option>
+            <option value="Jigawa">Jigawa</option>
+            <option value="Kaduna">Kaduna</option>
+            <option value="Kano">Kano</option>
+            <option value="Katsina">Katsina</option>
+            <option value="Kebbi">Kebbi</option>
+            <option value="Kogi">Kogi</option>
+            <option value="Kwara">Kwara</option>
+            <option value="Lagos">Lagos</option>
+            <option value="Nasarawa">Nasarawa</option>
+            <option value="Niger">Niger</option>
+            <option value="Ogun">Ogun</option>
+            <option value="Ondo">Ondo</option>
+            <option value="Osun">Osun</option>
+            <option value="Oyo">Oyo</option>
+            <option value="Plateau">Plateau</option>
+            <option value="Rivers">Rivers</option>
+            <option value="Sokoto">Sokoto</option>
+            <option value="Taraba">Taraba</option>
+            <option value="Yobe">Yobe</option>
+            <option value="Zamfara">Zamafara</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="lga">Current LGA of your Address</label>
+        <select id="lga" asp-for="Input.LGA" class="form-control select-lga" required="required">
+        </select>
+    </div>
+
+
+    <div class="input-group mb-3">
+        <input type="password" class="form-control" asp-for="Input.Password" placeholder="Password" required="required">
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+            </div>
+        </div>
+    </div>
+    <div class="input-group mb-3">
+        <input type="password" class="form-control" asp-for="Input.ConfirmPassword" placeholder="Retype password" required="required">
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group mb-4" style="margin-bottom:0px !important;">
+        <p>Kindly confirm that you are a human by entering the code below in the box</p>
+    </div>
+    <div class="form-group mb-4" style="margin-bottom:0px !important;">
+
+        <div id="errCaptcha" class="errmsg"></div>
+        <div class="row">
+
+            <div class="col-sm-4" style="">
+                <div class="restart">
+                    <a href="#captcha" id="cliik" onclick="createCaptcha()">Change Code</a>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="input">
+                    <input type="text"
+                           name="reCaptcha"
+                           id="reCaptcha"
+                           placeholder="Enter Sum" style="border-radius:8px;padding-left:10px;width:100px;" />
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div id="captcha" class="captcha">
+                    <script>createCaptcha();</script>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <p style="margin-bottom:0 !important;color:white;">
+
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-8">
+            <div class="icheck-primary">
+                <input type="checkbox" id="agreeTerms" name="terms" value="agree">
+                <label for="agreeTerms">
+                    I agree to the <a href="#">terms</a>
+                </label>
+            </div>
+        </div>
+        <!-- /.col -->
+        <div class="col-4">
+            <button type="submit" class="btn btn-primary btn-block">Register</button>
+        </div>
+        <!-- /.col -->
+    </div>
+</form>
+
+
+<a asp-page="./Login" class="text-center">I already have an Account</a>
+
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/lga.js"></script>
+    <script>
+        function removeSpacesAndFormat() {
+            // Get the input element
+            var phoneNumberInput = document.getElementById("phoneNumberInput");
+
+            // Remove spaces from the input value
+            var phoneNumber = phoneNumberInput.value.replace(/\s/g, '');
+
+            // Format the phone number as "08054580905" with eleven digits
+            if (phoneNumber.length >= 11) {
+                phoneNumber = phoneNumber.substring(0, 11);
+            }
+
+            // Update the input value with the formatted phone number
+            phoneNumberInput.value = phoneNumber;
+        }
+    </script>
+
+    <script>
+        function removeSpaces() {
+            // Get the input element
+            var phoneNumberInput = document.getElementById("phoneNumberInput");
+
+            // Remove spaces from the input value
+            var cleanedValue = phoneNumberInput.value.replace(/\s/g, '');
+
+            // Update the input value
+            phoneNumberInput.value = cleanedValue;
+        }
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("registrationForm");
+            const agreeTermsCheckbox = document.getElementById("agreeTerms");
+
+            form.addEventListener("submit", function (event) {
+                // Validate agreement checkbox
+                if (!agreeTermsCheckbox.checked) {
+                    event.preventDefault(); // Prevent form submission
+                    toastr.error('Please agree to the terms before submitting.');
+                    return;
+                }
+
+                // Validate required fields
+                const requiredFields = form.querySelectorAll('[required]');
+                let isValid = true;
+
+                requiredFields.forEach(function (field) {
+                    if (!field.value.trim()) {
+                        event.preventDefault(); // Prevent form submission
+                        toastr.error('All fields are required.');
+                        isValid = false;
+                        return;
+                    }
+                });
+
+                // Validate captcha
+                if (!validateCaptcha()) {
+                    event.preventDefault(); // Prevent form submission
+                    toastr.error('Captcha validation failed.');
+                    return;
+                }
+
+                // Submit the form if all validations pass
+                if (isValid) {
+                    // You can add additional logic or remove this line if not needed.
+                    form.submit();
+                }
+            });
+
+            // Initial captcha generation
+            createCaptcha();
+        });
+
+        let captchaSum;
+
+        function createCaptcha() {
+            const activeCaptcha = document.getElementById("captcha");
+            const num1 = Math.floor(Math.random() * 10); // Random number 0-9
+            const num2 = Math.floor(Math.random() * 10); // Random number 0-9
+            captchaSum = num1 + num2;
+            activeCaptcha.innerHTML = `${num1} + ${num2} = `;
+        }
+
+        function validateCaptcha() {
+            const errCaptcha = document.getElementById("errCaptcha");
+            const userAnswer = parseInt(document.getElementById("reCaptcha").value);
+
+            if (isNaN(userAnswer) || userAnswer !== captchaSum) {
+                errCaptcha.innerHTML = "Wrong captcha";
+                return false;
+            }
+
+            errCaptcha.innerHTML = "Done";
+            // Generate a new captcha for the next submission
+            createCaptcha();
+            return true;
+        }
+
+        function myUppercaseName(input) {
+            input.value = input.value.toUpperCase();
+        }
+        function myUppercaseNameTwo(input) {
+            input.value = input.value.toUpperCase();
+        }
+    </script>
+
+
+
+
+    <div class="modal fade" id="mainModal" data-backdrop="static">
+        <div class="modal-dialog modal-md" style="width: 70% !important;">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h3>
+                        Disclaimer: Only Whatsapp Phone Number is Valid
+                    </h3>
+
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="closeModal()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(window).on('load', function () {
+            $('#mainModal').modal('show');
+        });
+    </script>
+}
+
+
